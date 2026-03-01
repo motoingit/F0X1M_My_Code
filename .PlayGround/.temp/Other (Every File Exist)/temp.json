@@ -1,0 +1,21 @@
+{
+  "language": "JSON",
+  "creator": "Douglas Crockford (popularized)",
+  "first_released": "2001",
+  "paradigm": "Data interchange format",
+  "primary_use": "APIs, configuration, data storage",
+  "history": [
+    "Derived from JS object literal syntax",
+    "Standardized as ECMA-404 / RFC 8259"
+  ],
+  "advantages": [
+    "Human-readable, ubiquitous",
+    "Supported in nearly every language"
+  ],
+  "disadvantages": [
+    "No comments (officially)",
+    "Limited types (no dates, comments)"
+  ],
+  "alternatives": ["YAML", "XML", "TOML"],
+  "applications": ["Web APIs", "Config files", "Logs"]
+}

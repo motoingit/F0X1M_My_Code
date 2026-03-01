@@ -1,0 +1,13 @@
+
+win + r OR terminal
+shutdown /s /t 3600
+to cancel
+shutdown /a
+
+
+//in powershell in sec
+Start-Sleep -Seconds 1800
+Suspend-Computer
+
+Start-Sleep -Seconds 1800
+Stop-Computer

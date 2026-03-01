@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build C (gcc)",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "${file}",
+        "-Wall",
+        "-Wextra",
+        "-g",
+        "-o",
+        "bin/${fileBasenameNoExtension}.exe"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Build C++ (g++)",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "${file}",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-g",
+        "-o",
+        "bin/${fileBasenameNoExtension}.exe"
+      ],
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}

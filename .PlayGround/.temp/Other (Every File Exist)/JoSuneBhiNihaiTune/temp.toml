@@ -1,0 +1,15 @@
+#
+# Language: TOML
+# Creator(s): Tom Preston-Werner
+# First Released: 2013
+# Paradigm: Minimal config format
+# Primary Use: Configuration (Rust's Cargo, Python pyproject)
+# Strengths:
+# - Simple, unambiguous types
+# Weaknesses:
+# - Less expressive than YAML
+# Alternatives:
+# - YAML, JSON, INI
+# Applications:
+# - Tooling configs, package manifests
+#

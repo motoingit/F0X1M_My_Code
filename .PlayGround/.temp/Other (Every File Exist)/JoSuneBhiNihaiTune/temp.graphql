@@ -1,0 +1,15 @@
+#
+# Language: GraphQL
+# Creator(s): Facebook (Meta)
+# First Released: 2015
+# Paradigm: Query language for APIs
+# Primary Use: Client-driven data fetching
+# Strengths:
+# - Precise queries, single endpoint, strong typing (SDL)
+# Weaknesses:
+# - Complexity at server; caching and N+1 pitfalls
+# Alternatives:
+# - REST/JSON:API, gRPC
+# Applications:
+# - Web/mobile APIs needing flexible querying
+#

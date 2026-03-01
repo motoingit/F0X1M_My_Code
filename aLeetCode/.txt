@@ -1,0 +1,193 @@
+Love this direction. If you want to **get comfortable with `vector` in C++ STL**, don’t jump into hard DP. Build muscle memory first.
+
+I’ll give you:
+
+1️⃣ **Easy LeetCode questions (vector-focused)**
+2️⃣ **Other websites**
+3️⃣ A **progression order**
+
+---
+
+# 🟢 Easy LeetCode Questions (Vector-Based)
+
+(All from **LeetCode**)
+
+---
+
+## 1️⃣ Two Sum (Very Important Starter)
+
+* Uses vector indexing
+* Practice loops + conditions
+* Later optimize with map
+
+🔎 Learn:
+
+* Accessing elements
+* Returning vector
+
+---
+
+## 2️⃣ Remove Duplicates from Sorted Array
+
+* Modify vector in-place
+* Two-pointer technique
+
+🔎 Learn:
+
+* In-place modification
+* Index handling
+
+---
+
+## 3️⃣ Move Zeroes
+
+* Rearranging vector
+* Swapping elements
+
+🔎 Learn:
+
+* Efficient movement
+* Avoid extra space
+
+---
+
+## 4️⃣ Best Time to Buy and Sell Stock
+
+* Simple traversal
+* Track minimum
+
+🔎 Learn:
+
+* Iteration patterns
+* Basic greedy
+
+---
+
+## 5️⃣ Maximum Subarray
+
+* Kadane’s algorithm
+* Linear scan
+
+🔎 Learn:
+
+* Traversal patterns
+* Prefix thinking
+
+---
+
+## 6️⃣ Contains Duplicate
+
+* Can be solved using sorting or set
+
+🔎 Learn:
+
+* Sorting vector
+* STL usage
+
+---
+
+## 7️⃣ Plus One
+
+* Vector digit manipulation
+
+🔎 Learn:
+
+* Reverse traversal
+* Edge case handling
+
+---
+
+# 🟡 Slightly More Practice
+
+After comfort:
+
+* Rotate Array
+* Merge Sorted Array
+* Intersection of Two Arrays
+* Find Pivot Index
+* Valid Anagram
+
+---
+
+# 🔵 Other Good Practice Websites
+
+## 1️⃣ **GeeksforGeeks**
+
+Search:
+
+* “Vector basic problems”
+* “STL vector practice”
+
+Very beginner friendly.
+
+---
+
+## 2️⃣ **CodeStudio**
+
+Good structured beginner problems.
+
+---
+
+## 3️⃣ **HackerRank**
+
+Search:
+
+* “STL Vector”
+* They even have a direct STL vector problem.
+
+---
+
+# 🧠 What you should master with vector
+
+Before moving to maps/sets:
+
+* `push_back()`
+* `pop_back()`
+* `size()`
+* `resize()`
+* `sort()`
+* `reverse()`
+* `erase()`
+* Iteration using:
+
+  * index
+  * iterator
+  * range-based loop
+
+---
+
+# 🏁 Suggested Learning Order
+
+Step 1 → Two Sum
+Step 2 → Move Zeroes
+Step 3 → Remove Duplicates
+Step 4 → Maximum Subarray
+Step 5 → Merge / Rotate
+
+Then move to:
+
+* Prefix sum
+* Sliding window
+* Maps
+
+---
+
+# 🧠 Pro Tip
+
+When solving:
+
+* Don’t just pass test cases
+* Print vector
+* Dry run manually
+* Understand why O(n²) fails
+
+---
+
+If you want, I can:
+
+* Create a **custom mini vector practice sheet**
+* Give you a **7-day vector mastery plan**
+* Or solve one problem step-by-step with explanation
+
+Tell me your level:
+Beginner / Comfortable / Already solved 20+ problems 🚀

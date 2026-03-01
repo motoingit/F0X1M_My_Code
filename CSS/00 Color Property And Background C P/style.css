@@ -1,0 +1,16 @@
+h3{
+    color:blue;
+}
+
+p{
+    color: rgb(83, 40, 125);
+}
+
+button{
+    color: rgb(0, 0, 0);
+    background-color: #00ff00;
+}
+
+html{
+    background-color: rgb(136, 192, 216);
+}

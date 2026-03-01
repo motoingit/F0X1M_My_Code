@@ -1,0 +1,14 @@
+This is a placeholder info file using the Unreal Engine .uasset extension.
+Note: Real .uasset files are binary assets created by Unreal Editor.
+
+Language/Tech: Unreal Engine (C++ & Blueprints)
+History:
+- 1998+: Unreal Engine lineage; Blueprints for visual scripting
+Advantages:
+- High-end graphics, cross-platform, AAA tooling
+Disadvantages:
+- Heavy toolchain; steep learning curve
+Alternatives:
+- Unity, Godot, proprietary engines
+Applications:
+- Games, simulations, virtual production

@@ -1,0 +1,23 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body{
+    color: rgb(122, 1, 97);
+    background-color: rgb(62, 163, 202);
+}
+
+h1{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#outer{
+    font-size: 30px;
+}
+
+#inner{
+    color: rgb(34, 34, 186);
+    font-size: 15px;
+};

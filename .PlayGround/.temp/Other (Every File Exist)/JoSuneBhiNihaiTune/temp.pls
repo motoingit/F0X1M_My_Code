@@ -1,0 +1,15 @@
+--
+-- Language: PL/SQL (Oracle)
+-- Creator(s): Oracle Corporation
+-- First Released: 1990s
+-- Paradigm: Procedural extensions to SQL
+-- Primary Use: Stored procedures, triggers in Oracle DB
+-- Strengths:
+-- - Tight integration with Oracle DB; performance
+-- Weaknesses:
+-- - Vendor lock-in; portability issues
+-- Alternatives:
+-- - T-SQL (SQL Server), pgSQL (PostgreSQL)
+-- Applications:
+-- - Business logic in the database layer
+--

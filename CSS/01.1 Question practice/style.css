@@ -1,0 +1,18 @@
+body{
+    color: rgb(209, 101, 101);
+}
+
+#h11, #h12{ /* <------  new information */
+    color: rgb(67, 56, 222);
+    background-color: aquamarine;
+}
+
+.heading{
+    color: rgba(165, 42, 42, 0.72);
+    background-color: blanchedalmond;
+}
+
+button{
+    color: rgb(255, 0, 0);
+
+}

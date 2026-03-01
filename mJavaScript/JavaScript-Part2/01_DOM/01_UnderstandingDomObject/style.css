@@ -1,0 +1,29 @@
+h2 {
+    color: blue;
+    font: small-caps;
+    text-decoration: line-through;
+}
+
+#heading{
+    text-align: center;
+    color: rgb(184, 50, 177);
+    font:bold;
+    text-decoration:double;
+}
+
+body{
+    background-color: aqua;
+}
+
+.moto{
+    text-align: center;
+    color: rgb(184, 50, 177);
+    font:bold;
+    text-decoration:double;
+}
+
+.solo{
+    color: rgb(184, 50, 177);
+    font:bold;
+    text-decoration:double;
+}

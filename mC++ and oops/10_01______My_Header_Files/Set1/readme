@@ -1,0 +1,12 @@
+👉 Now this is more modular, secure, and professional
+
+    .h → only prototypes.
+    .cpp → only definitions.
+    main.cpp → only usage.
+
+
+    ye ese waise run ni hone wala
+
+    #these command should run
+    g++ main.cpp defination.cpp -o program
+    ./program

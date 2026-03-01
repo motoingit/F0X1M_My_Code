@@ -1,0 +1,7 @@
+Why Open the File in Binary Mode ("rb")?
+Reason:
+Opening the file in binary mode ensures that the file pointer movement and byte counting are accurate.
+
+In text mode, some systems (like Windows) may translate newline characters (\n) into two bytes (\r\n), which can cause mismatches between the actual file size and the number of characters you expect.
+
+Binary mode prevents such translations, making fseek and ftell work precisely in terms of bytes

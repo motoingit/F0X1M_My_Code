@@ -1,0 +1,15 @@
+<!--
+Language: XML
+Creator(s): W3C
+First Released: 1998
+Paradigm: Markup, self-describing data
+Primary Use: Config, documents, SOAP, build files
+Strengths:
+- Strict, schema validation, namespaces
+Weaknesses:
+- Verbose; heavier than JSON/YAML
+Alternatives:
+- JSON, YAML, TOML
+Applications:
+- Office docs, Android layouts, Maven POM, SVG
+-->

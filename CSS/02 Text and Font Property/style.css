@@ -1,0 +1,33 @@
+
+#moto1{
+    color: rgb(123, 35, 205);
+    text-align: center;
+}
+#moto2{
+    color: rgb(173, 27, 44);
+    text-align: center;
+    text-decoration: red wavy line-through;
+}
+
+body{
+    background-color: rgb(118, 190, 221);
+}
+
+a{
+    text-decoration:  none;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+.gim{
+    font-size: large;
+    font-weight: lighter;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.GYM{
+    font-size: smaller;
+    font-family: Arial;
+}

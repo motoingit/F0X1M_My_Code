@@ -1,0 +1,64 @@
+
+<!--!
+✔ <head> — metadata, resources, config
+✔ <body> — everything visible or interactive
+
+    # Footer belongs inside body, not beside it.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Page Title -->
+        <title>Demo Pull Head</title>
+
+            <!-- Meta Tags -->
+            <meta charset="UTF-8"> <!-- Encoding -->
+            
+            <!-- Meta Tags - Controls how your page looks on mobile devices. without this it un-xx -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive -->
+
+            <!-- Meta Tags - Google uses it in search result snippets, Improves SEO and click-through rate. -->
+            <meta name="description" content="This is a demo page showing how to use the head element in HTML.">
+            
+            <!-- Meta Tags - . -->
+            <meta name="keywords" content="HTML, head, demo, meta, example">
+
+            <!-- Meta Tags -  -->
+            <meta name="author" content="Mohit">
+
+        <!-- Link to Stylesheet -->
+        <link rel="stylesheet" href="#">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="#">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- Inline Style -->
+        <style>
+            body {
+                font-family: 'Montserrat', sans-serif;
+                background-color: #f9f9f9;
+                color: #333;
+                padding: 20px;
+            }
+        </style>
+
+        <!-- JavaScript -->
+        <script>
+            console.log("Head section loaded before body.");
+        </script>
+    </head>
+
+    <body>
+        <h1>Demo Page</h1>
+        <h1>Demo Page</h1>
+        <p>This page demonstrates a full HTML head section.</p>
+        <button onclick="alert('Hello from head!')">Click Me</button>
+    </body>
+</html>

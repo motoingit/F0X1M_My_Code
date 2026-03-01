@@ -1,0 +1,18 @@
+--
+-- Language: SQL
+-- Creator(s): Donald D. Chamberlin, Raymond F. Boyce (IBM)
+-- First Released: 1970s (SEQUEL), ANSI SQL in 1986
+-- Paradigm: Declarative query language
+-- Primary Use: Relational database queries and schema
+-- Strengths:
+-- - Declarative set-based operations, ACID transactions
+-- - Mature tooling and optimizers
+-- Weaknesses:
+-- - Vendor dialect differences; impedance mismatch with objects
+-- Alternatives:
+-- - NoSQL query langs (MongoDB), GraphQL (APIs)
+-- Applications:
+-- - OLTP/OLAP databases, reporting, analytics
+-- Current Status:
+-- - Universal standard for relational data
+--

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="app-header">
+        <h1 class="app-title">Tic Tac Toe</h1>
+        <p class="app-subtitle">A beginner JavaScript learning project</p>
+    </header>
+
+    <!-- ================= MAIN GAME ================= -->
+    <main class="app-main">
+
+        <!-- Status / Message -->
+        <div id="statusBox" class="status hidden">
+            <p id="statusMessage"></p>
+        </div>
+
+        <!-- Game Board -->
+        <div class="board">
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="resetGameBtn">Reset Game</button>
+            <button id="newGameBtn">New Game</button>
+        </div>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="app-footer">
+        <p>Built while learning JavaScript DOM & Events</p>
+        <p>Contact: demo@example.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

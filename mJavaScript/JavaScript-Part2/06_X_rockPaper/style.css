@@ -1,0 +1,176 @@
+/* =========================
+   GLOBAL RESET
+   ========================= */
+
+/* Remove default browser spacing and ensure predictable sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   ROOT / BODY
+   ========================= */
+
+/* Establish vertical layout and global font behavior */
+body {
+    min-height: 100vh;                /* Full viewport height */
+    display: flex;                    /* Enable flex layout */
+    flex-direction: column;           /* Stack header, main, footer vertically */
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;        /* Neutral background */
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+header {
+    padding: 1rem;
+    background-color: #0d6efd;        /* Primary brand color */
+    text-align: center;
+}
+
+/* Game title styling */
+#title {
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+/* =========================
+   MAIN CONTAINER
+   ========================= */
+
+main {
+    flex: 1;                          /* Take remaining vertical space */
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;                        /* Space between sections */
+    background-color: #e9f7f7;
+}
+
+/* =========================
+   PROFILE SECTION
+   ========================= */
+
+/* Holds user + computer profiles side by side */
+.profiles {
+    display: flex;
+    justify-content: space-evenly;    /* Even spacing */
+    align-items: center;
+}
+
+/* Individual profile card */
+.profiles div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Profile images */
+#profileUser,
+#profileComp {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;               /* Circular avatars */
+    object-fit: cover;                /* Prevent image distortion */
+    border: 3px solid #0d6efd;
+}
+
+/* Profile names */
+.profiles p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #0d6efd;
+}
+
+/* =========================
+   CONTROL BUTTONS
+   ========================= */
+
+/* Container for Rock / Paper / Scissor buttons */
+#controls {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Game buttons */
+#controls .btn {
+    width: 180px;
+    height: 120px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+
+    background-color: #ffffff;
+    border: 2px solid #0d6efd;
+    border-radius: 12px;
+
+    transition: all 0.2s ease-in-out; /* Smooth hover effects */
+}
+
+/* Hover feedback */
+#controls .btn:hover {
+    background-color: #0d6efd;
+    color: #ffffff;
+    transform: scale(1.05);           /* Subtle interaction cue */
+}
+
+/* =========================
+   RESET CONTROLS
+   ========================= */
+
+/* Reset button container */
+#moreCtrl {
+    display: flex;
+    justify-content: center;
+}
+
+/* Reset button styling */
+#reset-btn {
+    width: 200px;
+    height: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+
+    background-color: #dc3545;        /* Danger / reset color */
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+
+    transition: background-color 0.2s;
+}
+
+/* Reset hover */
+#reset-btn:hover {
+    background-color: #b02a37;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    padding: 0.8rem;
+    background-color: #0d6efd;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.9rem;
+    height: 10vh;
+}
+
+footer h3{
+    padding: 0.8rem;
+    background-color: #ffffff;
+    color: #ffffff;
+    text-align: center;
+    font-size: 2rem;
+    height: 10vh;
+}

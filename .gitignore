@@ -1,0 +1,17 @@
+# Java
+*.class
+*.jar
+
+# C/C++
+*.exe
+*.out
+*.o
+
+# Build folders
+bin/
+out/
+build/
+node_modules/
+
+#Obvious
+.gitignore/

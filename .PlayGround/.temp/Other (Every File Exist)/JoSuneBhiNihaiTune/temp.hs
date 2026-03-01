@@ -1,0 +1,21 @@
+--
+-- Language: Haskell
+-- Creator(s): Committee of researchers; key contributors: Simon Peyton Jones
+-- First Released: 1990
+-- Paradigm: Pure functional, lazy evaluation
+-- Typing: Static, strong; type inference
+-- Primary Use: Research, compilers, high-assurance software
+-- History:
+-- - 1990: Standardizes a family of lazy functional languages
+-- - 2000s+: GHC becomes de facto compiler; type extensions flourish
+-- Strengths (Advantages):
+-- - Purity, strong type system, abstractions (monads, type classes)
+-- Weaknesses (Disadvantages):
+-- - Steep learning curve; performance tuning expertise needed
+-- Alternatives/Competitors:
+-- - OCaml/F#, Scala, Rust (FP features)
+-- Applications:
+-- - Compilers, fintech, static analysis, research
+-- Current Status:
+-- - Influential in FP; used in industry niches
+--

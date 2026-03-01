@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "moto",
+      "request": "launch",
+      "mainClass": "moto",
+      "projectName": "00_Code_b40d0c27"
+    },
+    {
+      "type": "java",
+      "name": "j05_PrintZigZag",
+      "request": "launch",
+      "mainClass": "j05_PrintZigZag",
+      "projectName": "00_Code_b40d0c27"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": ".",
+      "program": "build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

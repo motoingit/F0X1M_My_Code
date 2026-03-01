@@ -1,0 +1,15 @@
+#
+# Language: YAML
+# Creator(s): Clark Evans, Ingy döt Net, Oren Ben-Kiki
+# First Released: 2001
+# Paradigm: Human-friendly data serialization
+# Primary Use: Configuration, CI/CD pipelines, K8s manifests
+# Strengths:
+# - Readable, supports comments, anchors/aliases
+# Weaknesses:
+# - Whitespace sensitive; complex features can be confusing
+# Alternatives:
+# - JSON, TOML, XML
+# Applications:
+# - Docker Compose, Kubernetes, GitHub Actions
+#

@@ -1,0 +1,22 @@
+/*
+Language: CSS
+Creator(s): Håkon Wium Lie, Bert Bos
+First Released: 1996
+Paradigm: Stylesheet for presentation
+Typing: N/A (declarative)
+Primary Use: Styling web content
+History:
+- 1990s: Separation of content and style
+- 2010s+: Flexbox, Grid, custom properties
+Strengths (Advantages):
+- Powerful layout tools; responsive design
+- Theming via variables; cascading
+Weaknesses (Disadvantages):
+- Specificity and cascade can be tricky
+Alternatives/Competitors:
+- Sass/SCSS (preprocessors), Tailwind (utility-first)
+Typical Applications:
+- Web design, theming, UI styling
+Current Status:
+- Continues to evolve with modern layout/features
+*/

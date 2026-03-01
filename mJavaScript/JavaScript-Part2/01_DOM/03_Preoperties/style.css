@@ -1,0 +1,25 @@
+h2 {
+    color: blue;
+    text-decoration: line-through;
+}
+
+#heading{
+    color: rgb(184, 50, 177);
+    font:bold;
+    text-decoration:double;
+}
+
+body{
+    background-color: aqua;
+}
+
+.moto{
+    color: rgb(184, 50, 177);
+    font:bold;
+    text-decoration:double;
+}
+
+.solo{
+    color: rgb(184, 50, 177);
+    font:bold;
+}

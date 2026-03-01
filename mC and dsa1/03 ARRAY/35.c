@@ -1,0 +1,1 @@
+//wap in c to find the substinng iidfjiejdiekk.

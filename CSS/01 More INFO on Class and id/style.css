@@ -1,0 +1,15 @@
+body{
+    color: grey;
+}
+h1{
+    color: rgb(255, 0, 43);
+}
+
+#Moto1{ /* for id's */
+    color: blue;
+}
+
+ .MOTI{ /* for classes */
+    color: blueviolet;
+}
+    
