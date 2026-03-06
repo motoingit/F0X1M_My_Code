@@ -29,4 +29,12 @@
     ///!to make main default, so next time just {git push}.
     ///? git push -u origin main
 
+
+    ///!If you know the remote content is useless and you want to completely replace it:
+    ///* git push -f origin main
+
+
+    ///* That integrates remote changes cleanly and then pushes yours.
+    ///* git pull origin main --rebase
+
 */

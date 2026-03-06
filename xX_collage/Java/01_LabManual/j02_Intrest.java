@@ -1,4 +1,4 @@
-import java.util.Scanner;
+git push -u origin mainimport java.util.Scanner;
 
 public class j02_Intrest{
 public static float inputX(int ctrl, Scanner sc){

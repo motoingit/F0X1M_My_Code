@@ -32,38 +32,45 @@ void countSortBasic(){
 }
 
 ///? stability yes we mimic that already !
-void countSort(vector <int> &arr){
-    if(arr.size() <= 1){
-        return ;
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+void countSort(vector<int>& arr) {
+    if (arr.size() <= 1) return;
+
+    // Find range of values
+    int minValue = *min_element(arr.begin(), arr.end());
+    int maxValue = *max_element(arr.begin(), arr.end());
+
+    int range = maxValue - minValue + 1;
+
+    // Frequency array
+    vector<int> frequency(range, 0);
+
+    //Cumulative Freq
+    for (int value : arr) {
+        frequency[value - minValue]++;
     }
 
-    int maxVal = *max_element(arr.begin(), arr.end());
-    int minVal = *min_element(arr.begin(), arr.end());
-
-    int tempIdxFactor = -minVal; //this will +ve or -ve
-    int nFreqArr = maxVal - minVal + 1;;
-    vector <int> freqArr(nFreqArr, 0);
-
-    for(int i = 0; i < arr.size(); i++) { // puting zero in freq
-        freqArr[arr[i]+tempIdxFactor]++;
+    // Convert frequency to prefix sum (Cumulative Sum)
+    for (int i = 1; i < range; i++) {
+        frequency[i] += frequency[i - 1];
     }
 
-    // int cumFreqArr[nFreqArr]; //!This is not standard C++ (only GCC allows it).
-    vector<int> cumFreqArr(nFreqArr);
-    cumFreqArr[0] = freqArr[0];
-    for(int i = 1; i < nFreqArr; i++) {
-        cumFreqArr[i] = cumFreqArr[i-1] + freqArr[i];
+    // Output array
+    vector<int> sorted(arr.size());
+
+    // Traverse from end to maintain stability
+    for (int i = arr.size() - 1; i >= 0; i--) {
+        int index = arr[i] - minValue;
+        int position = --frequency[index];
+        sorted[position] = arr[i];
     }
 
-
-    vector<int> tempArray(arr.size());
-    for(int i = arr.size()-1; i >= 0; i--) {
-        int idxC = arr[i] + tempIdxFactor;
-        int idxA = --cumFreqArr[idxC];
-        tempArray[idxA] = idxC - tempIdxFactor;
-    }
-
-    arr = tempArray;
+    // Copy back
+    arr = sorted;
 }
 
 int main(){ 

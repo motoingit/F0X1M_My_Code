@@ -24,18 +24,18 @@ void countSort(vector <int> &arr, int redix, int pos){ //todo: Modified CountSOr
         freqArr[(arr[i]/pos)%10]++;
     }
 
-    vector<int> cumFreqArr(redix);
-    cumFreqArr[0] = freqArr[0];
-    for(int i = 1; i < redix; i++) {
-        cumFreqArr[i] = cumFreqArr[i-1] + freqArr[i];
+    // Convert frequency to prefix sum (Cumulative Sum)
+    for (int i = 1; i < freqArr.size(); i++) {
+        freqArr[i] += freqArr[i - 1];
     }
 
-    vector<int> tempArray(arr.size());
-    for(int i = arr.size()-1; i >= 0; i--) {
-        tempArray[--cumFreqArr[(arr[i]/pos)%10]] = arr[i];
+    vector<int> output(arr.size());
+    // Stable placement
+    for (int i = arr.size() - 1; i >= 0; i--) {
+        int digit = (arr[i] / redix) % redix;
+        output[--freqArr[digit]] = arr[i];
     }
-
-    arr = tempArray;
+    arr = output;
 }
 
 void redixSort(vector <int> &arr){
