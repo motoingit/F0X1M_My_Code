@@ -12,5 +12,3 @@ public class j02_substring{
     }
 }
 
-
-`

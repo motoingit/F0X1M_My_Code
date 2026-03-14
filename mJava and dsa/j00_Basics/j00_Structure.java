@@ -7,7 +7,7 @@
         ///*folderName
         package folderName;
             ///!class mendatory
-            public class file_name{
+            class file_name{
                 ///todo:mainFuc
                 public static void main(String[] args){
                     ///? Your rest code

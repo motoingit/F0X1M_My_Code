@@ -1,4 +1,4 @@
-#!/bin/bash
+# NOT: {!/bin/bash}
 
 # Store hostname
 HOSTNAME=$(hostname)

@@ -8,7 +8,7 @@ public class j00_Ultimate {
         // PRIMITIVE DATA TYPES
         // =========================
 
-        byte b = 10; //bytes uses two complement
+        byte b = 10; // stored using 8-bit two's complement representation
         short s = 100;
         int i = 1000;
         long l = 100000L;

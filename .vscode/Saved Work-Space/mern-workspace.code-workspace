@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": "E:/REPO - ME/React-Tute/chai_code/nextapp"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"15.C": "cpp",
+			"10-ADD.C": "cpp",
+			"iostream": "cpp",
+			"ostream": "cpp"
+		},
+		"workbench.editor.labelFormat": "short",
+		"workbench.tree.indent": 20,
+		"workbench.tree.renderIndentGuides": "always",
+		"workbench.sideBar.location": "left",
+		"workbench.editor.tabSizing": "shrink",
+		"workbench.editor.showIcons": true,
+		"workbench.colorCustomizations": {
+			"editorCursor.foreground": "#FF4500",
+			"tree.indentGuidesStroke": "#3A96DD",
+			"list.activeSelectionBackground": "#003366",
+			"list.activeSelectionForeground": "#ffff00",
+			"list.focusBackground": "#0040ff5e"
+		},
+		"python.languageServer": "Pylance"
+	}
+}

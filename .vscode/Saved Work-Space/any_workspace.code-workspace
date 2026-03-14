@@ -1,0 +1,215 @@
+{
+  "folders": [
+    {
+      "path": "../.."
+    },
+    {
+      "path": "E:/xGarage/js_course"
+    }
+  ],
+  "settings": {
+    "C_Cpp_Runner.cCompilerPath": "gcc",
+    "C_Cpp_Runner.cppCompilerPath": "g++",
+    "C_Cpp_Runner.debuggerPath": "gdb",
+    "C_Cpp_Runner.cStandard": "",
+    "C_Cpp_Runner.cppStandard": "",
+    "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
+    "C_Cpp_Runner.useMsvc": false,
+    "C_Cpp_Runner.warnings": [
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wshadow",
+      "-Wformat=2",
+      "-Wcast-align",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wnull-dereference"
+    ],
+    "C_Cpp_Runner.msvcWarnings": [
+      "/W4",
+      "/permissive-",
+      "/w14242",
+      "/w14287",
+      "/w14296",
+      "/w14311",
+      "/w14826",
+      "/w44062",
+      "/w44242",
+      "/w14905",
+      "/w14906",
+      "/w14263",
+      "/w44265",
+      "/w14928"
+    ],
+    "C_Cpp_Runner.enableWarnings": true,
+    "C_Cpp_Runner.warningsAsError": false,
+    "C_Cpp_Runner.compilerArgs": [],
+    "C_Cpp_Runner.linkerArgs": [],
+    "C_Cpp_Runner.includePaths": [],
+    "C_Cpp_Runner.includeSearch": [
+      "*",
+      "**/*"
+    ],
+    "C_Cpp_Runner.excludeSearch": [
+      "**/build",
+      "**/build/**",
+      "**/.*",
+      "**/.*/**",
+      "**/.vscode",
+      "**/.vscode/**"
+    ],
+    "C_Cpp_Runner.useAddressSanitizer": false,
+    "C_Cpp_Runner.useUndefinedSanitizer": false,
+    "C_Cpp_Runner.useLeakSanitizer": false,
+    "C_Cpp_Runner.showCompilationTime": false,
+    "C_Cpp_Runner.useLinkTimeOptimization": false,
+    "C_Cpp_Runner.msvcSecureNoWarnings": false,
+    "C_Cpp.errorSquiggles": "enabled",
+    "files.associations": {
+      "15.C": "cpp",
+      "10-ADD.C": "cpp",
+      "iostream": "cpp",
+      "ostream": "cpp"
+    },
+
+    /////////////////////////////////////////////////////////
+    //* FILES TO HIDE (Clutter Reduction)
+    /////////////////////////////////////////////////////////
+    "files.exclude": {
+        // Hide binaries and clutter
+        "**/*.exe": true,
+        "**/.class": true,
+      },
+
+    // Prevent search results from showing .exe files
+    "search.exclude": {
+        "**/*.exe": true,
+        "**/.class": true,
+    },
+
+    /////////////////////////////////////////////////////////
+    //* WORKBENCH UI / NAVIGATION
+    /////////////////////////////////////////////////////////
+    "workbench.editor.labelFormat": "short",          // Show short tab labels
+    "workbench.tree.indent": 20,                      // Wider folder indentation
+    "workbench.tree.renderIndentGuides": "always",    // Always show tree guides
+    "workbench.sideBar.location": "left",            // Sidebar docked right
+
+    // Tabs
+    "workbench.editor.tabSizing": "shrink",           // Compact tabs
+    "workbench.editor.showIcons": true,               // Show file-type icons
+
+    /////////////////////////////////////////////////////////
+    //* COLOUR CUSTOMIZATIONS
+    /////////////////////////////////////////////////////////
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#ff0000",
+        "tree.indentGuidesStroke": "#3A96DD",
+        "list.activeSelectionBackground": "#003366",
+        "list.activeSelectionForeground": "#ff00b3",
+        "list.focusBackground": "#0040ff5e"
+    },
+
+    /*
+    📂 Common Folder Styles in Material Icon Theme:
+        src        → source code folder (yellow/orange)
+        dist       → build output (purple/blue)
+        build      → build artifacts (blue)
+        docs       → documentation (light blue)
+        test       → test files (green)
+        node_modules → dependencies (gray)
+        config     → configuration (teal)
+        assets     → images/media (pink)
+        styles     → CSS/SCSS (purple)
+        public     → web assets (cyan)
+        scripts    → automation scripts (yellow)
+        i18n       → localization files (globe icon)
+        db/database→ database files (dark blue)
+        tools      → tooling (wrench icon)
+    */
+
+    //* EDITIOR
+    "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.formatOnSave": false, //save with format
+    "editor.tabSize": 4,
+
+    "files.insertFinalNewline": true,
+    "python.languageServer": "Pylance",
+
+    //! CODE_RUNNER
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.executorMap": {
+      "javascript": "node",
+      "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+      "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+      "zig": "zig run",
+      "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+      "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+      "php": "php",
+      "python": "python -u",
+      "perl": "perl",
+      "perl6": "perl6",
+      "ruby": "ruby",
+      "go": "go run",
+      "lua": "lua",
+      "groovy": "groovy",
+      "powershell": "powershell -ExecutionPolicy ByPass -File",
+      "bat": "cmd /c",
+      
+      "shellscript": "wsl bash -c \"bash $(wslpath '$fullFileName')\"",
+
+      "fsharp": "fsi",
+      "csharp": "scriptcs",
+      "vbscript": "cscript //Nologo",
+      "typescript": "ts-node",
+      "coffeescript": "coffee",
+      "scala": "scala",
+      "swift": "swift",
+      "julia": "julia",
+      "crystal": "crystal",
+      "ocaml": "ocaml",
+      "r": "Rscript",
+      "applescript": "osascript",
+      "clojure": "lein exec",
+      "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+      "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+      "racket": "racket",
+      "scheme": "csi -script",
+      "ahk": "autohotkey",
+      "autoit": "autoit3",
+      "dart": "dart",
+      "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+      "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+      "haskell": "runghc",
+      "nim": "nim compile --verbosity:0 --hints:off --run",
+      "lisp": "sbcl --script",
+      "kit": "kitc --run",
+      "v": "v run",
+      "sass": "sass --style expanded",
+      "scss": "scss --style expanded",
+      "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
+      "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+      "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+      "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+      "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+      "sml": "cd $dir && sml $fileName",
+      "mojo": "mojo run",
+      "erlang": "escript",
+      "spwn": "spwn build",
+      "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
+      "gleam": "gleam run -m $fileNameWithoutExt"
+    },
+    "editor.fontSize": 15,
+    "files.autoSave": "onFocusChange",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "on",
+    "window.autoDetectColorScheme": true,
+    "workbench.colorTheme": "Experimental Dark",
+    "workbench.preferredLightColorTheme": "Visual Studio 2017 Light - C++",
+    "workbench.preferredHighContrastLightColorTheme": "Visual Studio 2017 Dark - C++",
+  }
+
+}
