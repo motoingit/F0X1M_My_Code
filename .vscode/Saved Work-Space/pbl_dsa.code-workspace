@@ -1,16 +1,16 @@
 {
-  "folders": [
-    {
-      "path": "C:/Users/mohit/OneDrive/Documents/00_Code"
-    },
-    {
-      "path": "E:/xGarage/js_course"
-    },
-    {
-      "path": "E:/xGarage/tempProject"
-    }
-  ],
-  "settings": {
+	"folders": [
+		{
+			"path": "E:/REPO - ME/DSA-VIZ/F7X8M_dsaVisualizer"
+		},
+		{
+			"path": "E/REPO - ME/DSA-VIZ/dsa_viz"
+		},
+		{
+			"path": "E/REPO - ME/DSA-VIZ/dsa_my"
+		},
+	],
+	"settings": {
     "C_Cpp_Runner.cCompilerPath": "gcc",
     "C_Cpp_Runner.cppCompilerPath": "g++",
     "C_Cpp_Runner.debuggerPath": "gdb",
@@ -214,5 +214,4 @@
     "workbench.preferredLightColorTheme": "Visual Studio 2017 Light - C++",
     "workbench.preferredHighContrastLightColorTheme": "Visual Studio 2017 Dark - C++",
   }
-
 }
