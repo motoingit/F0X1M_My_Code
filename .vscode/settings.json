@@ -63,73 +63,33 @@
     "iostream": "cpp",
     "ostream": "cpp"
   },
-
-  /////////////////////////////////////////////////////////
-  //* FILES TO HIDE (Clutter Reduction)
-  /////////////////////////////////////////////////////////
   "files.exclude": {
-      // Hide binaries and clutter
-      "**/*.exe": true,
-      "**/.class": true,
-    },
-
-  // Prevent search results from showing .exe files
+    "**/*.exe": true,
+    "**/.class": true
+  },
   "search.exclude": {
-      "**/*.exe": true,
-      "**/.class": true,
+    "**/*.exe": true,
+    "**/.class": true
   },
-
-  /////////////////////////////////////////////////////////
-  //* WORKBENCH UI / NAVIGATION
-  /////////////////////////////////////////////////////////
-  "workbench.editor.labelFormat": "short",          // Show short tab labels
-  "workbench.tree.indent": 20,                      // Wider folder indentation
-  "workbench.tree.renderIndentGuides": "always",    // Always show tree guides
-  "workbench.sideBar.location": "left",            // Sidebar docked right
-
-  // Tabs
-  "workbench.editor.tabSizing": "shrink",           // Compact tabs
-  "workbench.editor.showIcons": true,               // Show file-type icons
-
-  /////////////////////////////////////////////////////////
-  //* COLOUR CUSTOMIZATIONS
-  /////////////////////////////////////////////////////////
+  "workbench.editor.labelFormat": "short",
+  "workbench.tree.indent": 20,
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.sideBar.location": "left",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.showIcons": true,
   "workbench.colorCustomizations": {
-      "editorCursor.foreground": "#ff0000",
-      "tree.indentGuidesStroke": "#3A96DD",
-      "list.activeSelectionBackground": "#003366",
-      "list.activeSelectionForeground": "#ff00b3",
-      "list.focusBackground": "#0040ff5e"
+    "editorCursor.foreground": "#ff0000",
+    "tree.indentGuidesStroke": "#3A96DD",
+    "list.activeSelectionBackground": "#003366",
+    "list.activeSelectionForeground": "#ff00b3",
+    "list.focusBackground": "#0040ff5e"
   },
-
-  /*
-  📂 Common Folder Styles in Material Icon Theme:
-      src        → source code folder (yellow/orange)
-      dist       → build output (purple/blue)
-      build      → build artifacts (blue)
-      docs       → documentation (light blue)
-      test       → test files (green)
-      node_modules → dependencies (gray)
-      config     → configuration (teal)
-      assets     → images/media (pink)
-      styles     → CSS/SCSS (purple)
-      public     → web assets (cyan)
-      scripts    → automation scripts (yellow)
-      i18n       → localization files (globe icon)
-      db/database→ database files (dark blue)
-      tools      → tooling (wrench icon)
-  */
-
-  //* EDITIOR
   "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
   "editor.fontLigatures": true,
-  "editor.formatOnSave": false, //save with format
-  "editor.tabSize": 4,
-
+  "editor.formatOnSave": false,
+  "editor.tabSize": 3,
   "files.insertFinalNewline": true,
   "python.languageServer": "Pylance",
-
-  //! CODE_RUNNER
   "code-runner.runInTerminal": true,
   "code-runner.saveFileBeforeRun": true,
   "code-runner.executorMap": {
@@ -190,5 +150,5 @@
     "spwn": "spwn build",
     "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
     "gleam": "gleam run -m $fileNameWithoutExt"
-  },
+  }
 }

@@ -3,13 +3,15 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <algorithm>
+// #include <algorithm>
 
 using namespace std;
 
 void khansAlgo(vector<vector<int>> adjList){
     queue<int> myQueue;
     vector<int> inDegreeArr(adjList.size(), 0);
+
+    //doubt? should i check Directed-Acylic or not ?
 
     // Step 1: Calculate in-degrees
     for (auto& ele1 : adjList) {
@@ -18,13 +20,14 @@ void khansAlgo(vector<vector<int>> adjList){
         }
     }
 
-    // Step 2: Push all 0 in-degree nodes
+    // Step 2: Push all 0 in-degree nodes at start
     for (int i = 0; i < adjList.size(); i++) {
         if (inDegreeArr[i] == 0) {
             myQueue.push(i);
         }
     }
 
+    //* to store the dependency order
     vector<int> topoOrder;
 
     // Step 3: Process queue
@@ -43,9 +46,10 @@ void khansAlgo(vector<vector<int>> adjList){
         }
     }
 
+    //! still this cycle detection is not in my mind fully
     // Step 4: Cycle detection
     if (topoOrder.size() != adjList.size()) {
-        cout << "Cycle detected! Topological sort not possible.";
+        cout << "Cycle detected ! Topological sort not possible.";
         return;
     }
 
