@@ -3,7 +3,6 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-// #include <algorithm>
 
 using namespace std;
 
@@ -74,5 +73,4 @@ int main(){
     };
 
     khansAlgo(adjList);
-    // cout << adjList[7].size();
 return 0;}
