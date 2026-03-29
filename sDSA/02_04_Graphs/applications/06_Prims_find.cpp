@@ -1,3 +1,10 @@
+/*
+        ///! Prims Algorithms
+1- find the edge with min weight (0)
+2- now select those edge this time which is not selected earlier and which is connected to the already visited vertex
+3- repeat step 2 untill all nodes are visited
+*/
+
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -5,12 +12,16 @@
 using namespace std;
 
 struct Edge {
-    int weight, child, parent; // Added parent to track the MST structure
+    int weight;
+    int child;
+    int parent;
 };
 
 struct Compare {
     bool operator()(Edge& a, Edge& b) {
+        //* a is the inserted and b is the relative
         return a.weight > b.weight;  // min-heap behavior
+        //! if false then go up
     }
 };
 
@@ -18,10 +29,10 @@ int primsAlgo(vector<vector<Edge>> &adjList, vector<Edge> &mstResult, int startN
     int totalWeight = 0;
     int nV = adjList.size();
     
-    priority_queue<Edge, vector<Edge>, Compare> pq;
     vector<bool> visitedArr(nV, false);
+    priority_queue<Edge, vector<Edge>, Compare> pq;
 
-    // Initial "dummy" edge to start the process: weight 0, target is startNode, no parent (-1)
+    //! Initially dummy edge is pushed (parent -1, weight 0)
     pq.push({0, startNode, -1});
 
     while (!pq.empty()) {
@@ -30,8 +41,8 @@ int primsAlgo(vector<vector<Edge>> &adjList, vector<Edge> &mstResult, int startN
 
         int u = curr.child;
 
-        // Skip if we've already included this node in the MST
-        if (visitedArr[u]) continue;
+        if (visitedArr[u]) continue; //* avoid cycle and revisiting
+        //todo: can we put a nV == count to go out on done
 
         // Mark as visited and add to MST weight
         visitedArr[u] = true;
@@ -67,8 +78,8 @@ int main() {
         int u, w, v;
         cin >> u >> w >> v;
         // Since it's undirected, add edges for both directions
-        adjList[u].push_back({w, v, u});
         adjList[v].push_back({w, u, v});
+        adjList[u].push_back({w, v, u});
     }
 
     vector<Edge> mstResult;

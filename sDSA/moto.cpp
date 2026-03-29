@@ -1,73 +1,106 @@
-// Question : Topological Sort using dfs
+
+// Question : Union of Disjoint Set
 
 #include <iostream>
 #include <vector>
-#include <queue>
 
 using namespace std;
 
-void topoSort(vector<vector<int>>&adjList){
+/// @brief X-Dont now
+class DSU{
+   public:
+   vector <int> parentArr, rankArr;
 
-   //Counting Degree
-   vector<int> degreeArr(adjList.size(), 0);
+   DSU(int size){
+      parentArr.resize(size);
+      rankArr.resize(size, 0); //* rank will be 0 for all init
 
-   for (int i = 0; i < adjList.size(); i++) {
-      for (auto& elem : adjList[i]) {
-         degreeArr[elem]++;
+      // self loop | every one is its own parent
+      for (int i = 0; i < size; i++) {
+         parentArr[i] = i;
       }
    }
 
-   queue <int> qq;
-
-   // pushing all 0 incomming vertedx
-   for (int i = 0; i < degreeArr.size(); i++) {
-      if(degreeArr[i] == 0){
-         qq.push(i);
+   /// @brief Find the Representative of Group
+   /// @param src 
+   /// @return parentArr
+   int findRank(int src){
+      if(parentArr[src] != src){
+         parentArr[src] = findRank(parentArr[src]);
+         return parentArr[src];
+      }else{
+         return src;
       }
    }
 
-   //now adding front elements
-   vector<int> topoOrder;
-   while (!qq.empty()) {
-      int currNode = qq.front();
-      qq.pop();
+   /// @brief Union of group of x1 and x2 wrt RANK
+   /// @param x1 group one
+   /// @param x2 group two
+   /// @return Status of the task
+   int unionRank(int x1, int x2){ 
+      int x1Rank1 = findRank(x1);
+      int x1Rank2 = findRank(x2);
 
-      topoOrder.push_back(currNode);
+      // if already union then ignore
+      if(x1Rank1 == x1Rank2) return 200;
 
-      for (auto& elem : adjList[currNode]) {
-         degreeArr[elem]--;
-         //? can degreeArr[x] -> -1 possible
-         if(degreeArr[elem] == 0){
-            qq.push(elem);
-         }
+      if(x1Rank1 > x1Rank2){
+         rankArr[x1Rank2] = x1Rank1;
+      }else if(x1Rank1 < x1Rank2){
+         rankArr[x1Rank1] = x1Rank2;
+      }else{ //! incrementing rank
+         rankArr[x1Rank2] = x1Rank1;
+         rankArr[x1Rank1]++; 
+      }
+
+      return 200;
+   }
+
+   /// @brief Lame Funtion
+   /// @param x1 
+   /// @param x2 
+   /// @return 
+   int unionBasic(int x1, int x2){
+      parentArr[x1] = x2;
+      return 200;
+   }
+
+   int unionSize(int x1, int x2){
+      
+      return 200;
+   }
+
+   /// @brief Make new Element
+   /// @return Status of the Task
+   int makeElementDSU(){
+      //* if 5 element is there then, idx[5] = 5
+      parentArr.push_back(parentArr.size());
+      return 200;
+   }
+
+   /// @brief Know the Range
+   /// @return Status of the range
+   int knowRange(){
+      if(parentArr.size() == 0){
+         cout << "Empty DSU !" << endl;
+      }else{
+         cout << "From 0 to "<< parentArr.size() << endl;
       }
    }
 
-   //seeing if cycle present
-   if(topoOrder.size() != adjList.size()){
-      cout << "Cycle !" << endl;
-      return;
-   }
 
-   //print
-   for (auto& elem : topoOrder) {
-      cout << " " << elem;
-   }
-}
+   
+};
 
 int main(){
-   vector<vector<int>> adjList = {
-        {5},
-        {0,2},
-        {4},
-        {2,6,7},
-        {},
-        {},
-        {},
-        {},
-        {6,9},
-        {7},
-    };
+   
+   DSU graph1(10);
 
-    topoSort(adjList);
+   while (condition)
+   {
+      /* code */
+   }
+   
+   graph1.unionRank(2,5);
+
 return 0;}

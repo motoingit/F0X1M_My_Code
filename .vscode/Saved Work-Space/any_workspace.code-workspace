@@ -1,11 +1,8 @@
 {
   "folders": [
     {
-      "path": "E:/C_O_D_E"
+      "path": "E:/My_Code"
     },
-    {
-      "path": "E:/xGarage/js_course"
-    }
   ],
   "settings": {
     "C_Cpp_Runner.cCompilerPath": "gcc",
@@ -207,9 +204,12 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.wordWrap": "on",
     "window.autoDetectColorScheme": true,
-    "workbench.colorTheme": "Experimental Dark",
+    "workbench.colorTheme": "VS Code Dark",
     "workbench.preferredLightColorTheme": "Visual Studio 2017 Light - C++",
     "workbench.preferredHighContrastLightColorTheme": "Visual Studio 2017 Dark - C++",
+    "[cpp]": {
+      "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
   }
 
 }
