@@ -1,17 +1,26 @@
-# Java
+#* Java
 *.class
 *.jar
 
-# C/C++
+#* C/C++
 *.exe
 *.out
 *.o
 
-# Build folders
+#* Build folders
 bin/
 out/
 build/
 node_modules/
 
-#Obvious
-.gitignore/
+#! IDE files
+# .vscode/
+
+# Logs
+*.log
+
+#* Environment variables
+.env
+
+#* .gitignore
+.gitignore

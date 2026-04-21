@@ -1,9 +1,50 @@
 {
   "folders": [
-    {
-      "path": "E:/My_Code"
-    },
+    {"path": "E:/My_Code"},
+    {"path": "E:/xGarage/.testing/"}
   ],
+
+  //* extention
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode"
+    ],
+    "unwantedRecommendations": [
+      "ms-vscode.vscode-typescript-next"
+    ]
+  },
+
+  //* launch
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch Program",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/index.js"
+      }
+    ],
+    "compounds": []       // optional: run multiple configs together
+  },
+
+  // tasks
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build",
+        "type": "shell",
+        "command": "npm run build",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  },
+
+  //* setting
   "settings": {
     "C_Cpp_Runner.cCompilerPath": "gcc",
     "C_Cpp_Runner.cppCompilerPath": "g++",
@@ -105,7 +146,8 @@
         "tree.indentGuidesStroke": "#3A96DD",
         "list.activeSelectionBackground": "#003366",
         "list.activeSelectionForeground": "#ff00b3",
-        "list.focusBackground": "#0040ff5e"
+        "list.focusBackground": "#0040ff5e",
+        "editorGutter.foldingControlForeground": "#FF0000" //*arraw of folding
     },
 
     /*
@@ -199,16 +241,32 @@
       "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
       "gleam": "gleam run -m $fileNameWithoutExt"
     },
+
+    //! editor
     "editor.fontSize": 15,
     "files.autoSave": "onFocusChange",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.wordWrap": "on",
     "window.autoDetectColorScheme": true,
-    "workbench.colorTheme": "VS Code Dark",
+    "workbench.colorTheme": "Dark 2026",
     "workbench.preferredLightColorTheme": "Visual Studio 2017 Light - C++",
     "workbench.preferredHighContrastLightColorTheme": "Visual Studio 2017 Dark - C++",
     "[cpp]": {
       "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "[java]": {
+      "editor.defaultFormatter": "redhat.java"
+    },
+
+    "editor.tokenColorCustomizations": {
+      "textMateRules": [
+          {
+              "scope": "punctuation.definition.block",
+              "settings": {
+                  "foreground": "#FF0000"
+              }
+          }
+      ]
     },
   }
 
