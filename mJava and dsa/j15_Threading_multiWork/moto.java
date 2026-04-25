@@ -1,6 +1,4 @@
-package j15_Threading_multiWork;
-
-public import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicInteger;
 /*
 Today we have *covered Synchronisation and Inter Thread Commutation* , those who have missed today's class and lab kindly ask them to prepare these concepts before coming to the next class where we will be discussing *Producer and Consumer Problem*.
 */
@@ -110,7 +108,4 @@ class AtomicCounter {
     void increment() {
         count.incrementAndGet(); // thread-safe & efficient
     }
-}
- {
-    
 }

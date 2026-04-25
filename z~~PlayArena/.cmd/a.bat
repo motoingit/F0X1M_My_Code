@@ -44,3 +44,4 @@ del /s /q "%TARGET_DIR%\*.class"
 
 echo.
 echo Done. %count% file(s) deleted.
+endlocal

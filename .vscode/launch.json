@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "j16",
+      "request": "launch",
+      "mainClass": "j16",
+      "projectName": "My_Code_3eb8f126"
+    },
+    {
+      "type": "java",
       "name": "moto",
       "request": "launch",
       "mainClass": "moto",

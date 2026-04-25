@@ -1,0 +1,1 @@
+This line is a data-cleaning operation—it strips out numbers, spaces, symbols, and punctuation, leaving only alphabetic characters.

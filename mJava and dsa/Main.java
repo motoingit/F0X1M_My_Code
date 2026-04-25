@@ -1,42 +1,48 @@
-import java.util.Scanner;
+/* Ques:  TypeHere 
 
-public class Main {
-    public static void merge(int arr[], int st, int mid, int end) {
-        int nL = mid - st + 1, nR = end - mid;
-        int[] arrL = new int[nL];
-        int[] arrR = new int[nR];
+Create 2 threads:
+	•	Thread A → prints even numbers (1–10)
+	•	Thread B → prints odd numbers (1–10)
+    
+*/ 
 
-        // ✅ copy separately with 0-based indexing
-        for (int i = 0; i < nL; i++) arrL[i] = arr[st + i];
-        for (int i = 0; i < nR; i++) arrR[i] = arr[mid + 1 + i];
+class Task implements Runnable{
+    static int count = 0;
+    String id;
 
-        // ✅ merge back using 0-based i, j and original k
-        int i = 0, j = 0, k = st;
-        while (i < nL && j < nR) {
-            if (arrL[i] <= arrR[j]) arr[k++] = arrL[i++];
-            else arr[k++] = arrR[j++];
+    Task(String id){
+        count++;
+        this.id = id;
+        System.out.println(String.format("[%s] is Created , [%d] is total Count", id, count));
+    }
+    
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i=+2) {
+            System.out.println(String.format("[%s] is Running", this.id));
+            try{
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+        
+        System.out.println(String.format("[%s] is Complete !", this.id));
+    };
+}
 
-        // ✅ copy leftovers
-        while (i < nL) arr[k++] = arrL[i++];
-        while (j < nR) arr[k++] = arrR[j++];
-    }
-
-    public static void mergeSort(int arr[], int st, int end) {
-        if (st == end) return;
-
-        int mid = st + (end - st) / 2;  // ✅ also fixed mid calculation
-        mergeSort(arr, st, mid);
-        mergeSort(arr, mid + 1, end);
-        merge(arr, st, mid, end);
-    }
-
+public class Main{
     public static void main(String[] args) {
-        int[] arr = {9, 8, 7, 6, 5, 4, 1, 0};
-        mergeSort(arr, 0, arr.length - 1);
+        Task t1 = new Task("task-1");
+        Task t2 = new Task("task-2");
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
+        Thread task1 = new Thread(t1, "Worker-1");
+        Thread task2 = new Thread(t2, "Worker-2");
+
+        task1.start();
+        task2.start();
+
+        System.out.println(Thread.currentThread().getName());
+
     }
 }

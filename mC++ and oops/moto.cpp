@@ -1,14 +1,34 @@
+/* Question : String Matching 01
+*/
+
 #include <iostream>
-#include <vector>
+#include <string>
+#include <format>
 
 using namespace std;
 
-int main() {
-    vector<int> a = {1,2,3,4};
-
-   //! Transferring the Ownership of memory to b        |      not Copy
-    vector<int> b = std::move(a);
-
-    cout << "Size of a: " << a.size() << endl; // usually 0
-    cout << "Size of b: " << b.size() << endl; // 4
+//only find first occurence
+void findPattern(string str, string pattern){
+    int pIdx = 0, sIdx = 0;
+    while (sIdx < str.size()) {
+        if(str[sIdx] == pattern[pIdx]){
+            pIdx++;
+            if(pIdx == pattern.size()){
+                printf("Found at %d to %d", sIdx-pattern.size(), sIdx-1);
+                return;
+            }
+        }else{
+            pIdx = 0;
+        }
+        sIdx++;
+    }
+    
+    printf("Not Found");
 }
+
+int main(){
+    string str = "hello.mello.hollahito.hellno";
+    findPattern(str, "hellno");
+
+    cout << "Terminated Sucessfully";
+return 0;}
