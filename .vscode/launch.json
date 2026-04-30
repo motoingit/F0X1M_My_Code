@@ -2,25 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "java",
-      "name": "j16",
+      "name": "Launch Program",
+      "type": "node",
       "request": "launch",
-      "mainClass": "j16",
-      "projectName": "My_Code_3eb8f126"
-    },
-    {
-      "type": "java",
-      "name": "moto",
-      "request": "launch",
-      "mainClass": "moto",
-      "projectName": "00_Code_b40d0c27"
-    },
-    {
-      "type": "java",
-      "name": "j05_PrintZigZag",
-      "request": "launch",
-      "mainClass": "j05_PrintZigZag",
-      "projectName": "00_Code_b40d0c27"
+      "program": "${workspaceFolder}/index.js"
     },
     {
       "name": "C/C++ Runner: Debug Session",
@@ -29,8 +14,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": ".",
-      "program": "build/Debug/outDebug",
+      "cwd": "e:/My_Code",
+      "program": "e:/My_Code/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
@@ -41,5 +26,6 @@
         }
       ]
     }
-  ]
+  ],
+  "compounds": []
 }

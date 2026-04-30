@@ -1,0 +1,3 @@
+
+code.cmd --list-extensions > extensions-backup.txt
+

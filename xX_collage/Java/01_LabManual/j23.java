@@ -1,85 +1,83 @@
-// Vowel COunt
+/* Ques: P-23 Swing */
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
-public class j23 extends JFrame implements ActionListener {
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-    private JTextField inputField, resultField;
-    private JButton countBtn, resetBtn, exitBtn;
+class Graphic extends JFrame implements ActionListener{
+   JTextField inputString;
+   JTextField outputNumber;
+   JButton reset, count;
 
-    public j23() {
-        setTitle("Vowel Counter");
-        setSize(400, 250);
-        setLayout(new FlowLayout());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+   Graphic(String appName){
+      super(appName);
 
-        // Input
-        add(new JLabel("Enter String:"));
-        inputField = new JTextField(20);
-        add(inputField);
+      //layout
+      setTitle("Vovel Counter");
+      setSize(500,500);
+      setLayout(new FlowLayout());
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Result
-        add(new JLabel("Vowel Count:"));
-        resultField = new JTextField(10);
-        resultField.setEditable(false);
-        add(resultField);
+      //Components
+      add(new JLabel("Input String : "));
+      inputString = new JTextField("Enter Here");
+      add(inputString);
 
-        // Buttons
-        countBtn = new JButton("CountVowel");
-        resetBtn = new JButton("Reset");
-        exitBtn = new JButton("Exit");
+      add(new JLabel("Count : "));
+      outputNumber = new JTextField("No Data");
+      outputNumber.setEditable(false);
+      add(outputNumber);
 
-        // Set commands
-        countBtn.setActionCommand("COUNT");
-        resetBtn.setActionCommand("RESET");
-        exitBtn.setActionCommand("EXIT");
+      reset = new JButton("reset");
+      count = new JButton("count");
+      add(reset);
+      add(count);
 
-        // ONE listener
-        countBtn.addActionListener(this);
-        resetBtn.addActionListener(this);
-        exitBtn.addActionListener(this);
+      //butns command
+      count.setActionCommand("COUNT");
+      reset.setActionCommand("RESET");
+      // ONE listener
+      count.addActionListener(this);
+      reset.addActionListener(this);
 
-        add(countBtn);
-        add(resetBtn);
-        add(exitBtn);
+      setVisible(true);
+   }
 
-        setVisible(true);
-    }
+   //* Funtiong of  */
+   @Override
+   public void actionPerformed(ActionEvent e){
+      String cmd = e.getActionCommand();
 
-    // 🔥 One method handles all buttons
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String cmd = e.getActionCommand();
-
-        switch (cmd) {
-
+         switch (cmd) {
             case "COUNT":
-                String text = inputField.getText().toLowerCase();
-                int count = 0;
-
-                for (char c : text.toCharArray()) {
-                    if ("aeiou".indexOf(c) != -1) {
-                        count++;
-                    }
-                }
-
-                resultField.setText(String.valueOf(count));
-                break;
+               String text = inputString.getText().toLowerCase();
+               int count = 0;
+               for (char c : text.toCharArray()) {
+                  if ("aeiou".indexOf(c) != -1) {
+                     count++;
+                  }
+               }
+               outputNumber.setText(String.valueOf(count));
+               break;
 
             case "RESET":
-                inputField.setText("");
-                resultField.setText("");
-                break;
+               inputString.setText("Enter String");
+               outputNumber.setText("No Data");
+               break;
 
-            case "EXIT":
-                System.exit(0);
-                break;
-        }
-    }
+            default:
+               outputNumber.setText("Wrong Button");
+      }
+   }
+}
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new j23());
-    }
+public class j23{
+   public static void main(String[] args) {
+      Graphic test = new Graphic("MOto");
+   }
 }

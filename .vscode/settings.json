@@ -82,12 +82,13 @@
     "tree.indentGuidesStroke": "#3A96DD",
     "list.activeSelectionBackground": "#003366",
     "list.activeSelectionForeground": "#ff00b3",
-    "list.focusBackground": "#0040ff5e"
+    "list.focusBackground": "#0040ff5e",
+    "editorGutter.foldingControlForeground": "#FF0000"
   },
   "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.formatOnSave": false,
-  "editor.tabSize": 3,
+  "editor.tabSize": 4,
   "files.insertFinalNewline": true,
   "python.languageServer": "Pylance",
   "code-runner.runInTerminal": true,
@@ -109,7 +110,7 @@
     "groovy": "groovy",
     "powershell": "powershell -ExecutionPolicy ByPass -File",
     "bat": "cmd /c",
-    "shellscript": "bash",
+    "shellscript": "wsl bash -c \"bash $(wslpath '$fullFileName')\"",
     "fsharp": "fsi",
     "csharp": "scriptcs",
     "vbscript": "cscript //Nologo",
@@ -150,5 +151,29 @@
     "spwn": "spwn build",
     "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
     "gleam": "gleam run -m $fileNameWithoutExt"
+  },
+  "editor.fontSize": 15,
+  "files.autoSave": "onFocusChange",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.wordWrap": "on",
+  "window.autoDetectColorScheme": true,
+  "workbench.colorTheme": "Dark 2026",
+  "workbench.preferredLightColorTheme": "Visual Studio 2017 Light - C++",
+  "workbench.preferredHighContrastLightColorTheme": "Visual Studio 2017 Dark - C++",
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "punctuation.definition.block",
+        "settings": {
+          "foreground": "#FF0000"
+        }
+      }
+    ]
   }
 }
