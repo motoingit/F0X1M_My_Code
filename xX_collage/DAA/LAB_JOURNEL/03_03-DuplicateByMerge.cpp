@@ -22,8 +22,10 @@ void merge(vector<int>& arr, int st, int mid, int end, bool &dupFlag) {
     // Merge
     while (i < nL && j < nR) {
         if (left[i] <= right[j]){
-            if(left[i] == right[j])
+            if(left[i] == right[j]){
                 dupFlag = true; //todo: this is the tweak !
+                return;
+            }
             arr[x++] = left[i++];
         }else{
             arr[x++] = right[j++];
@@ -40,6 +42,10 @@ void merge(vector<int>& arr, int st, int mid, int end, bool &dupFlag) {
 
 void mergeSort(vector<int>& arr, int st, int end, bool &dupFlag) {
     if(arr.size() <= 1 || st == end){
+        return;
+    }
+
+    if (dupFlag == true){
         return;
     }
 

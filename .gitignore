@@ -13,14 +13,8 @@ out/
 build/
 node_modules/
 
-#! IDE files
-# .vscode/
-
 # Logs
 *.log
 
 #* Environment variables
 .env
-
-#* .gitignore
-.gitignore

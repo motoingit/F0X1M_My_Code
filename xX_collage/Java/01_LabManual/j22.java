@@ -1,53 +1,37 @@
-/* Ques:  TypeHere */
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class j22{
-   public static List<Integer> alternateList(List<Integer> l1, List<Integer> l2){
-      List<Integer> l0 = new ArrayList<>();
+public class j22 {
 
-      int i = 0;
+    public static List<Integer> alternate(List<Integer> list1, List<Integer> list2) {
+        List<Integer> result = new ArrayList<>();
 
-      while (i < l1.size() && i < l2.size()) {
-         l0.add(l1.get(i));
-         l0.add(l2.get(i));
-         i++;
-      }
+        int i = 0;
+        int size1 = list1.size();
+        int size2 = list2.size();
 
-      while (i < l1.size()) {
-         l0.add(l1.get(i));
-         i++;
-      }
+        while (i < size1 && i < size2) {
+            result.add(list1.get(i));   // from list1 first
+            result.add(list2.get(i));   // then list2
+            i++;
+        }
 
-      while (i < l2.size()) {
-         l0.add(l2.get(i));
-         i++;
-      }
+        // Append remaining elements from the longer list
+        while (i < size1) {
+            result.add(list1.get(i++));
+        }
+        while (i < size2) {
+            result.add(list2.get(i++));
+        }
 
-      return l0;
-   }
-   public static void main(String[] args) {
-      Scanner sc = new Scanner(System.in);
+        return result;
+    }
 
-      List<Integer> l1 = new ArrayList<>();
-      List<Integer> l2 = new ArrayList<>();
+    public static void main(String[] args) {
+        List<Integer> list1 = List.of(1, 2, 3, 4, 5);
+        List<Integer> list2 = List.of(6, 7, 8, 9, 10, 11, 12);
 
-
-      int len1 = sc.nextInt();
-      for (int i = 0; i < len1; i++) {
-         l1.add(sc.nextInt());
-      }
-      
-      int len2 = sc.nextInt();
-      for (int i = 0; i < len2; i++) {
-         l2.add(sc.nextInt());
-      }
-
-      List<Integer> l0 = alternateList(l1, l2);
-      System.out.println(l0);
-
-      sc.close();
-   }
+        List<Integer> result = alternate(list1, list2);
+        System.out.println(result);
+    }
 }

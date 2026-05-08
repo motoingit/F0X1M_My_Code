@@ -17,10 +17,11 @@ public class j02_input{
         System.out.print("Enter Date: ");
         int date = sc.nextInt();
 
-        // Float day = sc.nextFloat();
-
         System.out.print("Enter Date: ");
         float day = sc.nextFloat();
+
+        // System.out.println("Enter Full name : "); //? "Mohit Singh\n"
+        // String name = sc.next(); //after this " singh\n"
 
 
         //! System.out.print(name,fullName,date,day);
@@ -31,6 +32,6 @@ public class j02_input{
         System.out.println("Date: " + date);
         System.out.println("Day: " + day);
         
-        sc.close();
+        sc.close(); /* //todo: to Free Buffer */
     }
 }

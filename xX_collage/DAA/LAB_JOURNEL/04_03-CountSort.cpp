@@ -6,37 +6,82 @@
 #include <algorithm>
 using namespace std;
 
-void countSort(vector <int> &arr){
-    if(arr.size() <= 1){
-        return ;
-    }
+void countSortPositive(vector<int> &arr) {
+    int n = arr.size();
+    if (n <= 1) return;
 
     int maxVal = *max_element(arr.begin(), arr.end());
+
+    vector<int> freq(maxVal + 1, 0);
+
+    // Count frequency
+    for (int x : arr) {
+        freq[x]++;
+    }
+
+    // Rebuild array (in-place overwrite)
+    int idx = 0;
+    for (int i = 0; i <= maxVal; i++) {
+        while (freq[i]--) {
+            arr[idx++] = i;
+        }
+    }
+}
+
+void countSortWithNegatives(vector<int> &arr) {
+    int n = arr.size();
+    if (n <= 1) return;
+
     int minVal = *min_element(arr.begin(), arr.end());
+    int maxVal = *max_element(arr.begin(), arr.end());
 
-    int tempIdxFactor = -minVal; //this will +ve or -ve
-    int nFreqArr = maxVal - minVal + 1;;
-    vector <int> freqArr(nFreqArr, 0);
+    int range = maxVal - minVal + 1;
 
-    for(int i = 0; i < arr.size(); i++) { // puting zero in freq
-        freqArr[arr[i]+tempIdxFactor]++;
+    vector<int> freq(range, 0);
+
+    // Count frequency
+    for (int x : arr) {
+        freq[x - minVal]++;
     }
 
-    vector<int> cumFreqArr(nFreqArr);
-    cumFreqArr[0] = freqArr[0];
-    for(int i = 1; i < nFreqArr; i++) {
-        cumFreqArr[i] = cumFreqArr[i-1] + freqArr[i];
+    // Rebuild array
+    int idx = 0;
+    for (int i = 0; i < range; i++) {
+        while (freq[i]--) {
+            arr[idx++] = i + minVal;
+        }
+    }
+}
+
+void countSortStable(vector<int> &arr) {
+    int n = arr.size();
+    if (n <= 1) return;
+
+    int minVal = *min_element(arr.begin(), arr.end());
+    int maxVal = *max_element(arr.begin(), arr.end());
+    int range = maxVal - minVal + 1;
+
+    // 1) Frequency
+    vector<int> freq(range, 0);
+    for (int x : arr) {
+        freq[x - minVal]++;
     }
 
-
-    vector<int> tempArray(arr.size());
-    for(int i = arr.size()-1; i >= 0; i--) {
-        int idxC = arr[i] + tempIdxFactor;
-        int idxA = --cumFreqArr[idxC];
-        tempArray[idxA] = idxC - tempIdxFactor;
+    // 2) Cumulative frequency (prefix sums)
+    for (int i = 1; i < range; i++) {
+        freq[i] += freq[i - 1];
     }
 
-    arr = tempArray;
+    // 3) Build output (RIGHT → LEFT for stability)
+    vector<int> output(n);
+    for (int i = n - 1; i >= 0; i--) {
+        int idx = arr[i] - minVal;
+        int pos = --freq[idx];   // last available position
+        output[pos] = arr[i];    // place original value
+    }
+
+    // 4) Copy back
+    arr = output;
 }
 
 int main() {
@@ -60,7 +105,7 @@ int main() {
             return -1;
         }
 
-        countSort(arr);
+        countSortPositive(arr);
         cout << arr[k-1] << "\n";
     }
 

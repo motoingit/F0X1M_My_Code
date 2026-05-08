@@ -1,5 +1,3 @@
-/* Ques: P-23 Swing */
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

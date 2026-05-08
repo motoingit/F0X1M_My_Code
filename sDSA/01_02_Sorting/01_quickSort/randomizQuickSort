@@ -1,0 +1,79 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib>   // rand, srand
+#include <ctime>     // time
+
+using namespace std;
+
+int comparisons = 0;
+int swapsCount = 0;
+
+void swapCount(int &a, int &b) {
+    swapsCount++;
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+// Simple random function
+int myRandom(int min, int max) {
+    return min + rand() % (max - min + 1);
+}
+
+int partition(vector<int> &arr, int low, int high) {
+    int pivotIdx = myRandom(low, high);
+    swapCount(arr[pivotIdx], arr[high]); 
+
+    int pivot = arr[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        comparisons++;
+        if (arr[j] <= pivot) {
+            i++;
+            swapCount(arr[i], arr[j]);
+        }
+    }
+
+    swapCount(arr[i + 1], arr[high]);
+    return i + 1;
+}
+
+void quickSort(vector<int> &arr, int low, int high) {
+    if (low >= high) return;
+
+    int pivot = partition(arr, low, high);
+    quickSort(arr, low, pivot - 1);
+    quickSort(arr, pivot + 1, high);
+}
+
+int main() {
+    srand(time(0));   // 🔥 seed once
+
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int n;
+        cin >> n;
+
+        vector<int> arr(n);
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+
+        comparisons = 0;
+        swapsCount = 0;
+
+        quickSort(arr, 0, n - 1);
+
+        for (int x : arr)
+            cout << x << " ";
+        cout << endl;
+
+        cout << "comparisons = " << comparisons << endl;
+        cout << "swaps = " << swapsCount << endl;
+    }
+
+    return 0;
+}

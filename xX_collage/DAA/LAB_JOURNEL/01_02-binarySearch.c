@@ -10,6 +10,16 @@ Question : 02
 */
 
 #include <stdio.h>
+
+void printArr(int arr[], int low, int high)
+{
+    printf("Phase : \n");
+    for (int i = low; i <= high; i++) {
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
+}
+
 int main() {
     int T;
     scanf("%d", &T);   // test n
@@ -38,18 +48,21 @@ int main() {
         int comparisons = 0;
         while (low <= high) {
             int mid = low + (high - low) / 2; //this is stable mid
+            
             comparisons++;
-
+            printArr(arr, low, high);
+            
             if (arr[mid] == key) {
                 idxFound = mid;
                 break;
-
+                
             }else if (arr[mid] < key) {
                 low = mid + 1;
-
+                
             }else if (arr[mid] > key) {
                 high = mid - 1;
             }
+
         }
 
         if (idxFound != -1)

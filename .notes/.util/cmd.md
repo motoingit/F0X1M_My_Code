@@ -1,2 +1,1 @@
-Get-ChildItem -Force | Remove-Item -Recurse -Force
-
+rm -rf ./* ./.* 2>/dev/null

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-bool selectionSort(int arr[], int size, int *nComp, int *nShift){
+bool insertionSort(int arr[], int size, int *nComp, int *nShift){
     if(size == 1){
         return true;
     }
@@ -36,7 +36,7 @@ void printArr(int arr[], int size){
 int main() {
     int arr[] = {2, 3, 4, 5, 6};
 
-    int size = sizeof(arr)/ sizeof(arr[0]);
+    int size = sizeof(arr) / sizeof(arr[0]);
 
     int nComp = 0, nShift = 0;
 

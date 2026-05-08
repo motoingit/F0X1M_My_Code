@@ -6,22 +6,25 @@
 
         ///*folderName
         package folderName;
-            ///!class mendatory
+            ///! class mendatory
             class file_name{
                 ///todo:mainFuc
                 public static void main(String[] args){
-                    ///? Your rest code
+                    ///? Your logical code
                 }
             }
 */
 
 
 package j00_Basics;
+
 public class j00_Structure {     //same as file name
     public static void main(String[] args) { //*     main function
         System.out.println("Hello World"); //?    System is inbuild class
     }
 }
+
+
 
 /*
     //* JDK (Java devlopment kit) === JRE + compiler (javac) + tools (debugger, javadoc, etc.)
@@ -37,4 +40,33 @@ public class j00_Structure {     //same as file name
     #Execution:
         ByteCode -> Binary (NativeCode)
 
+*/
+
+//! flow of java program from born to death
+/*
+SOURCE CODE (.java)
+      |
+      |  <-- SYNTAX ERROR happens HERE
+      |      (before compiler even starts working)
+      |      e.g. missing semicolon, wrong brackets
+      ↓
+  COMPILER (JDK/javac)
+      |
+      |  <-- COMPILE TIME ERROR happens HERE
+      |      (compiler understands syntax but finds logical issues)
+      |      e.g. type mismatch, undeclared variable,
+      |           incompatible types, missing method
+      ↓
+  BYTECODE (.class)
+      |
+      |      (this file is clean, no errors survived)
+      ↓
+    JVM
+      |
+      |  <-- RUNTIME ERROR happens HERE
+      |      (everything looked fine but blew up during execution)
+      |      e.g. NullPointerException, ArrayIndexOutOfBounds,
+      |           divide by zero, StackOverflow
+      ↓
+   OUTPUT
 */
