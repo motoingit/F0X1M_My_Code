@@ -96,18 +96,5 @@ Not Present 3
 
 
 /*
-    ///* Best Case : O(1)
-        Array: [10, 20, 30, 40, 50]
-        Key: 30
 
-
-    ///? Avg Case : log2​(n)
-        Array: [10, 20, 30, 40]
-        Key: 30
-    /// as comparision is one only
-        
-    ///! worst Case : log2​(n)
-        Array: [10, 20, 30, 40, 50, 60, 70, 80]
-        Key: 90
-    /// last element
 */

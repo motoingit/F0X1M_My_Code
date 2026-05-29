@@ -6,11 +6,11 @@ bool binarySearch(int arr[], int size, int key, int *counter){
         return false;
     }
     
-    (*counter)++;
-    if(key == arr[(*counter)-1]){
-        return true;
+    if(key == arr[*counter]){
+      return true;
     }
 
+    (*counter)++;
     return binarySearch(arr, size, key, counter);
 }
 

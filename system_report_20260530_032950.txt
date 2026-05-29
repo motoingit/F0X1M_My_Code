@@ -1,0 +1,162 @@
+============================================================
+   SYSTEM & PROGRAM VERSION REPORT
+   Generated : Sat, May 30, 2026  3:29:50 AM
+   Hostname  : LAPTOP-P2PIO8AG
+============================================================
+
+============================================================
+  OPERATING SYSTEM
+============================================================
+OS Name                        : MINGW64_NT-10.0-26200
+OS Version                     : 3.6.5-22c95533.x86_64
+Full OS Info                   : MINGW64_NT-10.0-26200 LAPTOP-P2PIO8AG 3.6.5-22c95533.x86_64 2025-10-10 12:02 UTC x86_64 Msys
+Distro Info                    : Uptime                         : Not installed
+
+============================================================
+  HARDWARE
+============================================================
+CPU Model                      : Not installed
+CPU Cores                      : 22
+Architecture                   : x86_64
+Total RAM                      : Not installed
+Available RAM                  : Not installed
+Disk Usage                     : total                 1.7T  1.1T  618G  63% -
+
+============================================================
+  SHELL & TERMINAL
+============================================================
+Current Shell                  : /usr/bin/bash
+Bash Version                   : GNU bash, version 5.2.37(1)-release (x86_64-pc-msys)
+Zsh Version                    : Not installed
+Fish Version                   : Not installed
+
+============================================================
+  PROGRAMMING LANGUAGES
+============================================================
+Python                         : Python 3.14.3
+Python3                        : Python 3.14.2
+Python3 Path                   : /c/Users/mohit/AppData/Local/Microsoft/WindowsApps/python3
+pip                            : pip 26.1 from C:\Users\mohit\AppData\Local\Programs\Python\Python314\Lib\site-packages\pip (python 3.14)
+pip3                           : pip 26.1 from C:\Users\mohit\AppData\Local\Programs\Python\Python314\Lib\site-packages\pip (python 3.14)
+Node.js                        : v20.20.2
+npm                            : 10.8.2
+npx                            : 10.8.2
+yarn                           : Not installed
+Bun                            : 1.3.14
+Deno                           : deno 2.7.13 (stable, release, x86_64-pc-windows-msvc)
+Java                           : java version "25.0.1" 2025-10-21 LTS
+javac                          : javac 25.0.1
+Kotlin                         : Not installed
+Scala                          : Not installed
+Ruby                           : Not installed
+gem                            : Not installed
+Bundler                        : Not installed
+Go                             : Not installed
+Rust                           : Not installed
+Cargo                          : Not installed
+PHP                            : Not installed
+Composer                       : Not installed
+Perl                           : This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-msys-thread-multi
+Lua                            : Not installed
+R                              : Not installed
+Swift                          : Not installed
+Dart                           : Not installed
+Elixir                         : Not installed
+Erlang                         : Not installed
+Julia                          : Not installed
+Haskell (GHC)                  : Not installed
+Cabal                          : Not installed
+Stack                          : Not installed
+C Compiler (gcc)               : gcc.exe (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3) 14.2.0
+Clang                          : (built by Brecht Sanders, r3) clang version 19.1.7
+Make                           : Not installed
+CMake                          : cmake version 3.31.5
+.NET SDK                       : 10.0.101
+Mono                           : Not installed
+
+============================================================
+  VERSION CONTROL
+============================================================
+Git                            : git version 2.52.0.windows.1
+Git Config User                : Mohit Singh
+Git Config Email               : mohitsinghinsecondary@gmail.com
+SVN                            : Not installed
+Mercurial                      : Not installed
+
+============================================================
+  DATABASES
+============================================================
+MySQL                          : C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe  Ver 8.0.45 for Win64 on x86_64 (MySQL Community Server - GPL)
+MariaDB                        : Not installed
+PostgreSQL                     : psql (PostgreSQL) 16.11
+SQLite                         : Not installed
+MongoDB                        : Not installed
+Redis                          : Not installed
+Cassandra                      : Not installed
+
+============================================================
+  CONTAINERS & VIRTUALISATION
+============================================================
+Docker                         : Docker version 29.1.3, build f52814d
+Docker Compose                 : Docker Compose version v2.40.3-desktop.1
+Podman                         : Not installed
+Kubernetes (kubectl)           : Minikube                       : Not installed
+Helm                           : Not installed
+Vagrant                        : Not installed
+VirtualBox                     : Not installed
+
+============================================================
+  CLOUD & DEVOPS TOOLS
+============================================================
+AWS CLI                        : Not installed
+Azure CLI                      : Not installed
+Google Cloud CLI               : Not installed
+Terraform                      : Not installed
+Ansible                        : Not installed
+Jenkins CLI                    : Not installed
+
+============================================================
+  WEB SERVERS & NETWORKING
+============================================================
+Nginx                          : Not installed
+Apache                         : Not installed
+curl                           : curl 8.17.0 (x86_64-w64-mingw32) libcurl/8.17.0 Schannel zlib/1.3.1 brotli/1.2.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.5 libssh2/1.11.1
+wget                           : Not installed
+OpenSSL                        : OpenSSL 3.5.4 30 Sep 2025 (Library: OpenSSL 3.5.4 30 Sep 2025)
+SSH                            : OpenSSH_10.2p1, OpenSSL 3.5.4 30 Sep 2025
+
+============================================================
+  TEXT EDITORS & IDEs
+============================================================
+Vim                            : VIM - Vi IMproved 9.1 (2024 Jan 02, compiled Nov 14 2025 05:49:08)
+Neovim                         : Not installed
+Emacs                          : Not installed
+Nano                           :  GNU nano, version 8.7
+VS Code                        : 1.122.1
+
+============================================================
+  PACKAGE MANAGERS (SYSTEM)
+============================================================
+apt                            : Not installed
+apt-get                        : Not installed
+dpkg                           : Not installed
+snap                           : Not installed
+flatpak                        : Not installed
+brew (Homebrew)                : Not installed
+dnf                            : Not installed
+yum                            : Not installed
+pacman                         : Not installed
+
+============================================================
+  SYSTEM ENVIRONMENT VARIABLES
+============================================================
+
+PATH=/c/Users/mohit/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/mingw64/bin:/usr/bin:/c/Users/mohit/bin:/c/Users/mohit/.vscode/extensions/vadimcn.vscode-lldb-1.12.2/bin:/c/Users/mohit/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand:/c/Users/mohit/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli:/c/Program Files/Common Files/Oracle/Java/javapath:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files/dotnet:/cmd:/c/compilersDevlopement/mingw/bin:/c/compilersDevlopement/Java/bin:/c/Program Files/Docker/Docker/resources/bin:/c/Program Files/MySQL/MySQL Server 8.0/bin:/c/Program Files/PostgreSQL/bin:/c/Users/mohit/AppData/Local/Programs/Python/Python314:/c/Users/mohit/AppData/Local/Programs/Python/Python314/Scripts:/c/Users/mohit/AppData/Local/Programs/Microsoft VS Code/bin:/c/Program Files/Warp/bin:/c/.tools/nircmd:%NVM_HOME%:%NVM_SYMLINK%:/c/Users/mohit/.gemini/antigravity-ide/bin:/c/Program Files/Common Files/Oracle/Java/javapath:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files/dotnet:/cmd:/c/compilersDevlopement/mingw/bin:/c/compilersDevlopement/Java/bin:/c/Program Files/Docker/Docker/resources/bin:/c/Program Files/MySQL/MySQL Server 8.0/bin:/c/Program Files/PostgreSQL/bin:/c/Users/mohit/AppData/Local/Programs/Python/Python314:/c/Users/mohit/AppData/Local/Programs/Python/Python314/Scripts:/c/Users/mohit/AppData/Local/Programs/Microsoft VS Code/bin:/c/Program Files/Warp/bin:/c/.tools/nircmd:/c/Users/mohit/AppData/Local/Programs/Python/Launcher:/c/Program Files/MySQL/MySQL Shell 8.0/bin:/c/Users/mohit/AppData/Local/Microsoft/WindowsApps:/c/Users/mohit/.dotnet/tools:/c/Users/mohit/AppData/Local/Programs/Microsoft VS Code/bin:/c/Users/mohit/AppData/Local/Programs/Antigravity/bin:/c/Users/mohit/AppData/Local/spicetify:/c/Users/mohit/AppData/Roaming/npm:/c/Users/mohit/AppData/Local/GitHubDesktop/bin:/c/Users/mohit/AppData/Local/Python/bin:/c/Users/mohit/AppData/Local/Microsoft/WinGet/Packages/DenoLand.Deno_Microsoft.Winget.Source_8wekyb3d8bbwe:/c/Users/mohit/AppData/Local/Microsoft/WinGet/Packages/yt-dlp.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-N-123778-g3b55818764-win64-gpl/bin:/c/Users/mohit/.bun/bin:/c/Users/mohit/AppData/Local/Programs/Antigravity IDE/bin:/c/compilersDevlopement/apache-maven-3.9.6/bin:/c/Users/mohit/AppData/Local/nvm:/c/nvm4w/nodejs:/c/Users/mohit/.vscode/extensions/vscjava.vscode-java-debug-0.59.0/bundled/scripts/noConfigScripts:/c/Users/mohit/.vscode/extensions/ms-python.debugpy-2026.6.0-win32-x64/bundled/scripts/noConfigScripts:/usr/bin/vendor_perl:/usr/bin/core_perl
+HOME=/c/Users/mohit
+USER=
+LANG=en_US.UTF-8
+TERM=xterm-256color
+
+============================================================
+   END OF REPORT — Sat, May 30, 2026  3:30:04 AM
+============================================================

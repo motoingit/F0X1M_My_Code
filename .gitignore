@@ -1,9 +1,7 @@
-#* Java
+#* Residue files
+*.exe
 *.class
 *.jar
-
-#* C/C++
-*.exe
 *.out
 *.o
 
@@ -13,7 +11,9 @@ out/
 build/
 node_modules/
 
-# Logs
+#* IDE files
+
+#* Logs
 *.log
 
 #* Environment variables

@@ -1,1 +1,0 @@
-Start-Process "C:\Program Files\WindowsApps\SAMSUNGELECTRONICSCoLtd.SamsungNotes_4.3.610.0_x64__wyx1vj98g3asy\SamsungNotes.exe"

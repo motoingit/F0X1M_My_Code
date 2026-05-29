@@ -1,4 +1,132 @@
 {
+  "files.associations": {
+    "15.C": "cpp",
+    "10-ADD.C": "cpp",
+    "iostream": "cpp",
+    "ostream": "cpp"
+  },
+  "files.exclude": {
+    "**/*.exe": true,
+    "**/.class": true
+  },
+  "files.insertFinalNewline": true,
+  "files.autoSave": "onFocusChange",
+  "search.exclude": {
+    "**/*.exe": true,
+    "**/.class": true
+  },
+  "workbench.colorTheme": "Dark 2026",
+  "workbench.preferredLightColorTheme": "Visual Studio 2017 Light - C++",
+  "workbench.preferredHighContrastLightColorTheme": "Visual Studio 2017 Dark - C++",
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#ff0000",
+    "tree.indentGuidesStroke": "#3A96DD",
+    "list.activeSelectionBackground": "#003366",
+    "list.activeSelectionForeground": "#ff00b3",
+    "list.focusBackground": "#0040ff5e",
+    "editorGutter.foldingControlForeground": "#FF0000"
+  },
+  "workbench.sideBar.location": "left",
+  "workbench.tree.indent": 10,
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.editor.labelFormat": "short",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.showIcons": true,
+  "editor.fontSize": 15,
+  "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.wordWrap": "on",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "punctuation.definition.block",
+        "settings": {
+          "foreground": "#FF0000"
+        }
+      }
+    ]
+  },
+  "window.autoDetectColorScheme": true,
+  "window.restoreWindows": "one",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.osx": "bash",
+  "python.languageServer": "Pylance",
+  "code-runner.runInTerminal": true,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "typescript": "ts-node",
+    "coffeescript": "coffee",
+    "php": "php",
+    "python": "python -u",
+    "ruby": "ruby",
+    "perl": "perl",
+    "perl6": "perl6",
+    "lua": "lua",
+    "r": "Rscript",
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+    "go": "go run",
+    "swift": "swift",
+    "dart": "dart",
+    "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    "zig": "zig run",
+    "v": "v run",
+    "nim": "nim compile --verbosity:0 --hints:off --run",
+    "mojo": "mojo run",
+    "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+    "scala": "scala",
+    "clojure": "lein exec",
+    "kotlin": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+    "groovy": "groovy",
+    "csharp": "scriptcs",
+    "fsharp": "fsi",
+    "vbscript": "cscript //Nologo",
+    "powershell": "powershell -ExecutionPolicy ByPass -File",
+    "bat": "cmd /c",
+    "shellscript": "wsl bash \"$(wsl wslpath '$fullFileName')\"",
+    "ocaml": "ocaml",
+    "racket": "racket",
+    "scheme": "csi -script",
+    "lisp": "sbcl --script",
+    "sml": "cd $dir && sml $fileName",
+    "julia": "julia",
+    "erlang": "escript",
+    "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "sass": "sass --style expanded",
+    "scss": "scss --style expanded",
+    "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
+    "crystal": "crystal",
+    "applescript": "osascript",
+    "ahk": "autohotkey",
+    "autoit": "autoit3",
+    "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    "kit": "kitc --run",
+    "spwn": "spwn build",
+    "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
+    "gleam": "gleam run -m $fileNameWithoutExt"
+  },
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
   "C_Cpp_Runner.debuggerPath": "gdb",
@@ -6,6 +134,8 @@
   "C_Cpp_Runner.cppStandard": "",
   "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
   "C_Cpp_Runner.useMsvc": false,
+  "C_Cpp_Runner.enableWarnings": true,
+  "C_Cpp_Runner.warningsAsError": false,
   "C_Cpp_Runner.warnings": [
     "-Wall",
     "-Wextra",
@@ -33,11 +163,15 @@
     "/w44265",
     "/w14928"
   ],
-  "C_Cpp_Runner.enableWarnings": true,
-  "C_Cpp_Runner.warningsAsError": false,
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "C_Cpp_Runner.compilerArgs": [],
   "C_Cpp_Runner.linkerArgs": [],
   "C_Cpp_Runner.includePaths": [],
+  "C_Cpp_Runner.showCompilationTime": false,
+  "C_Cpp_Runner.useLinkTimeOptimization": false,
+  "C_Cpp_Runner.useAddressSanitizer": false,
+  "C_Cpp_Runner.useUndefinedSanitizer": false,
+  "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.includeSearch": [
     "*",
     "**/*"
@@ -50,130 +184,5 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-  "C_Cpp_Runner.useAddressSanitizer": false,
-  "C_Cpp_Runner.useUndefinedSanitizer": false,
-  "C_Cpp_Runner.useLeakSanitizer": false,
-  "C_Cpp_Runner.showCompilationTime": false,
-  "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false,
-  "C_Cpp.errorSquiggles": "enabled",
-  "files.associations": {
-    "15.C": "cpp",
-    "10-ADD.C": "cpp",
-    "iostream": "cpp",
-    "ostream": "cpp"
-  },
-  "files.exclude": {
-    "**/*.exe": true,
-    "**/.class": true
-  },
-  "search.exclude": {
-    "**/*.exe": true,
-    "**/.class": true
-  },
-  "workbench.editor.labelFormat": "short",
-  "workbench.tree.indent": 20,
-  "workbench.tree.renderIndentGuides": "always",
-  "workbench.sideBar.location": "left",
-  "workbench.editor.tabSizing": "shrink",
-  "workbench.editor.showIcons": true,
-  "workbench.colorCustomizations": {
-    "editorCursor.foreground": "#ff0000",
-    "tree.indentGuidesStroke": "#3A96DD",
-    "list.activeSelectionBackground": "#003366",
-    "list.activeSelectionForeground": "#ff00b3",
-    "list.focusBackground": "#0040ff5e",
-    "editorGutter.foldingControlForeground": "#FF0000"
-  },
-  "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
-  "editor.fontLigatures": true,
-  "editor.formatOnSave": false,
-  "editor.tabSize": 4,
-  "files.insertFinalNewline": true,
-  "python.languageServer": "Pylance",
-  "code-runner.runInTerminal": true,
-  "code-runner.saveFileBeforeRun": true,
-  "code-runner.executorMap": {
-    "javascript": "node",
-    "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
-    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "zig": "zig run",
-    "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "php": "php",
-    "python": "python -u",
-    "perl": "perl",
-    "perl6": "perl6",
-    "ruby": "ruby",
-    "go": "go run",
-    "lua": "lua",
-    "groovy": "groovy",
-    "powershell": "powershell -ExecutionPolicy ByPass -File",
-    "bat": "cmd /c",
-    "shellscript": "wsl bash -c \"bash $(wslpath '$fullFileName')\"",
-    "fsharp": "fsi",
-    "csharp": "scriptcs",
-    "vbscript": "cscript //Nologo",
-    "typescript": "ts-node",
-    "coffeescript": "coffee",
-    "scala": "scala",
-    "swift": "swift",
-    "julia": "julia",
-    "crystal": "crystal",
-    "ocaml": "ocaml",
-    "r": "Rscript",
-    "applescript": "osascript",
-    "clojure": "lein exec",
-    "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
-    "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
-    "racket": "racket",
-    "scheme": "csi -script",
-    "ahk": "autohotkey",
-    "autoit": "autoit3",
-    "dart": "dart",
-    "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
-    "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
-    "haskell": "runghc",
-    "nim": "nim compile --verbosity:0 --hints:off --run",
-    "lisp": "sbcl --script",
-    "kit": "kitc --run",
-    "v": "v run",
-    "sass": "sass --style expanded",
-    "scss": "scss --style expanded",
-    "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
-    "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "sml": "cd $dir && sml $fileName",
-    "mojo": "mojo run",
-    "erlang": "escript",
-    "spwn": "spwn build",
-    "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
-    "gleam": "gleam run -m $fileNameWithoutExt"
-  },
-  "editor.fontSize": 15,
-  "files.autoSave": "onFocusChange",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.wordWrap": "on",
-  "window.autoDetectColorScheme": true,
-  "workbench.colorTheme": "Dark 2026",
-  "workbench.preferredLightColorTheme": "Visual Studio 2017 Light - C++",
-  "workbench.preferredHighContrastLightColorTheme": "Visual Studio 2017 Dark - C++",
-  "[cpp]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
-  "[java]": {
-    "editor.defaultFormatter": "redhat.java"
-  },
-  "editor.tokenColorCustomizations": {
-    "textMateRules": [
-      {
-        "scope": "punctuation.definition.block",
-        "settings": {
-          "foreground": "#FF0000"
-        }
-      }
-    ]
-  }
+  "C_Cpp.errorSquiggles": "enabled"
 }

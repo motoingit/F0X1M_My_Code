@@ -1,12 +1,4 @@
-import matplotlib.pyplot as plt
+x = int(input("Enter Num : "))
 
-days = [1, 2, 3, 4, 5]
-temperature = [30, 32, 35, 33, 31]
-
-plt.plot(days, temperature)
-
-plt.xlabel("Days")
-plt.ylabel("Temperature (°C)")
-plt.title("Temperature vs Days")
-
-plt.show()
+for i in range(1, x+1, 1):
+  print(i)

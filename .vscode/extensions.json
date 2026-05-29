@@ -1,45 +1,89 @@
 {
   "recommendations": [
+
+    // =========================
+    // UI / Productivity
+    // =========================
     "aaron-bond.better-comments",
     "bracketpaircolordlw.bracket-pair-color-dlw",
-    "esbenp.prettier-vscode",
-    "formulahendry.auto-rename-tag",
-    "formulahendry.code-runner",
-    "franneck94.c-cpp-runner",
-    "gera2ld.markmap-vscode",
-    "github.copilot-chat",
-    "google.gemini-cli-vscode-ide-companion",
-    "google.geminicodeassist",
+    "streetsidesoftware.code-spell-checker",
+    "vscode-icons-team.vscode-icons",
     "hiteshchoudharycode.chai-theme",
-    "mongodb.mongodb-vscode",
-    "ms-azuretools.vscode-containers",
-    "ms-azuretools.vscode-docker",
-    "ms-edgedevtools.vscode-edge-devtools",
-    "ms-python.debugpy",
+
+    // =========================
+    // Formatting / Utilities
+    // =========================
+    "esbenp.prettier-vscode",
+    "formulahendry.code-runner",
+    "rangav.vscode-thunder-client",
+    "gera2ld.markmap-vscode",
+
+    // =========================
+    // AI Assistants
+    // =========================
+    "github.copilot-chat",
+    "google.geminicodeassist",
+    "google.gemini-cli-vscode-ide-companion",
+    "tabnine.tabnine-vscode",
+
+    // =========================
+    // Web Development
+    // =========================
+    "formulahendry.auto-rename-tag",
+    "ms-vscode.live-server",
+    "ritwickdey.liveserver",
+    "rodrigovallades.es7-react-js-snippets",
+    "xabikos.javascriptsnippets",
+
+    // =========================
+    // Python Development
+    // =========================
     "ms-python.python",
+    "ms-python.debugpy",
     "ms-python.vscode-pylance",
     "ms-python.vscode-python-envs",
-    "ms-vscode-remote.remote-containers",
-    "ms-vscode.cmake-tools",
-    "ms-vscode.cpp-devtools",
+
+    // =========================
+    // C / C++ Development
+    // =========================
     "ms-vscode.cpptools",
     "ms-vscode.cpptools-extension-pack",
     "ms-vscode.cpptools-themes",
-    "ms-vscode.live-server",
-    "rangav.vscode-thunder-client",
-    "redhat.java",
-    "ritwickdey.liveserver",
-    "rodrigovallades.es7-react-js-snippets",
-    "streetsidesoftware.code-spell-checker",
-    "tabnine.tabnine-vscode",
+    "ms-vscode.cpp-devtools",
+    "ms-vscode.cmake-tools",
+    "franneck94.c-cpp-runner",
     "vadimcn.vscode-lldb",
-    "vscjava.vscode-gradle",
-    "vscjava.vscode-java-debug",
-    "vscjava.vscode-java-dependency",
+
+    // =========================
+    // Java Development
+    // =========================
+    "redhat.java",
     "vscjava.vscode-java-pack",
+    "vscjava.vscode-java-debug",
     "vscjava.vscode-java-test",
+    "vscjava.vscode-java-dependency",
+    "vscjava.vscode-gradle",
     "vscjava.vscode-maven",
-    "vscode-icons-team.vscode-icons",
-    "xabikos.javascriptsnippets"
+
+    // =========================
+    // Containers / DevOps
+    // =========================
+    "ms-azuretools.vscode-docker",
+    "ms-azuretools.vscode-containers",
+    "ms-vscode-remote.remote-containers",
+
+    // =========================
+    // Database
+    // =========================
+    "mongodb.mongodb-vscode",
+
+    // =========================
+    // Browser / Debugging
+    // =========================
+    "ms-edgedevtools.vscode-edge-devtools"
+  ],
+
+  "unwantedRecommendations": [
+    "timonwong.shellcheck",
   ]
 }
