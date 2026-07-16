@@ -1,0 +1,14 @@
+
+
+cmd.exe /c "g++ -std=c++20 -O2 -Wall main.cpp -o main && main.exe < .util/input.txt > .util/output.txt"
+
+
+
+
+
+cmd.exe /c 'g++ -std=c++20 -O2 -Wall "C:\code\F0X1M_My_Code\striverDSA\demo.cpp" -o "C:\code\F0X1M_My_Code\striverDSA\demo" && "C:\code\F0X1M_My_Code\striverDSA\demo.exe" 
+< "C:\code\F0X1M_My_Code\striverDSA\input.txt" 
+> "C:\code\F0X1M_My_Code\striverDSA\output.txt"' 
+
+
+cmd /c "demo.exe < input.txt > output.txt"

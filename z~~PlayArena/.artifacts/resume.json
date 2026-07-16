@@ -1,0 +1,193 @@
+{
+  "basics": {
+    "name": "Mohit",
+    "label": "B.Tech Computer Science Student | Aspiring Full Stack & Cloud Developer",
+    "image": "",
+    "email": "your-email@example.com",
+    "phone": "+91-XXXXXXXXXX",
+    "url": "https://github.com/motoingit",
+    "summary": "Computer Science undergraduate with a strong interest in Full Stack Development, Cloud Computing, DevOps, Artificial Intelligence, and Cybersecurity. Passionate about building scalable web applications and continuously learning modern technologies through personal projects.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Dehradun",
+      "countryCode": "IN",
+      "region": "Uttarakhand"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "motoingit",
+        "url": "https://github.com/motoingit"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "your-linkedin",
+        "url": "https://linkedin.com/in/your-linkedin"
+      }
+    ]
+  },
+
+  "work": [],
+
+  "volunteer": [],
+
+  "education": [
+    {
+      "institution": "Graphic Era Hill University",
+      "url": "https://gehu.ac.in",
+      "area": "Computer Science & Engineering",
+      "studyType": "Bachelor of Technology (B.Tech)",
+      "startDate": "2024-08-01",
+      "endDate": "2028-06-30",
+      "score": "",
+      "courses": [
+        "Data Structures and Algorithms",
+        "Operating Systems",
+        "Database Management Systems",
+        "Computer Networks",
+        "Object Oriented Programming",
+        "Artificial Intelligence",
+        "Machine Learning",
+        "Cloud Computing"
+      ]
+    }
+  ],
+
+  "awards": [],
+
+  "certificates": [
+    {
+      "name": "AWS Cloud Practitioner Essentials",
+      "date": "",
+      "issuer": "Amazon Web Services",
+      "url": ""
+    }
+  ],
+
+  "publications": [],
+
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "level": "Intermediate",
+      "keywords": [
+        "C++",
+        "Java",
+        "JavaScript",
+        "TypeScript",
+        "Python"
+      ]
+    },
+    {
+      "name": "Frontend Development",
+      "level": "Intermediate",
+      "keywords": [
+        "HTML",
+        "CSS",
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Shadcn UI"
+      ]
+    },
+    {
+      "name": "Backend Development",
+      "level": "Intermediate",
+      "keywords": [
+        "Node.js",
+        "Express.js",
+        "NestJS",
+        "REST API"
+      ]
+    },
+    {
+      "name": "Databases",
+      "level": "Intermediate",
+      "keywords": [
+        "MongoDB",
+        "PostgreSQL",
+        "Prisma"
+      ]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "level": "Beginner",
+      "keywords": [
+        "AWS",
+        "Docker",
+        "Git",
+        "GitHub",
+        "WSL",
+        "Linux"
+      ]
+    }
+  ],
+
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Professional Working Proficiency"
+    },
+    {
+      "language": "Hindi",
+      "fluency": "Native"
+    }
+  ],
+
+  "interests": [
+    {
+      "name": "Technology",
+      "keywords": [
+        "Artificial Intelligence",
+        "Cloud Computing",
+        "Cybersecurity",
+        "Open Source",
+        "Web Development",
+        "DevOps"
+      ]
+    }
+  ],
+
+  "references": [],
+
+  "projects": [
+    {
+      "name": "Resume Builder",
+      "startDate": "2026-06-01",
+      "endDate": "",
+      "description": "A modern ATS-friendly resume builder with customizable templates and PDF export.",
+      "highlights": [
+        "Built using Next.js and TypeScript",
+        "Responsive UI",
+        "Modern component architecture"
+      ],
+      "url": ""
+    },
+    {
+      "name": "StudentVault",
+      "startDate": "2026-01-01",
+      "endDate": "",
+      "description": "Desktop application for securely storing student documents, notes, links, and personal information.",
+      "highlights": [
+        "JavaFX desktop application",
+        "Local database integration",
+        "Authentication support"
+      ],
+      "url": ""
+    },
+    {
+      "name": "Real-Time Messaging Application",
+      "startDate": "2026-05-01",
+      "endDate": "",
+      "description": "Full-stack messaging application with authentication and real-time communication.",
+      "highlights": [
+        "Next.js frontend",
+        "NestJS backend",
+        "MongoDB and PostgreSQL",
+        "Docker support"
+      ],
+      "url": ""
+    }
+  ]
+}

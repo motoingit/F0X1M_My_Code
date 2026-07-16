@@ -11,6 +11,9 @@ int main(){
     v1.push_back(5); //* inserting element at last
     
     v1.insert(v1.begin(), 0); //* inserting at any pos
-    //! sliding the right element(s) to right from that pos
+    //! sliding  element(s) and that pos element to right from that pos
 
+    for (auto& i : v1) {
+      cout << " " << i;
+    }
 return 0;}

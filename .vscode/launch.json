@@ -1,31 +1,394 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Launch Program",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/index.js"
-    },
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [],
-      "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": ".",
-      "program": "build/Debug/outDebug",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
-    }
+  /////////////////////////////////////////////////////////
+  //* C/C++ RUNNER SETTINGS
+  /////////////////////////////////////////////////////////
+  
+  "C_Cpp_Runner.cCompilerPath": "gcc",
+  "C_Cpp_Runner.cppCompilerPath": "g++",
+  "C_Cpp_Runner.debuggerPath": "gdb",
+  "C_Cpp_Runner.cStandard": "",
+  "C_Cpp_Runner.cppStandard": "",
+  "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
+  "C_Cpp_Runner.useMsvc": false,
+  "C_Cpp_Runner.warnings": [
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wshadow",
+    "-Wformat=2",
+    "-Wcast-align",
+    "-Wconversion",
+    "-Wsign-conversion",
+    "-Wnull-dereference"
   ],
-  "compounds": []
+  "C_Cpp_Runner.msvcWarnings": [
+    "/W4",
+    "/permissive-",
+    "/w14242",
+    "/w14287",
+    "/w14296",
+    "/w14311",
+    "/w14826",
+    "/w44062",
+    "/w44242",
+    "/w14905",
+    "/w14906",
+    "/w14263",
+    "/w44265",
+    "/w14928"
+  ],
+  "C_Cpp_Runner.enableWarnings": true,
+  "C_Cpp_Runner.warningsAsError": false,
+  "C_Cpp_Runner.compilerArgs": [],
+  "C_Cpp_Runner.linkerArgs": [],
+  "C_Cpp_Runner.includePaths": [],
+  "C_Cpp_Runner.includeSearch": [
+    "*",
+    "**/*"
+  ],
+  "C_Cpp_Runner.excludeSearch": [
+    "**/build",
+    "**/build/**",
+    "**/.*",
+    "**/.*/**",
+    "**/.vscode",
+    "**/.vscode/**"
+  ],
+  "C_Cpp_Runner.useAddressSanitizer": false,
+  "C_Cpp_Runner.useUndefinedSanitizer": false,
+  "C_Cpp_Runner.useLeakSanitizer": false,
+  "C_Cpp_Runner.showCompilationTime": false,
+  "C_Cpp_Runner.useLinkTimeOptimization": false,
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "C_Cpp.errorSquiggles": "enabled",
+  "C_Cpp.codeAnalysis.exclude": {},
+
+  /////////////////////////////////////////////////////////
+  //* FILE ASSOCIATIONS
+  /////////////////////////////////////////////////////////
+  "files.associations": {
+    // Treat every .C file anywhere in the workspace as a C++ file.
+    "**/*.C": "cpp"
+  },
+
+  /////////////////////////////////////////////////////////
+  //* FILES TO HIDE (Clutter Reduction)
+  /////////////////////////////////////////////////////////
+  "files.exclude": {
+    "**/*.exe": true,
+    "**/*.class": true
+  },
+
+  // Prevent search results from showing .exe files
+  "search.exclude": {
+    "**/*.exe": true,
+    "**/*.class": true
+  },
+
+  /////////////////////////////////////////////////////////
+  //* WORKBENCH UI / NAVIGATION
+  /////////////////////////////////////////////////////////
+  "workbench.editor.labelFormat": "short",
+  "workbench.tree.indent": 10,
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.sideBar.location": "left",
+
+  // Tabs
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.showIcons": true,
+  "workbench.editor.alwaysShowEditorActions": true,
+  "workbench.iconTheme": "vscode-icons",
+
+  /////////////////////////////////////////////////////////
+  //* COLOUR CUSTOMIZATIONS
+  /////////////////////////////////////////////////////////
+  "workbench.colorCustomizations": {
+    "editor.selectionBackground": "#3A3D4199",
+    "editorGutter.foldingControlForeground": "#FF0000",
+    "tree.indentGuidesStroke": "#3A96DD",
+    "list.activeSelectionBackground": "#003366",
+    "list.activeSelectionForeground": "#ff00b3",
+    "list.focusBackground": "#0040ff5e"
+  },
+
+  /////////////////////////////////////////////////////////
+  //* THEME
+  /////////////////////////////////////////////////////////
+  "window.autoDetectColorScheme": true,
+  "workbench.colorTheme": "Dark 2026",
+  "workbench.preferredLightColorTheme": "Visual Studio 2017 Light - C++",
+  "workbench.preferredHighContrastLightColorTheme": "Visual Studio 2017 Dark - C++",
+
+  /////////////////////////////////////////////////////////
+  //* EDITOR
+  /////////////////////////////////////////////////////////
+  "editor.fontFamily": "Cascadia Code, JetBrains Mono, Fira Code, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": false, //* !=  ->  ≠
+  "editor.fontVariations": false,
+  "editor.allowVariableFonts": true,
+  "editor.fontWeight": "500",
+  "editor.letterSpacing": 0.5, //! easy to diffrentiate '1' 'l' 'I'
+  "editor.formatOnSave": false, //save with format
+  "editor.tabSize": 2,
+  "editor.fontSize": 15,
+  "editor.lineHeight": 22,
+  "editor.wordWrap": "on", //* best
+  "editor.mouseWheelZoom": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.inlayHints.enabled": "on",
+  "diffEditor.codeLens": true,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true, //! this does that paring of brakets !!
+
+  //todo: this is crazy
+  "editor.tokenColorCustomizations": {
+      "textMateRules": [
+         {
+            "scope": "punctuation.definition.block",
+            "settings": {
+            "foreground": "#FF0000"
+            }
+         },
+         // {
+         //    "scope": "comment",
+         //    "settings": {
+         //    "foreground": "#00FF00"
+         //    }
+         // },
+         // {
+         // "scope": "entity.name.function",
+         //    "settings": {
+         //    "foreground": "#FFD700"
+         //    }
+         // },
+         // {
+         //    "scope": "keyword",
+         //    "settings": {
+         //       "foreground": "#C586C0"
+         //    }
+         // },
+      ]
+   },
+
+  /////////////////////////////////////////////////////////
+  //* FILE SETTINGS
+  /////////////////////////////////////////////////////////
+  "files.autoSave": "onFocusChange",
+  "files.insertFinalNewline": true,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.saveAllFilesBeforeRun": true,
+  "code-runner.clearPreviousOutput": false,
+
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "zig": "zig run",
+    "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "php": "php",
+    "python": "python -u",
+    "perl": "perl",
+    "perl6": "perl6",
+    "ruby": "ruby",
+    "go": "go run",
+    "lua": "lua",
+    "groovy": "groovy",
+    "powershell": "powershell -ExecutionPolicy ByPass -File",
+    "bat": "cmd /c",
+    "shellscript": "bash",
+    "fsharp": "fsi",
+    "csharp": "scriptcs",
+    "vbscript": "cscript //Nologo",
+    "typescript": "ts-node",
+    "coffeescript": "coffee",
+    "scala": "scala",
+    "swift": "swift",
+    "julia": "julia",
+    "crystal": "crystal",
+    "ocaml": "ocaml",
+    "r": "Rscript",
+    "applescript": "osascript",
+    "clojure": "lein exec",
+    "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+    "racket": "racket",
+    "scheme": "csi -script",
+    "ahk": "autohotkey",
+    "autoit": "autoit3",
+    "dart": "dart",
+    "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    "haskell": "runghc",
+    "nim": "nim compile --verbosity:0 --hints:off --run",
+    "lisp": "sbcl --script",
+    "kit": "kitc --run",
+    "v": "v run",
+    "sass": "sass --style expanded",
+    "scss": "scss --style expanded",
+    "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
+    "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "sml": "cd $dir && sml $fileName",
+    "mojo": "mojo run",
+    "erlang": "escript",
+    "spwn": "spwn build",
+    "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
+    "gleam": "gleam run -m $fileNameWithoutExt"
+  },
+  /////////////////////////////////////////////////////////
+  //* SCREENCAST MODE
+  /////////////////////////////////////////////////////////
+  "screencastMode.keyboardOptions": {
+    "showKeys": true,
+    "showSingleEditorCursorMoves": false,
+  },
+  "screencastMode.fontSize": 30,
+  "screencastMode.mouseIndicatorSize": 40,
+  "screencastMode.verticalOffset": 5,
+  "screencastMode.keyboardOverlayTimeout": 1500,
+  /////////////////////////////////////////////////////////
+  //* TERMINAL
+  /////////////////////////////////////////////////////////
+  "terminal.integrated.enableMultiLinePasteWarning": "auto",
+
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.osx": "bash",
+
+  /////////////////////////////////////////////////////////
+  //* Formatter
+  /////////////////////////////////////////////////////////
+
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  
+  /////////////////////////////////////////////////////////
+  //* MISC
+  /////////////////////////////////////////////////////////
+  "chat.viewSessions.orientation": "stacked",
+  "settingsSync.ignoredExtensions": [],
+  "settingsSync.ignoredSettings": [],
+  "workbench.preferredDarkColorTheme": "Dark Chai",
+  "window.restoreWindows": "folders",
+  "code-runner.runInTerminal": true,
+  "workbench.startupEditor": "none", // no welcome screen
+  "@azure.argTenant": "",
+  "workbench.editor.empty.hint": "text", // or hidden
+
+  //todo: automatically choose the best available language server.
+  // "python.languageServer": "Pylance",
+
+  /////////////////////////////////////////////////////////
+  //* OTHER EXTENSIONS
+  /////////////////////////////////////////////////////////
+  "livePreview.hostIP": "10.48.116.238",
+  "livePreview.portNumber": 3005,
+
+  "liveServer.settings.donotShowInfoMsg": true,
+
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "javascript": false,
+    "c": false
+  },
+  "github.copilot.nextEditSuggestions.enabled": false,
+
+  "geminicodeassist.project": "knitted-defender-070k4",
+  "geminicodeassist.inlineSuggestions.enableAuto": false,
+  "mdb.mcp.server": "autoStartEnabled",
+
+  "http.systemCertificatesNode": true,
+
+  "tabnine.experimentalAutoImports": true,
+
+  "claudeCode.preferredLocation": "panel",
+  
+
+
+
+
+  /////////////////////////////////////////////////////////
+  //? NOT NEEDED
+  /////////////////////////////////////////////////////////
+
+  // 3 ways to execute in code-runner (file id + file ext + file name)
+  "code-runner.executorMapByFileExtension": {
+    // ".c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir\\$fileNameWithoutExt",
+    // ".cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir\\$fileNameWithoutExt",
+    // ".py": "python -u $fileName",
+    // ".js": "node $fileName",
+    // ".ts": "ts-node $fileName",
+    // ".go": "go run $fileName",
+    // ".rs": "cd $dir && rustc $fileName && $dir\\$fileNameWithoutExt",
+    // ".php": "php $fileName",
+    // ".rb": "ruby $fileName",
+    // ".swift": "swift $fileName",
+    // ".sh": "bash $fileName",
+    // ".ps1": "powershell -ExecutionPolicy Bypass -File $fileName",
+    // ".lua": "lua $fileName",
+    // ".r": "Rscript $fileName",
+    // ".pl": "perl $fileName",
+    // ".groovy": "groovy $fileName",
+    // ".clj": "clojure $fileName",
+    // ".sql": "sqlite3 < $fileName",
+    // ".md": "markdown-preview",
+    // ".html": "start $fileName",
+    // //
+    // ".vb": "cd $dir && vbc /nologo $fileName && $dir$fileNameWithoutExt",
+    // ".vbs": "cscript //Nologo",
+    // ".scala": "scala",
+    // ".jl": "julia",
+    // ".cr": "crystal",
+    // ".ml": "ocaml",
+    // ".zig": "zig run",
+    // ".exs": "elixir",
+    // ".hx": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    // ".rkt": "racket",
+    // ".scm": "csi -script",
+    // ".ahk": "autohotkey",
+    // ".au3": "autoit3",
+    // ".kt": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+    // ".kts": "kotlinc -script",
+    // ".dart": "dart",
+    // ".pas": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    // ".pp": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    // ".d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    // ".hs": "runhaskell",
+    // ".nim": "nim compile --verbosity:0 --hints:off --run",
+    // ".csproj": "dotnet run --project",
+    // ".fsproj": "dotnet run --project",
+    // ".lisp": "sbcl --script",
+    // ".kit": "kitc --run",
+    // ".v": "v run",
+    // ".vsh": "v run",
+    // ".sass": "sass --style expanded",
+    // ".cu": "cd $dir && nvcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    // ".ring": "ring",
+    // ".sml": "cd $dir && sml $fileName",
+    // ".mojo": "mojo run",
+    // ".erl": "escript",
+    // ".spwn": "spwn build",
+    // ".pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
+    // ".gleam": "gleam run -m $fileNameWithoutExt"
+  },
+  "code-runner.executorMapByGlob": {
+    // "pom.xml": "cd $dir && mvn clean package"
+  },
 }
+

@@ -1,0 +1,15 @@
+winget uninstall "Python 3.14.6"
+winget uninstall 9NCVDN91XZQP
+
+
+winget install --id astral-sh.uv -e
+winget search uv
+
+uv --version
+uv python list
+
+uv python uninstall 3.13.14
+
+where.exe python
+
+py --list
