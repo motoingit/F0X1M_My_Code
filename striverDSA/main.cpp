@@ -1,76 +1,52 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
 
 using namespace std;
+using myPair = pair<int, int>;
+const int INF = 1e9;
 
-class Solution{
+class Solution {
   public:
-    //find the nextPermutation
-    void nextPermutation(vector<int> &nums){
-      int nSize = nums.size();
-      int breakIdx = -1;
+    vector<int> dijkstra(int nNode, vector<vector<int>> &edgeList, int srcNode) {
 
-      // finding break point
-      for (int i = nSize-1; i > 0; i--){
-        if(nums[i] > nums[i-1]){
-          breakIdx = i-1;
-          break;
+      //convert
+      vector<vector<int>> adjList = edges_to_adjList(edgeList, nNode);
+
+      priority_queue <myPair, vector<myPair>, greater<myPair>> pq;
+      pq.push({0, srcNode});
+
+      vector<int> distanceArray(nNode, INF);
+      distanceArray[srcNode] = 0;
+
+      while (pq.empty() != true){
+        pair<int, int> currTop = pq.top();
+        int bufferParentWeight_u = currTop.first;
+        int bufferParent_u = currTop.second;
+        pq.pop();
+
+        //^ not sure
+        // if(distanceArray[bufferChild_v] < bufferWeight_u_v) continue;
+
+        for (pair<int, int> edge : adjList[bufferParent_u]){
+         //Your Code
         }
       }
-
-      if(breakIdx == -1){
-        return;
-      }
-
-      //finding element just littile bigger
-      for (int i = breakIdx+1; i < nSize; i++){
-        if(nums[i] > nums[breakIdx]){
-          swap(nums[i], nums[breakIdx]);
-          break;;
-        }
-      }
-
-      //sorting with beest case;
-
+      
     }
-    void mySort(vector<int> &arr){
-      int n = arr.size();
 
-      for (int i = n-1; i > 0; i--){
-        if(arr[i] < arr[i-1]){
-          swap(arr[i], arr[i-1]);
-        }
+    vector<vector<int>> edges_to_adjList(vector<vector<int>> edgeList, int nNode){
+      vector<vector<int>> adjList(nNode);
+
+      //insert
+      for (vector<int> edge : edgeList){
+        adjList[edge[0]] = {edge[2], edge[1]};
       }
+
+      return adjList;
     }
 };
 
 int main(){
-printf("Code is Started Succesfully !\n.\n.\n");
-
-  Solution obj;
-
-  int n;
-  cin >> n;
-
-  vector<int> arr(n);
-
-  for (auto &x : arr){
-    cin >> x;
-  }
-
-  obj.nextPermutation(arr);
-
-  //Next Permutation of arr
-  for (auto &x : arr){
-    cout << x << " ";
-  }
-
-printf("\n.\n.\nCode is Terminated Successfully !\n\n");
+  
 return 0;}
-
-/*
-7
-2 1 5 4 3 0 0
-
-3
-1 2 3
-*/

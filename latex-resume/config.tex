@@ -1,0 +1,49 @@
+% =============================================================================
+% CONFIGURATION & STYLING FILE (config.tex)
+% Configures page dimensions, colors, fonts, list spacing, and packages.
+% =============================================================================
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}            % Clean modern font
+\usepackage{microtype}          % Improves typography spacing
+\usepackage[margin=0.5in, top=0.5in, bottom=0.5in]{geometry} % Margins
+\usepackage{xcolor}             % Color customization
+\usepackage{hyperref}           % Hyperlinks
+\usepackage{enumitem}           % Custom list spacing
+\usepackage{tabularx}           % Tables with flexible column widths
+\usepackage{titlesec}           % Section title formatting
+
+% --- Color Palette Configuration ---
+\definecolor{primaryColor}{RGB}{0, 51, 102}      % Deep Navy for main headings
+\definecolor{textColor}{RGB}{30, 30, 30}          % Dark Charcoal for body text
+\definecolor{linkColor}{RGB}{0, 102, 204}        % Sapphire Blue for hyperlinks
+\definecolor{subtextColor}{RGB}{80, 80, 80}      % Muted Gray for subheaders/dates
+\definecolor{ruleColor}{RGB}{200, 200, 200}      % Light Gray for horizontal lines
+
+% --- Hyperlink Setup ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkColor,
+    urlcolor=linkColor,
+    pdfstartview=FitH
+}
+
+% --- Page Setup ---
+\pagestyle{empty}                % Suppress headers and page numbers
+\raggedbottom                    % Prevent vertical stretching
+\raggedright                     % Prevent unwanted text justification spacing issues
+
+% --- Font & Color Defaults ---
+\color{textColor}
+
+% --- List & Bullet Spacing Defaults ---
+\setlist[itemize]{
+    leftmargin=1.2em,
+    labelsep=0.4em,
+    noitemsep,
+    topsep=2pt,
+    parsep=0pt,
+    partopsep=0pt
+}

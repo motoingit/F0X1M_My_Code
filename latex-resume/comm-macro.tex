@@ -1,0 +1,58 @@
+% =============================================================================
+% REUSABLE MACROS & CUSTOM COMMANDS (comm-macro.tex)
+% Provides standardized macros for headings, entries, projects, and lists.
+% =============================================================================
+
+% --- Section Heading Macro ---
+\newcommand{\resumeSection}[1]{%
+  \vspace{6pt}%
+  {\color{primaryColor}\large\bfseries\fontfamily{phv}\selectfont \MakeUppercase{#1}}%
+  \vspace{2pt}%
+  {\color{ruleColor}\hrule height 0.6pt}%
+  \vspace{4pt}%
+}
+
+% --- Subheading Macro (Work, Education, Experience) ---
+% #1: Institution / Company / Degree Title
+% #2: Location / Secondary Detail
+% #3: Role / Field of Study / Subtitle
+% #4: Date / Duration
+\newcommand{\resumeSubheading}[4]{%
+  \vspace{-1pt}%
+  \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}%
+    \textbf{#1} & \textcolor{subtextColor}{\small #2} \\%
+    \textit{\small #3} & \textcolor{subtextColor}{\small #4} \\%
+  \end{tabular*}%
+  \vspace{-4pt}%
+}
+
+% --- Project Heading Macro ---
+% #1: Project Title
+% #2: Technologies / Tech Stack
+% #3: Link URL
+% #4: Link Label / Date
+\newcommand{\resumeProjectHeading}[4]{%
+  \vspace{-1pt}%
+  \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}%
+    \textbf{#1} \ifx\empty#2\empty\else\textcolor{subtextColor}{\small | \textit{#2}}\fi & %
+    \ifx\empty#3\empty\else\href{#3}{\small #4}\fi \\%
+  \end{tabular*}%
+  \vspace{-4pt}%
+}
+
+% --- List Environments & Item Macros ---
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+\newcommand{\resumeItem}[1]{%
+  \item\small{#1 \vphantom{p}}%
+}
+
+% --- Skill / Achievement Row Macro ---
+% #1: Category / Title Label
+% #2: Details / Items List
+\newcommand{\resumeSkillCategory}[2]{%
+  \vspace{1pt}%
+  \noindent\textbf{\small #1:} \small{#2}\\%
+  \vspace{-2pt}%
+}

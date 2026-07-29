@@ -1,0 +1,50 @@
+% =============================================================================
+% MASTER RESUME TEMPLATE (master-template.tex)
+% Single Source of Truth for Resume Data
+% 
+% Usage:
+% - Edit config.tex to customize fonts, colors, and margins.
+% - Edit individual section files in sections/ to update content.
+% - Comment out any \input{sections/...} line below to omit that section
+%   when tailoring a 1-page resume for specific job applications.
+% =============================================================================
+
+\documentclass[a4paper,10pt]{article}
+
+% --- Include Configurations & Custom Macros ---
+\input{config.tex}
+\input{comm-macro.tex}
+
+\begin{document}
+
+% --- 1. Header & Contact Information ---
+\input{sections/header.tex}
+
+% --- 2. Education ---
+\input{sections/education.tex}
+
+% --- 3. Technical & Soft Skills ---
+\input{sections/skills.tex}
+
+% --- 4. Work & Internship Experience ---
+\input{sections/experience.tex}
+
+% --- 5. Technical Projects ---
+\input{sections/projects.tex}
+
+% --- 6. Positions of Responsibility ---
+\input{sections/positions.tex}
+
+% --- 7. Achievements & Competitive Programming ---
+\input{sections/achievements.tex}
+
+% --- 8. Certifications ---
+\input{sections/certifications.tex}
+
+% --- 9. Key Strengths ---
+\input{sections/strengths.tex}
+
+% --- 10. Hobbies & Interests ---
+\input{sections/hobbies.tex}
+
+\end{document}
