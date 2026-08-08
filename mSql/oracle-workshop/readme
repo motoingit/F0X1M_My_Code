@@ -1,0 +1,13 @@
+Probably worth mentioning that Auto Commit is enabled by default in this extension - not everyone will want this.
+
+Press F1 > Open Settings > Oracle Developer Tools (under Extensions) > Un-check "Query: Auto Commit" to disable.
+
+---
+
+# Pre-reqisite
+Install .Net Runtime for Winidows
+// but i dont find this userfull
+
+# window curr config
+sqlplus sys/moto@localhost:1521/XEPDB1 as sysdba
+sqlplus mohit/mohit@localhost:1521/XEPDB1

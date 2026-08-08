@@ -1,4 +1,10 @@
-/* Ques:
+/* Ques: Number of Islands
+- leetcode 200
+
+Given:
+- m x n 2D binary grid which represent -> map of "1"s (land) and "0"s (water)
+- we have to return -> no of island === strongest component
+- 
 
 */
 
@@ -9,29 +15,24 @@ using namespace std;
 //Solution Class
 class Solution {
   public:
-    int minimumEffortPath(vector<vector<int>>& heights) {
-      int nRow = heights.size(), nCol = heights[0].size();
-      vector<vector<int>> visitedNode(nRow, vector<int>(nCol, 0));
-      visitedNode[0][0] = 1;
+    /*
+    - uint8_t is 8bit integer
+    */
+    int noOfIsland(vector<vector<uint8_t>> &mapMatrix){
+      int nRow = mapMatrix.size(), nCol = mapMatrix[0].size();
+      int countOfIsland = nRow * nCol;
+      //! assuming all are island
 
-      int maxDif = 0;
-      int idxRow = 0, idxCol = 0;
-      while(true){
-        if( idxRow == nRow - 1 && idxCol == nCol - 1 ){
-          return maxDif;
+      for (int rowIdx = 0; rowIdx < nRow; rowIdx++){
+        for (int colIdx = 0; colIdx < nCol; colIdx++){
+          if(fun1()){
+            
+          }
         }
-
-        //check for which direction
-        [idxRow, idxCol] = fun(visitedNode, heights, idxRow, idxCol);
-
-        //found min idx's
-        visitedNode[idxRow][idxCol] = 1;
       }
-    }
-
-    pair<int, int> fun(){
 
     }
+
 };
 
 //Main Function

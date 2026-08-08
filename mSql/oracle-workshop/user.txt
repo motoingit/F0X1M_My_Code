@@ -1,0 +1,9 @@
+mohit
+testuser
+
+sys
+sysdba
+system
+
+note:
+  sys as sydba is the alias

@@ -4,49 +4,49 @@
 
 using namespace std;
 using myPair = pair<int, int>;
-const int INF = 1e9;
 
 class Solution {
   public:
-    vector<int> dijkstra(int nNode, vector<vector<int>> &edgeList, int srcNode) {
+  int fun1(vector<vector<int>> &adjMat, int initNode){
+    int nNode = adjMat.size();
+    int minMstWeight = 0;
+    vector<bool> visArray(nNode, false);
+    priority_queue<myPair, vector<myPair>, greater<myPair>> sortedContainer;
+    sortedContainer.push({0, initNode});
 
-      //convert
-      vector<vector<int>> adjList = edges_to_adjList(edgeList, nNode);
+    while(sortedContainer.empty() == false){
+      myPair currNode = sortedContainer.top();
+      sortedContainer.pop();
+      int w = currNode.first, v = currNode.second;
 
-      priority_queue <myPair, vector<myPair>, greater<myPair>> pq;
-      pq.push({0, srcNode});
+      if(visArray[v] == true) continue;
+      visArray[v] = true;
+      minMstWeight += w;
 
-      vector<int> distanceArray(nNode, INF);
-      distanceArray[srcNode] = 0;
+      for (int i = 0; i < nNode; i++){
+        int weightChild = adjMat[v][i];
 
-      while (pq.empty() != true){
-        pair<int, int> currTop = pq.top();
-        int bufferParentWeight_u = currTop.first;
-        int bufferParent_u = currTop.second;
-        pq.pop();
-
-        //^ not sure
-        // if(distanceArray[bufferChild_v] < bufferWeight_u_v) continue;
-
-        for (pair<int, int> edge : adjList[bufferParent_u]){
-         //Your Code
-        }
-      }
+        //^ -1 means no edge
+        if(weightChild == 0) continue;
       
-    }
-
-    vector<vector<int>> edges_to_adjList(vector<vector<int>> edgeList, int nNode){
-      vector<vector<int>> adjList(nNode);
-
-      //insert
-      for (vector<int> edge : edgeList){
-        adjList[edge[0]] = {edge[2], edge[1]};
+        sortedContainer.push({weightChild, i});
       }
-
-      return adjList;
     }
+
+    return minMstWeight;
+  }
 };
 
+// MAIN
 int main(){
-  
+  Solution sol;
+  vector<vector<int>> graph = {
+    {0, 2, 0, 6, 0},
+    {2, 0, 3, 8, 5},
+    {0, 3, 0, 0, 7},
+    {6, 8, 0, 0, 9},
+    {0, 5, 7, 9, 0}
+  };
+
+  cout << "MST weight " << sol.fun1(graph, 0);
 return 0;}

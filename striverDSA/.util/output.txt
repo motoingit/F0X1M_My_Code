@@ -1,4 +1,1 @@
-Enter nV : Enter nE : Enter all Edges in {start, weight, end} > 
-
-Edge 0 : Edge 1 : Edge 2 : Edge 3 : Edge 4 : Negative weight cycle detected!
-No result due to negative cycle.
+MST weight 2
