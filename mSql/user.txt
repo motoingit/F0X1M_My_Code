@@ -1,0 +1,11 @@
+1)abc_moto/moto123
+
+2)system/oracle
+
+0* sys/sys123
+1* abc_moto/moto123
+2* xyz_temp/temp123
+
+
+note:
+  sys as sydba is the alias

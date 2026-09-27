@@ -1,0 +1,6 @@
+
+cd "E:\xGarage\jaFX"
+
+javac --module-path "C:\compilersDevlopement\.jar\javafx-sdk-25.0.3\lib" --add-modules javafx.controls,javafx.fxml,javafx.graphics src\Main.java
+
+java --module-path "C:\compilersDevlopement\.jar\javafx-sdk-25.0.3\lib" --add-modules javafx.controls,javafx.fxml,javafx.graphics -cp src Main

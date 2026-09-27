@@ -1,0 +1,76 @@
+package myPackage;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.ResultSet;
+
+public class jdbcExample {
+
+    public static void main(String[] args) throws ClassNotFoundException {
+
+        // Register Driver
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        try {
+            // Establish Connection
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/",
+                    "root",
+                    "root@123"
+            );
+
+            System.out.println("Connected Successfully!\n");
+
+            // Create Statement
+            Statement stmt = con.createStatement();
+
+            // =====================================================
+            // 1. Show All Databases
+            // =====================================================
+            System.out.println("Available Databases:");
+            ResultSet rs1 = stmt.executeQuery("SHOW DATABASES");
+
+            while (rs1.next()) {
+                System.out.println(rs1.getString(1));
+            }
+
+            // =====================================================
+            // 2. Select Your Database
+            // =====================================================
+            stmt.execute("USE mysqldatabase");
+
+            // =====================================================
+            // 3. Show All Tables
+            // =====================================================
+            System.out.println("\nTables in mysqldatabase:");
+            ResultSet rs2 = stmt.executeQuery("SHOW TABLES");
+
+            while (rs2.next()) {
+                System.out.println(rs2.getString(1));
+            }
+
+            // =====================================================
+            // 4. Print All Data from a Table
+            // Replace 'students' with your actual table name
+            // =====================================================
+            System.out.println("\nData from students table:");
+
+            ResultSet rs3 = stmt.executeQuery("SELECT * FROM students");
+
+            while (rs3.next()) {
+                System.out.println(
+                        rs3.getInt(1) + "  " +
+                        rs3.getString(2) + "  " +
+                        rs3.getString(3)
+                );
+            }
+
+            // Close Connection
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}

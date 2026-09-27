@@ -1,0 +1,199 @@
+package jdbcSQL;
+
+//import java.lang.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.Scanner;
+import java.sql.ResultSet;
+
+import java.sql.SQLException;
+
+public class Main{
+	
+	public static void printTable(Statement stmt) throws SQLException {
+	    System.out.println("Data from Users table >");
+
+	    ResultSet result = stmt.executeQuery("SELECT * FROM Users");
+
+	    while (result.next()) {
+
+	        String message = String.format(
+	                "%d %s %d %b",
+	                result.getInt("id"),
+	                result.getString("name"),
+	                result.getInt("age"),
+	                result.getBoolean("isActive")
+	        );
+
+	        System.out.println(message);
+	    }
+	}
+    
+    public static void showAllDatabase(Statement stmt) throws SQLException {
+    	System.out.println("Available Databases > ");
+        ResultSet rs1 = stmt.executeQuery("SHOW DATABASES");
+
+        while (rs1.next()) {
+            System.out.println(rs1.getString(1));
+        }
+    }
+    
+	public static void main(String[] args) {
+		System.out.println("Start of Program !");
+		
+		// Connection URL: localHost at default port 3306
+        String url = "jdbc:mysql://localhost:3306/";
+        String user = "root";
+        String password = "root@123"; // Ensure this matches your MySQL install
+        String driver = "com.mysql.cj.jdbc.Driver";
+
+        Connection con = null;
+        Statement stmt = null;
+        try {
+            // Register Driver verification
+            Class.forName(driver);
+            
+            //Establish connection
+            con = DriverManager.getConnection(url, user, password);
+            System.out.println("Database Locally Connected Successfully!");
+            
+            // Create Statement
+            /*In the world of JDBC, s
+             * the createStatement() method is a factory method used to create a Statement object, 
+             * which acts as the vehicle that carries your SQL commands from your Java code to the database.
+             * */
+            stmt = con.createStatement();
+
+            // Show All Databases
+            showAllDatabase(stmt);
+            
+            //create DATABASES
+            stmt.execute("CREATE DATABASE IF NOT EXISTS mysqldatabase");
+           
+            showAllDatabase(stmt);
+            
+            //select database
+            System.out.println("mysqldatabaee selected !!");
+            stmt.execute("use mysqldatabase");
+            
+            // SQL command to create the table
+            String createTableSql = "CREATE TABLE Users ("
+                    + "id INT PRIMARY KEY AUTO_INCREMENT, "
+                    + "name VARCHAR(50), "
+                    + "age INT, "
+                    + "isActive BOOLEAN"
+            		+ ")";
+            
+            stmt.execute(createTableSql);
+            System.out.println("Table 'Users' created successfully!");
+
+            Scanner sc = new Scanner(System.in);
+
+            for (int i = 0; i < 5; i++) {
+                System.out.println("\nEnter details for row " + (i + 1));
+                System.out.print("Enter Name: ");
+                String name = sc.next();
+                System.out.print("Enter Age: ");
+                int age = sc.nextInt();
+                System.out.print("Enter Active Status (true/false): ");
+                boolean isActive = sc.nextBoolean();
+                String insertQuery = String.format(
+                        "INSERT INTO Users (name, age, isActive) VALUES ('%s', %d, %b)",
+                        name,
+                        age,
+                        isActive
+                );
+                int rowsInserted = stmt.executeUpdate(insertQuery);
+                System.out.println("Rows inserted: " + rowsInserted);
+            }
+            
+            printTable(stmt);
+            
+            // DELETE: Removing a record
+            String deleteSql = "DELETE FROM Users WHERE name = 'David'";
+            int rowsDeleted = stmt.executeUpdate(deleteSql);
+            System.out.println("Rows deleted: " + rowsDeleted);
+            
+            printTable(stmt);
+
+            
+            //delete
+            stmt.execute("drop database if exists mysqldatabase");
+            
+            // Close Connection
+            con.close();
+            sc.close();
+            
+            
+        } catch (ClassNotFoundException e) {
+            System.err.println("❌ Driver not found! Did you add the JAR to the Build Path?");
+        } catch (SQLException e){
+            // Specific error for database issues (wrong password, server down, etc.)
+            System.err.println("❌ Database connection error: " + e.getMessage());
+            System.err.println("SQL State: " + e.getSQLState());
+            System.err.println("Error Code: " + e.getErrorCode());
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+        	try {
+                if (stmt != null) {
+                    stmt.execute("DROP DATABASE IF EXISTS mysqldatabase");
+                    stmt.close();
+                }
+
+                if (con != null) {
+                    con.close();
+                }
+
+                System.out.println("Resources closed successfully.");
+
+            } catch (SQLException e) {
+                System.err.println("Error while closing resources: " + e.getMessage());
+            }
+        }
+     
+       
+        System.out.println("End of Program !");
+	}
+}
+
+	/*
+	// =====================================================
+            // 3. Show All Tables
+            // =====================================================
+            System.out.println("\nTables in mysqldatabase:");
+            ResultSet rs2 = stmt.executeQuery("SHOW TABLES");
+
+            while (rs2.next()) {
+                System.out.println(rs2.getString(1));
+            }
+            
+            // =====================================================
+            // 4. Print All Data from a Table
+            // Replace 'students' with your actual table name
+            // =====================================================
+            System.out.println("\nData from students table:");
+
+            ResultSet rs3 = stmt.executeQuery("SELECT * FROM students");
+
+            while (rs3.next()) {
+                System.out.println(
+                        rs3.getInt(1) + "  " +
+                        rs3.getString(2) + "  " +
+                        rs3.getString(3)
+                );
+            }
+            
+            // READ: Retrieving data
+			String selectSql = "SELECT FirstName, Role FROM Employees";
+			ResultSet rs = stmt.executeQuery(selectSql); [cite: 4, 6]
+			
+			while (rs.next()) {
+			    // Retrieve by column name or index
+			    String name = rs.getString("FirstName");
+			    String role = rs.getString("Role");
+			    System.out.println(name + " is a " + role);
+			} [cite: 6]
+	*/

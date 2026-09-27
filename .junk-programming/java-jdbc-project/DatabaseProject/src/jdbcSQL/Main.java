@@ -1,0 +1,256 @@
+package jdbcSQL;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+/*
+ * JDBC CRUD Demonstration Program
+ *
+ * Features:
+ * 1. Show all available databases
+ * 2. Create database if not exists
+ * 3. Select database
+ * 4. Create Users table
+ * 5. Insert 5 user records using Scanner input
+ * 6. Display all records
+ * 7. Delete one record
+ * 8. Display updated records
+ * 9. Drop database on completion
+ * 10. Proper resource cleanup using finally block
+ */
+
+public class Main {
+
+    // ==============================
+    // Database Configuration
+    // ==============================
+
+    private static final String URL = "jdbc:mysql://localhost:3306/";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root@123";
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String DATABASE_NAME = "mysqldatabase";
+    private static final String TABLE_NAME = "Users";
+
+    // ==============================
+    // Display All Databases
+    // ==============================
+
+    public static void displayAllDatabases(Statement statement) throws SQLException {
+        System.out.println("\nAvailable Databases:");
+
+        ResultSet resultSet = statement.executeQuery("SHOW DATABASES");
+
+        while (resultSet.next()) {
+            System.out.println(resultSet.getString(1));
+        }
+    }
+
+    // ==============================
+    // Print All Data From Users Table
+    // ==============================
+
+    public static void displayUsersTable(Statement statement) throws SQLException {
+        System.out.println("\nUsers Table Data:");
+
+        ResultSet resultSet = statement.executeQuery(
+                "SELECT * FROM " + TABLE_NAME
+        );
+
+        while (resultSet.next()) {
+
+            String record = String.format(
+            		"%4d | %-10s | %3d | %b",
+                    resultSet.getInt("id"),
+                    resultSet.getString("name"),
+                    resultSet.getInt("age"),
+                    resultSet.getBoolean("isActive")
+            );
+
+            System.out.println(record);
+        }
+    }
+
+    // ==============================
+    // Main Method
+    // ==============================
+
+    public static void main(String[] args) {
+
+        System.out.println("========== JDBC Program Started ==========");
+
+        Connection connection = null;
+        Statement statement = null;
+        Scanner scanner = null;
+
+        try {
+            // --------------------------------
+            // Step 1: Load JDBC Driver
+            // --------------------------------
+            Class.forName(DRIVER);
+
+            // --------------------------------
+            // Step 2: Establish Database Connection
+            // --------------------------------
+            connection = DriverManager.getConnection(
+                    URL,
+                    USERNAME,
+                    PASSWORD
+            );
+
+            System.out.println("Database connected successfully.");
+
+            // --------------------------------
+            // Step 3: Create Statement Object
+            // --------------------------------
+            statement = connection.createStatement();
+
+            // --------------------------------
+            // Step 4: Show Existing Databases
+            // --------------------------------
+            displayAllDatabases(statement);
+
+            // --------------------------------
+            // Step 5: Create Database
+            // --------------------------------
+            statement.execute(
+                    "CREATE DATABASE IF NOT EXISTS " + DATABASE_NAME
+            );
+
+            System.out.println("\nDatabase created successfully.");
+
+            // --------------------------------
+            // Step 6: Use Database
+            // --------------------------------
+            statement.execute(
+                    "USE " + DATABASE_NAME
+            );
+
+            System.out.println("Using database: " + DATABASE_NAME);
+
+            // --------------------------------
+            // Step 7: Create Users Table
+            // --------------------------------
+            String createTableQuery =
+                    "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
+                            + "id INT PRIMARY KEY AUTO_INCREMENT, "
+                            + "name VARCHAR(50), "
+                            + "age INT, "
+                            + "isActive BOOLEAN"
+                            + ")";
+
+            statement.execute(createTableQuery);
+
+            System.out.println("Table '" + TABLE_NAME + "' created successfully.");
+
+            // --------------------------------
+            // Step 8: Insert User Records
+            // --------------------------------
+            scanner = new Scanner(System.in);
+
+            for (int i = 1; i <= 5; i++) {
+
+                System.out.println("\nEnter details for Row " + i);
+
+                System.out.print("Enter Name: ");
+                String name = scanner.next();
+
+                System.out.print("Enter Age: ");
+                int age = scanner.nextInt();
+
+                System.out.print("Enter Active Status (true/false): ");
+                boolean isActive = scanner.nextBoolean();
+
+                String insertQuery = String.format(
+                        "INSERT INTO %s (name, age, isActive) VALUES ('%s', %d, %b)",
+                        TABLE_NAME,
+                        name,
+                        age,
+                        isActive
+                );
+
+                int rowsInserted = statement.executeUpdate(insertQuery);
+
+                System.out.println("Rows inserted: " + rowsInserted);
+            }
+
+            // --------------------------------
+            // Step 9: Display Table Records
+            // --------------------------------
+            displayUsersTable(statement);
+
+            // --------------------------------
+            // Step 10: Delete One Record
+            // --------------------------------
+            String deleteQuery =
+                    "DELETE FROM " + TABLE_NAME + " WHERE name = 'David'";
+
+            int rowsDeleted = statement.executeUpdate(deleteQuery);
+
+            System.out.println("\nRows deleted: " + rowsDeleted);
+
+            // --------------------------------
+            // Step 11: Display Updated Records
+            // --------------------------------
+            displayUsersTable(statement);
+
+        } catch (ClassNotFoundException e) {
+
+            System.err.println("JDBC Driver not found.");
+
+        } catch (SQLException e) {
+
+            System.err.println("Database Error: " + e.getMessage());
+            System.err.println("SQL State: " + e.getSQLState());
+            System.err.println("Error Code: " + e.getErrorCode());
+
+        } catch (Exception e) {
+
+            System.err.println("Unexpected Error: " + e.getMessage());
+
+        } finally {
+
+            try {
+                // --------------------------------
+                // Cleanup: Drop Database
+                // --------------------------------
+                if (statement != null) {
+                    statement.execute(
+                            "DROP DATABASE IF EXISTS " + DATABASE_NAME
+                    );
+
+                    statement.close();
+                }
+
+                // --------------------------------
+                // Close Connection
+                // --------------------------------
+                if (connection != null) {
+                    connection.close();
+                }
+
+                // --------------------------------
+                // Close Scanner
+                // --------------------------------
+                if (scanner != null) {
+                    scanner.close();
+                }
+
+                System.out.println("\nResources closed successfully.");
+
+            } catch (SQLException e) {
+
+                System.err.println(
+                        "Error while closing resources: "
+                                + e.getMessage()
+                );
+            }
+        }
+
+        System.out.println("========== JDBC Program Ended ==========");
+    }
+}

@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup Database",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "javac -cp .;lib/mysql-connector-j-9.7.0.jar script\\SetupDatabase.java && java -cp .;lib/mysql-connector-j-9.7.0.jar script.SetupDatabase"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Delete Database",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "javac -cp .;lib/mysql-connector-j-9.7.0.jar script\\DeleteDatabase.java && java -cp .;lib/mysql-connector-j-9.7.0.jar script.DeleteDatabase"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

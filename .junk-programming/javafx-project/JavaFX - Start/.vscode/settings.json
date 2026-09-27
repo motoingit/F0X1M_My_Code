@@ -1,0 +1,15 @@
+{
+  "java.project.sourcePaths": ["src"],
+
+  "java.project.referencedLibraries": [
+    "C:/compilersDevlopement/.jar/javafx-sdk-25.0.3/lib/**/*.jar"
+  ],
+
+  // "java.configuration.runtimes": [
+  //     {
+  //         "name": "JavaSE-21",
+  //         "path": "C:/compilersDevlopement/jdk",
+  //         "default": true
+  //     }
+  // ]
+}

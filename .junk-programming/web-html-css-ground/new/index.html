@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neumorphic Password Generator</title>
+  <!-- Google Fonts: Poppins & JetBrains Mono for monospace code display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* --------------------------------------------------
+       1. Global Styles & Reset
+       -------------------------------------------------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      user-select: none;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #dde1e7;
+      color: #595959;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 30px;
+      background: #dde1e7;
+      border-radius: 20px;
+      box-shadow: -5px -5px 10px #ffffff73, 5px 5px 10px rgba(94, 104, 121, 0.288);
+      position: relative;
+    }
+
+    /* Header styling */
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 5px;
+      letter-spacing: 0.5px;
+    }
+
+    header p {
+      font-size: 0.85rem;
+      color: #b6bbc5;
+      font-weight: 400;
+    }
+
+    /* --------------------------------------------------
+       2. Password Output Field
+       -------------------------------------------------- */
+    .input-box {
+      position: relative;
+      height: 60px;
+      width: 100%;
+      background: #dde1e7;
+      border-radius: 10px;
+      box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.288);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+    }
+
+    .input-box input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      color: #333333;
+      font-size: 1.15rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      padding-right: 45px;
+      letter-spacing: 1px;
+    }
+
+    /* Placeholder customization */
+    .input-box input::placeholder {
+      color: #b6bbc5;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    /* Copy Button */
+    .input-box .copy-btn {
+      position: absolute;
+      right: 12px;
+      width: 38px;
+      height: 38px;
+      background: #dde1e7;
+      border-radius: 8px;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #595959;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+      transition: all 0.2s ease;
+    }
+
+    .input-box .copy-btn:active {
+      box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.288);
+      transform: scale(0.96);
+    }
+
+    .input-box .copy-btn.copied {
+      color: #1DA1F2;
+      box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.288);
+    }
+
+    /* Copy confirmation tooltip / text */
+    .copy-toast {
+      position: absolute;
+      top: -35px;
+      right: 12px;
+      background: #333;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      pointer-events: none;
+    }
+
+    .copy-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .copy-toast::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      background: #333;
+    }
+
+    /* --------------------------------------------------
+       3. Password Strength Bar
+       -------------------------------------------------- */
+    .strength-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      padding: 0 5px;
+    }
+
+    .strength-text {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #595959;
+    }
+
+    .strength-bar-wrapper {
+      width: 140px;
+      height: 8px;
+      background: #dde1e7;
+      border-radius: 4px;
+      position: relative;
+      box-shadow: inset -1px -1px 3px #ffffff73, inset 1px 1px 3px rgba(94, 104, 121, 0.288);
+      overflow: hidden;
+    }
+
+    .strength-bar {
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      transition: width 0.4s ease, background-color 0.4s ease;
+      background-color: transparent;
+    }
+
+    .strength-bar.weak {
+      width: 33.33%;
+      background-color: #ff4d4d;
+    }
+
+    .strength-bar.medium {
+      width: 66.66%;
+      background-color: #ff9f43;
+    }
+
+    .strength-bar.strong {
+      width: 100%;
+      background-color: #2ed573;
+    }
+
+    /* --------------------------------------------------
+       4. Slider (Password Length)
+       -------------------------------------------------- */
+    .length-section {
+      margin-bottom: 25px;
+      padding: 0 5px;
+    }
+
+    .length-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .length-details span {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .length-details .length-value {
+      font-weight: 600;
+      color: #1DA1F2;
+      background: #dde1e7;
+      padding: 2px 10px;
+      border-radius: 6px;
+      box-shadow: inset -2px -2px 5px #ffffff73, inset 2px 2px 4px rgba(94, 104, 121, 0.288);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .slider-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Customizing Range Input for Neumorphism */
+    .slider-container input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 12px;
+      border-radius: 10px;
+      background: #dde1e7;
+      box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.288);
+      outline: none;
+      margin: 10px 0;
+    }
+
+    /* Chrome, Safari, Opera, Edge */
+    .slider-container input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #dde1e7;
+      box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .slider-container input[type="range"]::-webkit-slider-thumb:active {
+      box-shadow: inset -2px -2px 5px #ffffff73, inset 2px 2px 4px rgba(94, 104, 121, 0.288);
+      transform: scale(0.95);
+    }
+
+    /* Firefox */
+    .slider-container input[type="range"]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border: none;
+      border-radius: 50%;
+      background: #dde1e7;
+      box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .slider-container input[type="range"]::-moz-range-thumb:active {
+      box-shadow: inset -2px -2px 5px #ffffff73, inset 2px 2px 4px rgba(94, 104, 121, 0.288);
+      transform: scale(0.95);
+    }
+
+    /* --------------------------------------------------
+       5. Options & Settings List (Custom Toggles)
+       -------------------------------------------------- */
+    .options-section {
+      margin-bottom: 30px;
+    }
+
+    .option-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 0 5px;
+    }
+
+    .option-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .option-label i {
+      font-size: 1rem;
+      width: 20px;
+      text-align: center;
+      color: #b6bbc5;
+      transition: color 0.3s ease;
+    }
+
+    /* Active labels & icons when checked */
+    .option-item.active .option-label {
+      color: #333333;
+    }
+    
+    .option-item.active .option-label i {
+      color: #1DA1F2;
+    }
+
+    /* The Switch (Trough) */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #dde1e7;
+      border-radius: 34px;
+      box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.288);
+      transition: 0.3s;
+    }
+
+    /* The Slider Thumb (Raised) */
+    .toggle-slider::before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: #dde1e7;
+      border-radius: 50%;
+      box-shadow: -2px -2px 5px #ffffff73, 2px 2px 4px rgba(94, 104, 121, 0.288);
+      transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    /* Checked toggle slider position & style */
+    .toggle-switch input:checked + .toggle-slider::before {
+      transform: translateX(24px);
+      box-shadow: -2px -2px 5px #ffffff73, 2px 2px 4px rgba(94, 104, 121, 0.288);
+      background-color: #1DA1F2; /* subtle toggle accent color */
+    }
+
+    /* Active state press simulation */
+    .toggle-switch:active .toggle-slider::before {
+      box-shadow: inset -1px -1px 3px #ffffff73, inset 1px 1px 3px rgba(94, 104, 121, 0.288);
+    }
+
+    /* --------------------------------------------------
+       6. Generate Button
+       -------------------------------------------------- */
+    .generate-btn {
+      width: 100%;
+      height: 55px;
+      background: #dde1e7;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #333333;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+      transition: all 0.25s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .generate-btn i {
+      font-size: 0.95rem;
+      transition: transform 0.4s ease;
+    }
+
+    .generate-btn:hover i {
+      transform: rotate(45deg);
+    }
+
+    .generate-btn:active {
+      box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.288);
+      color: #1DA1F2;
+      transform: scale(0.98);
+    }
+
+    /* --------------------------------------------------
+       7. Footer Credit
+       -------------------------------------------------- */
+    .footer-credit {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.75rem;
+      color: #b6bbc5;
+    }
+
+    .footer-credit a {
+      color: #b6bbc5;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-credit a:hover {
+      color: #1DA1F2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Toast notification for copy -->
+    <div class="copy-toast" id="copyToast">Copied!</div>
+
+    <header>
+      <h1>ShieldPass</h1>
+      <p>Custom Neumorphic Password Generator</p>
+    </header>
+
+    <!-- Password output box -->
+    <div class="input-box">
+      <input type="text" id="passwordOutput" placeholder="Your generated password" readonly>
+      <button class="copy-btn" id="copyBtn" title="Copy to clipboard">
+        <i class="far fa-copy"></i>
+      </button>
+    </div>
+
+    <!-- Password strength indicator -->
+    <div class="strength-indicator">
+      <span class="strength-text" id="strengthText">Strength: Underdeveloped</span>
+      <div class="strength-bar-wrapper">
+        <div class="strength-bar" id="strengthBar"></div>
+      </div>
+    </div>
+
+    <!-- Password length slider -->
+    <div class="length-section">
+      <div class="length-details">
+        <span>Password Length</span>
+        <span class="length-value" id="lengthVal">16</span>
+      </div>
+      <div class="slider-container">
+        <input type="range" id="lengthSlider" min="6" max="32" value="16">
+      </div>
+    </div>
+
+    <!-- Settings options -->
+    <div class="options-section">
+      <!-- Uppercase option -->
+      <div class="option-item active" id="itemUppercase">
+        <div class="option-label">
+          <i class="fas fa-font"></i>
+          <span>Include Uppercase</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="uppercaseCheck" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <!-- Lowercase option -->
+      <div class="option-item active" id="itemLowercase">
+        <div class="option-label">
+          <i class="fas fa-italic"></i>
+          <span>Include Lowercase</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="lowercaseCheck" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <!-- Numbers option -->
+      <div class="option-item active" id="itemNumbers">
+        <div class="option-label">
+          <i class="fas fa-hashtag"></i>
+          <span>Include Numbers</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="numbersCheck" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <!-- Symbols option -->
+      <div class="option-item active" id="itemSymbols">
+        <div class="option-label">
+          <i class="fas fa-asterisk"></i>
+          <span>Include Symbols</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="symbolsCheck" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Generate Button -->
+    <button class="generate-btn" id="generateBtn">
+      <span>Generate Password</span>
+      <i class="fas fa-key"></i>
+    </button>
+
+    <!-- Footer credit -->
+    <div class="footer-credit">
+      Designed with <a href="#"><i class="fas fa-heart" style="color: #ff4d4d;"></i> Neumorphism</a>
+    </div>
+  </div>
+
+  <script>
+    // Character pools
+    const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+    const numberChars = "0123456789";
+    const symbolChars = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
+
+    // Dom elements
+    const passwordOutput = document.getElementById("passwordOutput");
+    const copyBtn = document.getElementById("copyBtn");
+    const copyIcon = copyBtn.querySelector("i");
+    const copyToast = document.getElementById("copyToast");
+    const strengthText = document.getElementById("strengthText");
+    const strengthBar = document.getElementById("strengthBar");
+    const lengthSlider = document.getElementById("lengthSlider");
+    const lengthVal = document.getElementById("lengthVal");
+    
+    const uppercaseCheck = document.getElementById("uppercaseCheck");
+    const lowercaseCheck = document.getElementById("lowercaseCheck");
+    const numbersCheck = document.getElementById("numbersCheck");
+    const symbolsCheck = document.getElementById("symbolsCheck");
+    
+    const checkBoxes = [uppercaseCheck, lowercaseCheck, numbersCheck, symbolsCheck];
+    const optionItems = {
+      uppercaseCheck: document.getElementById("itemUppercase"),
+      lowercaseCheck: document.getElementById("itemLowercase"),
+      numbersCheck: document.getElementById("itemNumbers"),
+      symbolsCheck: document.getElementById("itemSymbols")
+    };
+    
+    const generateBtn = document.getElementById("generateBtn");
+
+    // Initialize display length
+    lengthVal.textContent = lengthSlider.value;
+
+    // Update length text on slide
+    lengthSlider.addEventListener("input", (e) => {
+      lengthVal.textContent = e.target.value;
+      if (passwordOutput.value) {
+        generatePassword();
+      }
+    });
+
+    // Handle check state visual highlights and active rules
+    checkBoxes.forEach(chk => {
+      chk.addEventListener("change", (e) => {
+        const parentItem = optionItems[e.target.id];
+        if (e.target.checked) {
+          parentItem.classList.add("active");
+        } else {
+          // Prevent user from unchecking all options (must have at least 1 checked)
+          const checkedCount = checkBoxes.filter(c => c.checked).length;
+          if (checkedCount === 0) {
+            e.target.checked = true;
+            alert("You must select at least one character type!");
+            return;
+          }
+          parentItem.classList.remove("active");
+        }
+        
+        if (passwordOutput.value) {
+          generatePassword();
+        }
+      });
+    });
+
+    // Generate random character from string
+    function getRandomChar(str) {
+      return str[Math.floor(Math.random() * str.length)];
+    }
+
+    // Generate password logic
+    function generatePassword() {
+      const length = parseInt(lengthSlider.value);
+      let allowedPool = "";
+      let mandatoryChars = [];
+
+      // Check settings and build pools
+      if (uppercaseCheck.checked) {
+        allowedPool += uppercaseChars;
+        mandatoryChars.push(getRandomChar(uppercaseChars));
+      }
+      if (lowercaseCheck.checked) {
+        allowedPool += lowercaseChars;
+        mandatoryChars.push(getRandomChar(lowercaseChars));
+      }
+      if (numbersCheck.checked) {
+        allowedPool += numberChars;
+        mandatoryChars.push(getRandomChar(numberChars));
+      }
+      if (symbolsCheck.checked) {
+        allowedPool += symbolChars;
+        mandatoryChars.push(getRandomChar(symbolChars));
+      }
+
+      // Generate remaining characters
+      let password = "";
+      for (let i = mandatoryChars.length; i < length; i++) {
+        password += getRandomChar(allowedPool);
+      }
+
+      // Prepend mandatory chars and shuffle
+      const combined = mandatoryChars.join("") + password;
+      const shuffledPassword = combined.split('').sort(() => 0.5 - Math.random()).join('');
+
+      // Display password
+      passwordOutput.value = shuffledPassword;
+
+      // Update password strength
+      updateStrength(shuffledPassword);
+    }
+
+    // Dynamic strength evaluation
+    function updateStrength(password) {
+      const length = password.length;
+      let score = 0;
+
+      // Criteria points
+      if (length >= 8) score++;
+      if (length >= 14) score++;
+      
+      const hasUpper = /[A-Z]/.test(password);
+      const hasLower = /[a-z]/.test(password);
+      const hasNumbers = /[0-9]/.test(password);
+      const hasSymbols = /[^A-Za-z0-9]/.test(password);
+
+      const typeCount = [hasUpper, hasLower, hasNumbers, hasSymbols].filter(Boolean).length;
+      
+      score += (typeCount - 1); // up to +3 points
+
+      // Reset classes
+      strengthBar.className = "strength-bar";
+
+      if (length < 8 || score <= 1) {
+        strengthText.textContent = "Strength: Weak";
+        strengthBar.classList.add("weak");
+      } else if (score >= 2 && score <= 3) {
+        strengthText.textContent = "Strength: Medium";
+        strengthBar.classList.add("medium");
+      } else {
+        strengthText.textContent = "Strength: Strong";
+        strengthBar.classList.add("strong");
+      }
+    }
+
+    // Click handler for Copy button
+    copyBtn.addEventListener("click", () => {
+      const password = passwordOutput.value;
+      if (!password) return;
+
+      navigator.clipboard.writeText(password).then(() => {
+        // Success feedback
+        copyBtn.classList.add("copied");
+        copyIcon.className = "fas fa-check";
+        copyToast.classList.add("show");
+
+        setTimeout(() => {
+          copyBtn.classList.remove("copied");
+          copyIcon.className = "far fa-copy";
+          copyToast.classList.remove("show");
+        }, 2000);
+      }).catch(err => {
+        console.error("Clipboard copy failed: ", err);
+      });
+    });
+
+    // Click handler for Generate button
+    generateBtn.addEventListener("click", generatePassword);
+
+    // Generate initial password on load
+    generatePassword();
+  </script>
+</body>
+</html>

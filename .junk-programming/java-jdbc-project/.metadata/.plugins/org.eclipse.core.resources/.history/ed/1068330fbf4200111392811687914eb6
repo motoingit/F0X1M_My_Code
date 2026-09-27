@@ -1,0 +1,99 @@
+package myPackage;
+
+//import java.lang.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.ResultSet;
+
+import java.sql.SQLException;
+
+public class jdbcExample{
+	public static void main(String[] args) {
+		System.out.println("Start of Program !");
+		
+		// Connection URL: localHost at default port 3306
+        String url = "jdbc:mysql://localhost:3306/";
+        String user = "root";
+        String password = "root@123"; // Ensure this matches your MySQL install
+        String driver = "com.mysql.cj.jdbc.Driver";
+
+        try {
+            // Register Driver verification
+            Class.forName(driver);
+            
+            //Establish connection
+            Connection con = DriverManager.getConnection(url, user, password);
+            System.out.println("Connected Successfully!");
+            
+            // Create Statement
+            /*In the world of JDBC, s
+             * the createStatement() method is a factory method used to create a Statement object, 
+             * which acts as the vehicle that carries your SQL commands from your Java code to the database.
+             * */
+            Statement stmt = con.createStatement();
+            
+            // =====================================================
+            // 1. Show All Databases
+            // =====================================================
+            System.out.println("Available Databases:");
+            ResultSet rs1 = stmt.executeQuery("SHOW DATABASES");
+
+            while (rs1.next()) {
+                System.out.println(rs1.getString(1));
+            }
+            
+            //create DATABASES
+            stmt.execute("create DATABASE mysqldatabase");
+            
+            //used
+            stmt.execute("use mysqldatabase");
+            
+            //delete
+            stmt.execute("drop database if exists mysqldatabase");
+            
+            // Close Connection
+            con.close();
+            
+            
+        } catch (ClassNotFoundException e) {
+            System.err.println("❌ Driver not found! Did you add the JAR to the Build Path?");
+        } catch (SQLException e){
+            // Specific error for database issues (wrong password, server down, etc.)
+            System.err.println("❌ Database connection error: " + e.getMessage());
+            System.err.println("SQL State: " + e.getSQLState());
+            System.err.println("Error Code: " + e.getErrorCode());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+	}
+}
+
+	/*
+	// =====================================================
+            // 3. Show All Tables
+            // =====================================================
+            System.out.println("\nTables in mysqldatabase:");
+            ResultSet rs2 = stmt.executeQuery("SHOW TABLES");
+
+            while (rs2.next()) {
+                System.out.println(rs2.getString(1));
+            }
+            
+            // =====================================================
+            // 4. Print All Data from a Table
+            // Replace 'students' with your actual table name
+            // =====================================================
+            System.out.println("\nData from students table:");
+
+            ResultSet rs3 = stmt.executeQuery("SELECT * FROM students");
+
+            while (rs3.next()) {
+                System.out.println(
+                        rs3.getInt(1) + "  " +
+                        rs3.getString(2) + "  " +
+                        rs3.getString(3)
+                );
+            }
+	*/
