@@ -1,12 +1,12 @@
 {
+  //! to install use {code --install-extension <extension-id>}
   "recommendations": [
-
     // =========================
     // UI / Themes / Productivity
     // =========================
+    "hiteshchoudharycode.chai-theme",
     "pkief.material-icon-theme",
     "vscode-icons-team.vscode-icons",
-    "hiteshchoudharycode.chai-theme",
     "aaron-bond.better-comments",
     "bracketpaircolordlw.bracket-pair-color-dlw",
     "streetsidesoftware.code-spell-checker",
