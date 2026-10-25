@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinetic Piano & Live Notation</title>
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #12141c;
+      --border: #232734;
+      --text: #c5c6c7;
+      --muted: #6b7280;
+      --accent: #66fcf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Minimal Floating HUD */
+    header {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .hint {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(18, 20, 28, 0.75);
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(6px);
+    }
+
+    .controls {
+      display: flex;
+      gap: 8px;
+      pointer-events: auto;
+    }
+
+    button {
+      background: rgba(18, 20, 28, 0.8);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    button:hover {
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    button.active {
+      background: rgba(102, 252, 241, 0.14);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Interactive Physics & Shape Playground */
+    #playground-container {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    canvas#playground {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    /* Minimal Piano Strip */
+    #piano {
+      height: 82px;
+      background: #08090c;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      padding: 6px 12px;
+      gap: 4px;
+      z-index: 5;
+    }
+
+    .key {
+      flex: 1;
+      max-width: 72px;
+      background: linear-gradient(180deg, #1a1d26 0%, #13151c 100%);
+      border: 1px solid var(--border);
+      border-radius: 4px 4px 8px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding-bottom: 8px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.06s ease, border-color 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .key:active,
+    .key.playing {
+      transform: translateY(2px);
+      border-color: var(--key-color, var(--accent));
+      box-shadow: 0 0 16px -2px var(--key-color, var(--accent)) inset;
+    }
+
+    .key-note {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .key-bind {
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 3px;
+      text-transform: uppercase;
+    }
+
+    /* Bottom Sheet Music Bar */
+    #sheet-wrapper {
+      height: 145px;
+      background: var(--panel);
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    canvas#sheet {
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hint">
+      Press keys <b>A – K</b> or click piano to launch orbs &bull; Drag shapes to sculpt melody &bull; Click space to add shape
+    </div>
+    <div class="controls">
+      <button id="btn-stream" class="active" title="Toggle continuous orb emitter">Auto Pulse: ON</button>
+      <button id="btn-clear-orbs">Clear Orbs</button>
+      <button id="btn-clear-sheet">Clear Score</button>
+    </div>
+  </header>
+
+  <div id="playground-container">
+    <canvas id="playground"></canvas>
+  </div>
+
+  <div id="piano"></div>
+
+  <div id="sheet-wrapper">
+    <canvas id="sheet"></canvas>
+  </div>
+
+  <script>
+    /* ==========================================
+       1. MUSICAL SCALE & AUDIO SYNTHESIS
+       ========================================== */
+    const SCALE = [
+      { note: 'C4',  freq: 261.63, key: 'a', step: 0, color: '#ff5e7e', sides: 3 },
+      { note: 'D4',  freq: 293.66, key: 's', step: 1, color: '#ff9a5e', sides: 4 },
+      { note: 'E4',  freq: 329.63, key: 'd', step: 2, color: '#ffe15e', sides: 5 },
+      { note: 'F4',  freq: 349.23, key: 'f', step: 3, color: '#68ff8b', sides: 6 },
+      { note: 'G4',  freq: 392.00, key: 'g', step: 4, color: '#5ef2ff', sides: 3 },
+      { note: 'A4',  freq: 440.00, key: 'h', step: 5, color: '#668cff', sides: 4 },
+      { note: 'B4',  freq: 493.88, key: 'j', step: 6, color: '#b466ff', sides: 5 },
+      { note: 'C5',  freq: 523.25, key: 'k', step: 7, color: '#ff66d9', sides: 6 },
+      { note: 'D5',  freq: 587.33, key: 'l', step: 8, color: '#5effb7', sides: 3 },
+      { note: 'E5',  freq: 659.25, key: ';', step: 9, color: '#ffd166', sides: 4 }
+    ];
+
+    let audioCtx = null;
+
+    function ensureAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playPluck(freq, velocity = 0.8) {
+      ensureAudio();
+      const now = audioCtx.currentTime;
+
+      // Warm fundamental + bright harmonic pluck
+      const osc1 = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+      const filter = audioCtx.createBiquadFilter();
+      const gain = audioCtx.createGain();
+
+      osc1.type = 'triangle';
+      osc1.frequency.setValueAtTime(freq, now);
+
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(freq * 2, now);
+
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(freq * 5, now);
+      filter.frequency.exponentialRampToValueAtTime(freq * 1.2, now + 0.9);
+
+      const peak = Math.min(0.35, Math.max(0.08, velocity * 0.28));
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(peak, now + 0.012);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.45);
+
+      osc1.connect(filter);
+      osc2.connect(filter);
+      filter.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc1.start(now);
+      osc2.start(now);
+      osc1.stop(now + 1.5);
+      osc2.stop(now + 1.5);
+    }
+
+    /* ==========================================
+       2. BUILD PIANO STRIP UI
+       ========================================== */
+    const pianoEl = document.getElementById('piano');
+    const keyElements = {};
+
+    SCALE.forEach((item, index) => {
+      const k = document.createElement('div');
+      k.className = 'key';
+      k.style.setProperty('--key-color', item.color);
+      k.innerHTML = `
+        <span class="key-bind">${item.key}</span>
+        <span class="key-note">${item.note}</span>
+      `;
+      k.addEventListener('pointerdown', () => triggerPianoKey(index));
+      pianoEl.appendChild(k);
+      keyElements[item.key] = { el: k, index };
+    });
+
+    function triggerPianoKey(scaleIndex) {
+      const item = SCALE[scaleIndex];
+      const keyObj = keyElements[item.key];
+      if (keyObj) {
+        keyObj.el.classList.add('playing');
+        setTimeout(() => keyObj.el.classList.remove('playing'), 160);
+      }
+
+      // Play initial soft key tone and launch a kinetic orb upwards from the key
+      playPluck(item.freq, 0.55);
+      recordSheetNote(item);
+
+      const rect = keyObj.el.getBoundingClientRect();
+      const canvasRect = pgCanvas.getBoundingClientRect();
+      const spawnX = rect.left + rect.width / 2 - canvasRect.left;
+      const spawnY = pgCanvas.height - 12;
+
+      orbs.push({
+        x: spawnX,
+        y: spawnY,
+        vx: (Math.random() - 0.5) * 3.5,
+        vy: -7.5 - Math.random() * 2.5,
+        radius: 5,
+        color: item.color,
+        trail: [],
+        life: 0,
+        maxLife: 520,
+        cooldowns: new Map()
+      });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.repeat) return;
+      const k = e.key.toLowerCase();
+      if (keyElements[k]) {
+        triggerPianoKey(keyElements[k].index);
+      }
+    });
+
+    /* ==========================================
+       3. PLAYGROUND PHYSICS & SHAPES
+       ========================================== */
+    const pgCanvas = document.getElementById('playground');
+    const pgCtx = pgCanvas.getContext('2d');
+
+    const shapes = [];
+    const orbs = [];
+    const ripples = [];
+    let autoPulse = true;
+    let lastPulseTime = 0;
+
+    function resizePlayground() {
+      pgCanvas.width = pgCanvas.parentElement.clientWidth;
+      pgCanvas.height = pgCanvas.parentElement.clientHeight;
+      if (shapes.length === 0) initDefaultShapes();
+    }
+
+    function initDefaultShapes() {
+      const w = pgCanvas.width;
+      const h = pgCanvas.height;
+      const indices = [0, 2, 4, 5, 7, 8, 9];
+      indices.forEach((sIdx, i) => {
+        const spec = SCALE[sIdx];
+        const x = (w * 0.16) + (i / (indices.length - 1)) * (w * 0.68);
+        const y = (h * 0.3) + Math.sin(i * 1.4) * (h * 0.22);
+        shapes.push(createShape(x, y, sIdx));
+      });
+    }
+
+    function createShape(x, y, scaleIndex) {
+      const spec = SCALE[scaleIndex];
+      return {
+        id: Math.random().toString(36).slice(2),
+        x,
+        y,
+        radius: 28,
+        senseRadius: 44, // Plucks when an orb passes through this aura or bounces
+        scaleIndex,
+        angle: Math.random() * Math.PI * 2,
+        spin: (Math.random() - 0.5) * 0.008,
+        pluckGlow: 0
+      };
+    }
+
+    // Pointer Interaction (Drag shapes or click empty space to add a shape)
+    let draggedShape = null;
+    let pointerDownPos = null;
+    let didDrag = false;
+
+    pgCanvas.addEventListener('pointerdown', (e) => {
+      ensureAudio();
+      const rect = pgCanvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      pointerDownPos = { x, y };
+      didDrag = false;
+
+      for (let i = shapes.length - 1; i >= 0; i--) {
+        const s = shapes[i];
+        if (Math.hypot(x - s.x, y - s.y) <= s.radius + 10) {
+          draggedShape = s;
+          break;
+        }
+      }
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (!draggedShape) return;
+      const rect = pgCanvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      if (pointerDownPos && Math.hypot(x - pointerDownPos.x, y - pointerDownPos.y) > 5) {
+        didDrag = true;
+      }
+      draggedShape.x = Math.max(30, Math.min(pgCanvas.width - 30, x));
+      draggedShape.y = Math.max(30, Math.min(pgCanvas.height - 30, y));
+    });
+
+    window.addEventListener('pointerup', (e) => {
+      if (draggedShape && !didDrag) {
+        // Clicking a shape cycles its note up the scale
+        draggedShape.scaleIndex = (draggedShape.scaleIndex + 1) % SCALE.length;
+        const spec = SCALE[draggedShape.scaleIndex];
+        draggedShape.pluckGlow = 1;
+        playPluck(spec.freq, 0.7);
+        recordSheetNote(spec);
+      } else if (!draggedShape && pointerDownPos && !didDrag) {
+        // Clicking empty canvas spawns a new resonant shape
+        const rect = pgCanvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        if (x >= 0 && x <= pgCanvas.width && y >= 0 && y <= pgCanvas.height) {
+          const randomIdx = Math.floor(Math.random() * SCALE.length);
+          const newShape = createShape(x, y, randomIdx);
+          newShape.pluckGlow = 1;
+          shapes.push(newShape);
+          playPluck(SCALE[randomIdx].freq, 0.7);
+          recordSheetNote(SCALE[randomIdx]);
+        }
+      }
+      draggedShape = null;
+      pointerDownPos = null;
+    });
+
+    function pluckShape(shape, orb) {
+      const spec = SCALE[shape.scaleIndex];
+      shape.pluckGlow = 1.0;
+      shape.spin = (Math.random() > 0.5 ? 1 : -1) * 0.035;
+
+      const speed = Math.hypot(orb.vx, orb.vy);
+      playPluck(spec.freq, Math.min(1, speed / 7));
+      recordSheetNote(spec);
+
+      ripples.push({
+        x: shape.x,
+        y: shape.y,
+        r: shape.radius,
+        maxR: shape.senseRadius + 34,
+        alpha: 0.9,
+        color: spec.color
+      });
+    }
+
+    function updatePhysics(timestamp) {
+      // Optional auto-emitter from top center so users immediately see/hear the mechanism
+      if (autoPulse && timestamp - lastPulseTime > 1700) {
+        lastPulseTime = timestamp;
+        orbs.push({
+          x: pgCanvas.width * (0.25 + Math.random() * 0.5),
+          y: 18,
+          vx: (Math.random() - 0.5) * 4.5,
+          vy: 2.2 + Math.random() * 1.5,
+          radius: 4.5,
+          color: '#66fcf1',
+          trail: [],
+          life: 0,
+          maxLife: 540,
+          cooldowns: new Map()
+        });
+      }
+
+      // Update shapes
+      for (const s of shapes) {
+        s.angle += s.spin;
+        s.spin *= 0.985;
+        if (Math.abs(s.spin) < 0.004) s.spin = Math.sign(s.spin || 1) * 0.004;
+        if (s.pluckGlow > 0) s.pluckGlow = Math.max(0, s.pluckGlow - 0.03);
+      }
+
+      // Update orbs
+      for (let i = orbs.length - 1; i >= 0; i--) {
+        const o = orbs[i];
+        o.life++;
+        if (o.life > o.maxLife) {
+          orbs.splice(i, 1);
+          continue;
+        }
+
+        // Gentle gravity
+        o.vy += 0.045;
+        o.x += o.vx;
+        o.y += o.vy;
+
+        // Bounce off walls
+        if (o.x < o.radius) { o.x = o.radius; o.vx *= -0.88; }
+        if (o.x > pgCanvas.width - o.radius) { o.x = pgCanvas.width - o.radius; o.vx *= -0.88; }
+        if (o.y < o.radius) { o.y = o.radius; o.vy *= -0.88; }
+        if (o.y > pgCanvas.height - o.radius) {
+          o.y = pgCanvas.height - o.radius;
+          o.vy *= -0.78;
+        }
+
+        o.trail.push({ x: o.x, y: o.y });
+        if (o.trail.length > 14) o.trail.shift();
+
+        // Check proximity ("moving past") and physical bounce with each shape
+        for (const s of shapes) {
+          const dx = o.x - s.x;
+          const dy = o.y - s.y;
+          const dist = Math.hypot(dx, dy);
+          const lastHit = o.cooldowns.get(s.id) || -999;
+
+          // 1. Moving past within the resonant aura plucks the shape
+          if (dist < s.senseRadius && o.life - lastHit > 28) {
+            o.cooldowns.set(s.id, o.life);
+            pluckShape(s, o);
+          }
+
+          // 2. Direct collision gently deflects the orb
+          if (dist < s.radius + o.radius) {
+            const nx = dx / (dist || 1);
+            const ny = dy / (dist || 1);
+            const overlap = (s.radius + o.radius) - dist;
+            o.x += nx * overlap;
+            o.y += ny * overlap;
+
+            const dot = o.vx * nx + o.vy * ny;
+            o.vx = (o.vx - 2 * dot * nx) * 0.92;
+            o.vy = (o.vy - 2 * dot * ny) * 0.92;
+            o.color = SCALE[s.scaleIndex].color;
+          }
+        }
+      }
+
+      // Update ripples
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        const r = ripples[i];
+        r.r += 1.6;
+        r.alpha -= 0.032;
+        if (r.alpha <= 0) ripples.splice(i, 1);
+      }
+    }
+
+    function drawPolygon(ctx, x, y, radius, sides, rotation) {
+      ctx.beginPath();
+      for (let i = 0; i < sides; i++) {
+        const theta = rotation + (i * 2 * Math.PI) / sides;
+        const px = x + radius * Math.cos(theta);
+        const py = y + radius * Math.sin(theta);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+    }
+
+    function renderPlayground() {
+      pgCtx.clearRect(0, 0, pgCanvas.width, pgCanvas.height);
+
+      // Draw ripples
+      for (const r of ripples) {
+        pgCtx.save();
+        pgCtx.beginPath();
+        pgCtx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
+        pgCtx.strokeStyle = r.color;
+        pgCtx.globalAlpha = Math.max(0, r.alpha);
+        pgCtx.lineWidth = 1.5;
+        pgCtx.stroke();
+        pgCtx.restore();
+      }
+
+      // Draw shapes
+      for (const s of shapes) {
+        const spec = SCALE[s.scaleIndex];
+
+        // Subtle resonant field ring ("move past" zone)
+        pgCtx.save();
+        pgCtx.beginPath();
+        pgCtx.arc(s.x, s.y, s.senseRadius, 0, Math.PI * 2);
+        pgCtx.strokeStyle = spec.color;
+        pgCtx.globalAlpha = 0.12 + s.pluckGlow * 0.25;
+        pgCtx.setLineDash([3, 5]);
+        pgCtx.lineWidth = 1;
+        pgCtx.stroke();
+        pgCtx.restore();
+
+        // Main geometric body
+        pgCtx.save();
+        const currentRadius = s.radius + s.pluckGlow * 5;
+        drawPolygon(pgCtx, s.x, s.y, currentRadius, spec.sides, s.angle);
+        pgCtx.fillStyle = `rgba(18, 20, 28, 0.85)`;
+        pgCtx.fill();
+        pgCtx.lineWidth = 2 + s.pluckGlow * 2.5;
+        pgCtx.strokeStyle = spec.color;
+        pgCtx.shadowColor = spec.color;
+        pgCtx.shadowBlur = 10 + s.pluckGlow * 24;
+        pgCtx.stroke();
+
+        // Note label in center
+        pgCtx.fillStyle = '#e5e7eb';
+        pgCtx.font = '600 11px sans-serif';
+        pgCtx.textAlign = 'center';
+        pgCtx.textBaseline = 'middle';
+        pgCtx.shadowBlur = 0;
+        pgCtx.fillText(spec.note, s.x, s.y);
+        pgCtx.restore();
+      }
+
+      // Draw orbs & trails
+      for (const o of orbs) {
+        if (o.trail.length > 1) {
+          pgCtx.save();
+          pgCtx.beginPath();
+          for (let i = 0; i < o.trail.length; i++) {
+            const pt = o.trail[i];
+            if (i === 0) pgCtx.moveTo(pt.x, pt.y);
+            else pgCtx.lineTo(pt.x, pt.y);
+          }
+          pgCtx.strokeStyle = o.color;
+          pgCtx.globalAlpha = 0.35;
+          pgCtx.lineWidth = 2;
+          pgCtx.stroke();
+          pgCtx.restore();
+        }
+
+        pgCtx.save();
+        pgCtx.beginPath();
+        pgCtx.arc(o.x, o.y, o.radius, 0, Math.PI * 2);
+        pgCtx.fillStyle = '#ffffff';
+        pgCtx.shadowColor = o.color;
+        pgCtx.shadowBlur = 12;
+        pgCtx.fill();
+        pgCtx.restore();
+      }
+    }
+
+    /* ==========================================
+       4. LIVE SHEET MUSIC NOTATION ENGINE
+       ========================================== */
+    const sheetWrapper = document.getElementById('sheet-wrapper');
+    const sheetCanvas = document.getElementById('sheet');
+    const sheetCtx = sheetCanvas.getContext('2d');
+
+    const writtenNotes = [];
+    const STAFF_LINE_GAP = 12; // 12px between each of the 5 treble staff lines
+    const NOTE_SPACING = 34;
+    const LEFT_MARGIN = 76;
+
+    function resizeSheet() {
+      const minW = sheetWrapper.clientWidth;
+      const requiredW = Math.max(minW, LEFT_MARGIN + writtenNotes.length * NOTE_SPACING + 120);
+      sheetCanvas.width = requiredW;
+      sheetCanvas.height = sheetWrapper.clientHeight;
+      renderSheet();
+    }
+
+    function recordSheetNote(spec) {
+      writtenNotes.push({
+        note: spec.note,
+        step: spec.step, // diatonic steps above C4 (0 = C4, 2 = E4 bottom line, 9 = E5 top space)
+        color: spec.color,
+        born: performance.now()
+      });
+
+      const requiredW = LEFT_MARGIN + writtenNotes.length * NOTE_SPACING + 120;
+      if (requiredW > sheetCanvas.width) {
+        sheetCanvas.width = requiredW;
+      }
+
+      // Smoothly keep latest notes in view
+      sheetWrapper.scrollTo({
+        left: sheetCanvas.width,
+        behavior: 'smooth'
+      });
+    }
+
+    function renderSheet() {
+      const w = sheetCanvas.width;
+      const h = sheetCanvas.height;
+      sheetCtx.clearRect(0, 0, w, h);
+
+      // Bottom line of Treble Clef (E4, step = 2)
+      const bottomLineY = Math.round(h * 0.66);
+      const halfStepPx = STAFF_LINE_GAP / 2; // 6px per diatonic step
+
+      // Draw 5 staff lines (steps 2, 4, 6, 8, 10 -> E4, G4, B4, D5, F5)
+      sheetCtx.strokeStyle = '#2d3343';
+      sheetCtx.lineWidth = 1;
+      for (let i = 0; i < 5; i++) {
+        const y = bottomLineY - i * STAFF_LINE_GAP;
+        sheetCtx.beginPath();
+        sheetCtx.moveTo(20, y);
+        sheetCtx.lineTo(w - 20, y);
+        sheetCtx.stroke();
+      }
+
+      // Draw Treble Clef symbol
+      sheetCtx.fillStyle = '#8b949e';
+      sheetCtx.font = '46px serif';
+      sheetCtx.textBaseline = 'middle';
+      sheetCtx.fillText('𝄞', 28, bottomLineY - STAFF_LINE_GAP * 1.85);
+
+      const now = performance.now();
+
+      // Draw each plucked note on the staff
+      writtenNotes.forEach((n, idx) => {
+        const x = LEFT_MARGIN + idx * NOTE_SPACING;
+        // Step 2 is E4 (bottomLineY). Each step up moves Y up by halfStepPx.
+        const y = bottomLineY - (n.step - 2) * halfStepPx;
+
+        // Measure bar line every 8 notes
+        if (idx > 0 && idx % 8 === 0) {
+          const barX = x - NOTE_SPACING / 2;
+          sheetCtx.strokeStyle = '#232836';
+          sheetCtx.beginPath();
+          sheetCtx.moveTo(barX, bottomLineY);
+          sheetCtx.lineTo(barX, bottomLineY - 4 * STAFF_LINE_GAP);
+          sheetCtx.stroke();
+        }
+
+        // Ledger line for Middle C (C4, step === 0)
+        if (n.step === 0) {
+          sheetCtx.strokeStyle = '#6b7280';
+          sheetCtx.lineWidth = 1.4;
+          sheetCtx.beginPath();
+          sheetCtx.moveTo(x - 10, y);
+          sheetCtx.lineTo(x + 10, y);
+          sheetCtx.stroke();
+        }
+
+        const age = Math.min(1, (now - n.born) / 350);
+        const glow = 1 - age;
+
+        // Note stem (upward for notes below B4, downward for B4 and above)
+        sheetCtx.save();
+        sheetCtx.strokeStyle = n.color;
+        sheetCtx.lineWidth = 1.6;
+        sheetCtx.beginPath();
+        if (n.step < 6) {
+          sheetCtx.moveTo(x + 5, y);
+          sheetCtx.lineTo(x + 5, y - 28);
+        } else {
+          sheetCtx.moveTo(x - 5, y);
+          sheetCtx.lineTo(x - 5, y + 28);
+        }
+        sheetCtx.stroke();
+
+        // Tilted oval notehead
+        sheetCtx.beginPath();
+        sheetCtx.ellipse(x, y, 6.2, 4.4, -0.32, 0, Math.PI * 2);
+        sheetCtx.fillStyle = n.color;
+        if (glow > 0) {
+          sheetCtx.shadowColor = n.color;
+          sheetCtx.shadowBlur = glow * 16;
+        }
+        sheetCtx.fill();
+
+        // Subtle note label below the staff
+        sheetCtx.shadowBlur = 0;
+        sheetCtx.fillStyle = '#6b7280';
+        sheetCtx.font = '10px sans-serif';
+        sheetCtx.textAlign = 'center';
+        sheetCtx.fillText(n.note, x, bottomLineY + 26);
+        sheetCtx.restore();
+      });
+    }
+
+    /* ==========================================
+       5. CONTROLS & MAIN LOOP
+       ========================================== */
+    const btnStream = document.getElementById('btn-stream');
+    btnStream.addEventListener('click', () => {
+      ensureAudio();
+      autoPulse = !autoPulse;
+      btnStream.textContent = `Auto Pulse: ${autoPulse ? 'ON' : 'OFF'}`;
+      btnStream.classList.toggle('active', autoPulse);
+    });
+
+    document.getElementById('btn-clear-orbs').addEventListener('click', () => {
+      orbs.length = 0;
+    });
+
+    document.getElementById('btn-clear-sheet').addEventListener('click', () => {
+      writtenNotes.length = 0;
+      resizeSheet();
+    });
+
+    window.addEventListener('resize', () => {
+      resizePlayground();
+      resizeSheet();
+    });
+
+    resizePlayground();
+    resizeSheet();
+
+    function animate(timestamp) {
+      updatePhysics(timestamp);
+      renderPlayground();
+      renderSheet();
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+  </script>
+</body>
+</html>

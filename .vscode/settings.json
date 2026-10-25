@@ -1,10 +1,11 @@
 {
+  "security.workspace.trust.enabled": false,
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
   "C_Cpp_Runner.debuggerPath": "gdb",
   "C_Cpp_Runner.cStandard": "",
   "C_Cpp_Runner.cppStandard": "",
-  "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
+  "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.useMsvc": false,
   "C_Cpp_Runner.warnings": [
     "-Wall",
@@ -55,5 +56,278 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "C_Cpp.errorSquiggles": "enabled",
+  "C_Cpp.codeAnalysis.exclude": {},
+  "files.associations": {},
+  "files.exclude": {},
+  "search.exclude": {},
+  "workbench.editor.labelFormat": "short",
+  "workbench.tree.indent": 10,
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.sideBar.location": "left",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.showIcons": true,
+  "workbench.editor.alwaysShowEditorActions": true,
+  "workbench.browser.openLocalhostLinks": false,
+  "workbench.colorCustomizations": {
+    "editor.selectionBackground": "#3A3D4199",
+    "editorGutter.foldingControlForeground": "#FF0000",
+    "tree.indentGuidesStroke": "#3A96DD",
+    "list.activeSelectionBackground": "#003366",
+    "list.activeSelectionForeground": "#ff00b3",
+    "list.focusBackground": "#0040ff5e"
+  },
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredDarkColorTheme": "Dark Modern",
+  "workbench.colorTheme": "Dark 2026",
+  "workbench.preferredLightColorTheme": "Visual Studio 2017 Light - C++",
+  "workbench.preferredHighContrastLightColorTheme": "Visual Studio 2017 Dark - C++",
+  "editor.fontFamily": "'Cascadia Code', 'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontVariations": false,
+  "editor.allowVariableFonts": true,
+  "editor.fontWeight": "500",
+  "editor.letterSpacing": 0.5,
+  "editor.tabSize": 2,
+  "editor.fontSize": 15,
+  "editor.lineHeight": 22,
+  "editor.wordWrap": "on",
+  "editor.mouseWheelZoom": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.inlayHints.enabled": "on",
+  "diffEditor.codeLens": true,
+  "editor.insertSpaces": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.colorDecorators": true,
+  "editor.detectIndentation": false,
+  "editor.guides.indentation": true,
+  "editor.guides.highlightActiveIndentation": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "punctuation.definition.block",
+        "settings": {
+          "foreground": "#FF0000"
+        }
+      }
+    ]
+  },
+  "files.autoSave": "onFocusChange",
+  "files.insertFinalNewline": true,
+  "screencastMode.keyboardOptions": {
+    "showKeys": true,
+    "showSingleEditorCursorMoves": false
+  },
+  "screencastMode.fontSize": 30,
+  "screencastMode.mouseIndicatorSize": 40,
+  "screencastMode.verticalOffset": 5,
+  "screencastMode.keyboardOverlayTimeout": 1500,
+  "terminal.integrated.enableMultiLinePasteWarning": "auto",
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.osx": "bash",
+  "cSpell.diagnosticLevel": "Warning",
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "chat.viewSessions.orientation": "stacked",
+  "settingsSync.ignoredExtensions": [],
+  "settingsSync.ignoredSettings": [],
+  "window.restoreWindows": "folders",
+  "@azure.argTenant": "",
+  "workbench.editor.empty.hint": "text",
+  "livePreview.portNumber": 3005,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "javascript": false,
+    "c": false
+  },
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "geminicodeassist.project": "knitted-defender-070k4",
+  "geminicodeassist.inlineSuggestions.enableAuto": false,
+  "mdb.mcp.server": "autoStartEnabled",
+  "http.systemCertificatesNode": true,
+  "tabnine.experimentalAutoImports": true,
+  "claudeCode.preferredLocation": "panel",
+  "code-runner.executorMapByFileExtension": {
+    ".c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+    ".java": "javac \"$fileName\" && java \"$fileNameWithoutExt\"",
+    ".py": "python -u $fileName",
+    ".js": "node $fileName",
+    ".ts": "ts-node $fileName",
+    ".go": "go run $fileName",
+    ".rs": "cd $dir && rustc $fileName && ./$fileNameWithoutExt",
+    ".php": "php $fileName",
+    ".rb": "ruby $fileName",
+    ".swift": "swift $fileName",
+    ".sh": "bash $fileName",
+    ".ps1": "powershell -ExecutionPolicy Bypass -File $fileName",
+    ".lua": "lua $fileName",
+    ".r": "Rscript $fileName",
+    ".pl": "perl $fileName",
+    ".groovy": "groovy $fileName",
+    ".clj": "clojure $fileName",
+    ".sql": "sqlite3 < $fileName",
+    ".md": "markdown-preview",
+    ".html": "start $fileName",
+    ".vb": "cd $dir && vbc /nologo $fileName && ./$fileNameWithoutExt",
+    ".vbs": "cscript //Nologo",
+    ".scala": "scala",
+    ".jl": "julia",
+    ".cr": "crystal",
+    ".ml": "ocaml",
+    ".zig": "zig run",
+    ".exs": "elixir",
+    ".hx": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    ".rkt": "racket",
+    ".scm": "csi -script",
+    ".ahk": "autohotkey",
+    ".au3": "autoit3",
+    ".kt": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+    ".kts": "kotlinc -script",
+    ".dart": "dart",
+    ".pas": "cd $dir && fpc $fileName && ./$fileNameWithoutExt",
+    ".pp": "cd $dir && fpc $fileName && ./$fileNameWithoutExt",
+    ".d": "cd $dir && dmd $fileName && ./$fileNameWithoutExt",
+    ".hs": "runhaskell",
+    ".nim": "nim compile --verbosity:0 --hints:off --run",
+    ".csproj": "dotnet run --project",
+    ".fsproj": "dotnet run --project",
+    ".lisp": "sbcl --script",
+    ".kit": "kitc --run",
+    ".v": "v run",
+    ".vsh": "v run",
+    ".sass": "sass --style expanded",
+    ".cu": "cd $dir && nvcc $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+    ".ring": "ring",
+    ".sml": "cd $dir && sml $fileName",
+    ".mojo": "mojo run",
+    ".erl": "escript",
+    ".spwn": "spwn build",
+    ".pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
+    ".gleam": "gleam run -m $fileNameWithoutExt"
+  },
+  "code-runner.runInTerminal": true,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.saveAllFilesBeforeRun": true,
+  "code-runner.clearPreviousOutput": false,
+  "code-runner.terminalRoot": "/",
+  "code-runner.fileDirectoryAsCwd": true,
+  "git.confirmSync": false,
+  "material-icon-theme.folders.associations": {
+    "backend": "server",
+    "frontend": "client",
+    "database": "database",
+    "docs": "docs",
+    "images": "images",
+    "components": "components",
+    "hooks": "hook",
+    "utils": "tools",
+    "config": "config",
+    "assets": "assets",
+    "public": "public",
+    "pages": "route",
+    "api": "api"
+  },
+  "better-comments.tags": [
+    {
+      "tag": "*",
+      "color": "#32CD32",
+      "bold": false
+    },
+    {
+      "tag": "&",
+      "color": "#BF00FF",
+      "bold": false
+    },
+    {
+      "tag": "^",
+      "color": "#FB923C",
+      "bold": false
+    },
+    {
+      "tag": "!",
+      "color": "#D100D1",
+      "bold": false
+    },
+    {
+      "tag": "NOTE",
+      "color": "#42A5F5",
+      "bold": true
+    },
+    {
+      "tag": "WARN",
+      "color": "#FFD54F",
+      "bold": true
+    },
+    {
+      "tag": "CRITICAL",
+      "color": "#FF1744",
+      "bold": true
+    },
+    {
+      "tag": "REMINDER",
+      "color": "#FF69B4",
+      "bold": true
+    },
+    {
+      "tag": "OPTIMIZE",
+      "color": "#FF9800",
+      "bold": true
+    },
+    {
+      "tag": "REMOVE",
+      "color": "#A0522D",
+      "bold": true,
+      "strikethrough": true
+    }
+  ],
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "[snippets]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "workbench.editor.enablePreview": false,
+  "sqldeveloper.datagrid.fontFamily": "Consolas, 'Courier New', monospace",
+  "[oracle-sql]": {
+    "editor.defaultFormatter": "Oracle.sql-developer"
+  },
+  "sqldeveloper.telemetry.enabled": true,
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": [
+        "--login",
+        "-i"
+      ]
+    }
+  },
+  "git.autofetch": true
 }

@@ -5,8 +5,7 @@
 
 #include <stdio.h>
 int main(){
-    int i;
-
+  printf("Hello\n");
 return 0;}
 
 ///////////////////////// I-O ////////////////////////////////

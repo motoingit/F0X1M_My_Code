@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filling Glass</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #071827;
+      }
+
+      svg {
+        width: 240px;
+        overflow: visible;
+      }
+
+      .water {
+        animation: fill 4s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+      }
+
+      .wave {
+        animation: wave 3s ease-in-out infinite;
+      }
+
+      .wave-back {
+        animation: wave 4s ease-in-out infinite reverse;
+      }
+
+      @keyframes fill {
+        from {
+          transform: translateY(190px);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes wave {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(-35px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="water" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#71e2ff" stop-opacity=".8" />
+          <stop offset="100%" stop-color="#1684df" />
+        </linearGradient>
+
+        <clipPath id="glass">
+          <path d="M61 43 L75 248 Q120 262 165 248 L179 43 Z" />
+        </clipPath>
+      </defs>
+
+      <g clip-path="url(#glass)">
+        <rect
+          x="55"
+          y="40"
+          width="130"
+          height="220"
+          fill="#bcefff"
+          fill-opacity=".12"
+        />
+
+        <g class="water">
+          <rect x="50" y="85" width="145" height="180" fill="url(#water)" />
+
+          <path
+            class="wave"
+            d="M35 85 Q55 72 75 85 T115 85 T155 85 T195 85 T235 85 V110 H35Z"
+            fill="#8deaff"
+          />
+
+          <path
+            class="wave-back"
+            d="M35 89 Q55 102 75 89 T115 89 T155 89 T195 89 T235 89 V112 H35Z"
+            fill="#42b9f2"
+            fill-opacity=".65"
+          />
+        </g>
+      </g>
+
+      <path
+        d="M61 43 L75 248 Q120 262 165 248 L179 43"
+        fill="none"
+        stroke="#d6f5ff"
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+
+      <ellipse
+        cx="120"
+        cy="43"
+        rx="59"
+        ry="7"
+        fill="none"
+        stroke="#d6f5ff"
+        stroke-width="3"
+      />
+
+      <path
+        d="M72 58 L82 215"
+        stroke="white"
+        stroke-width="4"
+        stroke-linecap="round"
+        opacity=".4"
+      />
+    </svg>
+  </body>
+</html>

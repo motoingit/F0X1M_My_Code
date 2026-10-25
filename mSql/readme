@@ -1,13 +1,102 @@
-Probably worth mentioning that Auto Commit is enabled by default in this extension - not everyone will want this.
+# Oracle Database — Setup & Commands
 
-Press F1 > Open Settings > Oracle Developer Tools (under Extensions) > Un-check "Query: Auto Commit" to disable.
+## 1. Prerequisite
 
----
+- **.NET Runtime for Windows:** Mentioned in the extension's prerequisites, but not considered useful for the current Ubuntu setup.
 
-# Pre-reqisite
-Install .Net Runtime for Winidows
-// but i dont find this userfull
+## 2. Oracle Developer Tools — Auto Commit
 
-# window curr config
+**Note:** Auto Commit is enabled by default in this extension. This may not be desirable for everyone.
+
+### Disable Auto Commit
+
+1. Press `F1` in VS Code.
+2. Open **Settings**.
+3. Navigate to **Extensions → Oracle Developer Tools**.
+4. Uncheck **Query: Auto Commit**.
+
+**Why check this setting?**
+
+With Auto Commit enabled, changes may be committed automatically after a query executes. Disable it if you want to manage transactions manually using `COMMIT` and `ROLLBACK`.
+
+## 3. Connecting to Oracle Database
+
+### Connect as SYSDBA
+
+```bash
 sqlplus sys/moto@localhost:1521/XEPDB1 as sysdba
+```
+
+### Connect as a Normal Database User
+
+```bash
 sqlplus mohit/mohit@localhost:1521/XEPDB1
+```
+
+**Connection details:**
+
+- `localhost` — database host
+- `1521` — Oracle listener port
+- `XEPDB1` — pluggable database service name
+- `sys` / `mohit` — database usernames
+- `moto` / `mohit` — passwords in these example commands
+
+**Security note:** These commands expose passwords in shell history and potentially process listings. For safer interactive connections, use:
+
+```bash
+sqlplus sys@localhost:1521/XEPDB1 as sysdba
+```
+
+```bash
+sqlplus mohit@localhost:1521/XEPDB1
+```
+
+Enter the password when prompted.
+
+## 4. Oracle Docker Container Management
+
+**Container name:** `oracle11g`
+
+### 4.1 Stop the Container
+
+```bash
+docker stop oracle11g
+```
+
+Stops the Oracle container.
+
+### 4.2 Start the Container Again
+
+```bash
+docker start oracle11g
+```
+
+Starts the existing container again.
+
+### 4.3 Check Container Status
+
+```bash
+docker ps -a
+```
+
+Displays all containers, including stopped containers.
+
+To display only running containers:
+
+```bash
+docker ps
+```
+
+## 5. Quick Revision
+
+| Task | Command |
+|---|---|
+| Start Oracle container | `docker start oracle11g` |
+| Stop Oracle container | `docker stop oracle11g` |
+| List all containers | `docker ps -a` |
+| List running containers | `docker ps` |
+| Connect as SYSDBA | `sqlplus sys@localhost:1521/XEPDB1 as sysdba` |
+| Connect as normal user | `sqlplus mohit@localhost:1521/XEPDB1` |
+| Exit SQL*Plus | `EXIT;` |
+
+**Important:** These connection commands assume the container exposes port `1521` on the Ubuntu host and that the service `XEPDB1` exists. The example usernames and passwords must match your actual database configuration.

@@ -3,3 +3,10 @@ SELECT * FROM tab;
 
 --
 SELECT * FROM v$version;
+
+-- show users
+
+
+--
+drop user mohit;
+

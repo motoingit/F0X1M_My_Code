@@ -1,5 +1,5 @@
 -- create user
-create user zyx_temp identified by moto123;
+create user moto identified by moto123;
 
 -- delete user
 DROP USER zyx_temp CASCADE;
@@ -11,20 +11,20 @@ GRANT
   CREATE VIEW,
   CREATE SEQUENCE,
   CREATE PROCEDURE
-TO zyx_temp;
+TO moto;
 
 -- recheck config of user permission
 SELECT grantee, privilege
 FROM dba_sys_privs
-WHERE grantee = 'ZYX_TEMP';
+WHERE grantee = 'MOTO';
 
 --! ALTER USER testuser QUOTA UNLIMITED ON USERS;
-GRANT UNLIMITED TABLESPACE TO zyx_temp;
+GRANT UNLIMITED TABLESPACE TO moto;
 
---see users
+-- see users
 SELECT USERNAME FROM DBA_USERS ORDER BY USERNAME;
 
---revoke
+--! revoke
 REVOKE 
   CREATE SESSION,
   CREATE TABLE,

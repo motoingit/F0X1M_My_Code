@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three-Octave Piano SVG</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; padding:24px; background:#071827; color:#e8f6ff; font-family:system-ui,-apple-system,Segoe UI,sans-serif; }
+  h1 { margin:0; font-size:clamp(1.2rem,2vw,1.7rem); font-weight:650; }
+  p { margin:0; color:#a9c4d5; text-align:center; }
+  .piano-wrap { width:min(100%, 1100px); }
+  svg { display:block; width:100%; height:auto; overflow:visible; }
+  .controls { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:12px; }
+  button { border:0; border-radius:999px; padding:11px 18px; background:#38c7f4; color:#052333; font-weight:700; cursor:pointer; }
+  button:hover { background:#83e4ff; }
+  button:focus-visible { outline:3px solid white; outline-offset:3px; }
+  #status { min-width:180px; color:#a9e9ff; font-variant-numeric:tabular-nums; }
+  .key-group.pressed .glow-overlay { opacity:.95; }
+  .key-group.pressed .key { stroke:#e0fbff; stroke-width:2; }
+  .key-group.pressed { filter:drop-shadow(0 0 5px #26cfff); }
+  @media (prefers-reduced-motion: reduce) { .key { transition:none; } }
+</style>
+</head>
+<body>
+  <h1>Three-Octave Piano</h1>
+  <p>36 keys · C3–B5 · Middle octave plays chromatically</p>
+  <div class="piano-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1056 306" role="img" aria-labelledby="title desc">
+  <title id="title">Three-octave piano keyboard</title>
+  <desc id="desc">A logically ordered 36-key keyboard from C3 to B5. The middle octave C4 through B4 lights up sequentially.</desc>
+  <defs>
+    <linearGradient id="case" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#303237"/><stop offset="0.5" stop-color="#111317"/><stop offset="1" stop-color="#292b2f"/></linearGradient>
+    <linearGradient id="blackGloss" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#08090b"/><stop offset="0.35" stop-color="#33363a"/><stop offset="0.62" stop-color="#111216"/><stop offset="1" stop-color="#050608"/></linearGradient>
+    <linearGradient id="whiteGloss" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e6e7e7"/><stop offset="0.25" stop-color="#fff"/><stop offset="1" stop-color="#e7e8e8"/></linearGradient>
+    <linearGradient id="pressColor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ee7ff"/><stop offset="1" stop-color="#1689ed"/></linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity=".35"/></filter>
+  </defs>
+  <style>
+    .case { fill:url(#case); }
+    .felt { fill:#9f2638; }
+    .key { stroke:#282a2d; stroke-width:1; transition:fill .12s ease, filter .12s ease; }
+    .white-key { fill:url(#whiteGloss); }
+    .black-key { fill:url(#blackGloss); stroke:#050608; stroke-width:1.2; filter:url(#softShadow); }
+    .white-highlight { stroke:#fff; stroke-width:1.3; opacity:.72; pointer-events:none; }
+    .black-highlight { stroke:#6f7277; stroke-width:1; opacity:.35; pointer-events:none; }
+    .glow-overlay { fill:url(#pressColor); opacity:0; pointer-events:none; transition:opacity .08s linear; }
+    .key-group.pressed .glow-overlay { opacity:.95; }
+    .key-group.pressed .key { stroke:#e0fbff; stroke-width:2; }
+    .key-group.pressed { filter:drop-shadow(0 0 5px #26cfff); }
+  </style>
+  <rect x="2" y="2" width="1052" height="302" rx="8" class="case"/>
+  <rect x="10" y="17" width="1036" height="5" rx="2" class="felt"/>
+  <rect x="10" y="13" width="1036" height="7" rx="2" fill="#08090b"/>
+  <g id="white-keys">
+    <g class="key-group" data-note="C3" data-pitch="0" data-octave="3" data-keytype="white" id="key-C3">
+      <rect class="key white-key" x="24" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M26 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="25" y="35" width="46" height="246" rx="1"/>
+      <title>C3</title>
+    </g>
+    <g class="key-group" data-note="D3" data-pitch="2" data-octave="3" data-keytype="white" id="key-D3">
+      <rect class="key white-key" x="72" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M74 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="73" y="35" width="46" height="246" rx="1"/>
+      <title>D3</title>
+    </g>
+    <g class="key-group" data-note="E3" data-pitch="4" data-octave="3" data-keytype="white" id="key-E3">
+      <rect class="key white-key" x="120" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M122 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="121" y="35" width="46" height="246" rx="1"/>
+      <title>E3</title>
+    </g>
+    <g class="key-group" data-note="F3" data-pitch="5" data-octave="3" data-keytype="white" id="key-F3">
+      <rect class="key white-key" x="168" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M170 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="169" y="35" width="46" height="246" rx="1"/>
+      <title>F3</title>
+    </g>
+    <g class="key-group" data-note="G3" data-pitch="7" data-octave="3" data-keytype="white" id="key-G3">
+      <rect class="key white-key" x="216" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M218 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="217" y="35" width="46" height="246" rx="1"/>
+      <title>G3</title>
+    </g>
+    <g class="key-group" data-note="A3" data-pitch="9" data-octave="3" data-keytype="white" id="key-A3">
+      <rect class="key white-key" x="264" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M266 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="265" y="35" width="46" height="246" rx="1"/>
+      <title>A3</title>
+    </g>
+    <g class="key-group" data-note="B3" data-pitch="11" data-octave="3" data-keytype="white" id="key-B3">
+      <rect class="key white-key" x="312" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M314 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="313" y="35" width="46" height="246" rx="1"/>
+      <title>B3</title>
+    </g>
+    <g class="key-group" data-note="C4" data-pitch="0" data-octave="4" data-keytype="white" id="key-C4">
+      <rect class="key white-key" x="360" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M362 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="361" y="35" width="46" height="246" rx="1"/>
+      <title>C4</title>
+    </g>
+    <g class="key-group" data-note="D4" data-pitch="2" data-octave="4" data-keytype="white" id="key-D4">
+      <rect class="key white-key" x="408" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M410 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="409" y="35" width="46" height="246" rx="1"/>
+      <title>D4</title>
+    </g>
+    <g class="key-group" data-note="E4" data-pitch="4" data-octave="4" data-keytype="white" id="key-E4">
+      <rect class="key white-key" x="456" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M458 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="457" y="35" width="46" height="246" rx="1"/>
+      <title>E4</title>
+    </g>
+    <g class="key-group" data-note="F4" data-pitch="5" data-octave="4" data-keytype="white" id="key-F4">
+      <rect class="key white-key" x="504" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M506 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="505" y="35" width="46" height="246" rx="1"/>
+      <title>F4</title>
+    </g>
+    <g class="key-group" data-note="G4" data-pitch="7" data-octave="4" data-keytype="white" id="key-G4">
+      <rect class="key white-key" x="552" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M554 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="553" y="35" width="46" height="246" rx="1"/>
+      <title>G4</title>
+    </g>
+    <g class="key-group" data-note="A4" data-pitch="9" data-octave="4" data-keytype="white" id="key-A4">
+      <rect class="key white-key" x="600" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M602 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="601" y="35" width="46" height="246" rx="1"/>
+      <title>A4</title>
+    </g>
+    <g class="key-group" data-note="B4" data-pitch="11" data-octave="4" data-keytype="white" id="key-B4">
+      <rect class="key white-key" x="648" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M650 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="649" y="35" width="46" height="246" rx="1"/>
+      <title>B4</title>
+    </g>
+    <g class="key-group" data-note="C5" data-pitch="0" data-octave="5" data-keytype="white" id="key-C5">
+      <rect class="key white-key" x="696" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M698 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="697" y="35" width="46" height="246" rx="1"/>
+      <title>C5</title>
+    </g>
+    <g class="key-group" data-note="D5" data-pitch="2" data-octave="5" data-keytype="white" id="key-D5">
+      <rect class="key white-key" x="744" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M746 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="745" y="35" width="46" height="246" rx="1"/>
+      <title>D5</title>
+    </g>
+    <g class="key-group" data-note="E5" data-pitch="4" data-octave="5" data-keytype="white" id="key-E5">
+      <rect class="key white-key" x="792" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M794 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="793" y="35" width="46" height="246" rx="1"/>
+      <title>E5</title>
+    </g>
+    <g class="key-group" data-note="F5" data-pitch="5" data-octave="5" data-keytype="white" id="key-F5">
+      <rect class="key white-key" x="840" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M842 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="841" y="35" width="46" height="246" rx="1"/>
+      <title>F5</title>
+    </g>
+    <g class="key-group" data-note="G5" data-pitch="7" data-octave="5" data-keytype="white" id="key-G5">
+      <rect class="key white-key" x="888" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M890 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="889" y="35" width="46" height="246" rx="1"/>
+      <title>G5</title>
+    </g>
+    <g class="key-group" data-note="A5" data-pitch="9" data-octave="5" data-keytype="white" id="key-A5">
+      <rect class="key white-key" x="936" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M938 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="937" y="35" width="46" height="246" rx="1"/>
+      <title>A5</title>
+    </g>
+    <g class="key-group" data-note="B5" data-pitch="11" data-octave="5" data-keytype="white" id="key-B5">
+      <rect class="key white-key" x="984" y="34" width="48" height="248" rx="1.4"/>
+      <path d="M986 39 V276" class="white-highlight"/>
+      <rect class="glow-overlay" x="985" y="35" width="46" height="246" rx="1"/>
+      <title>B5</title>
+    </g>
+  </g>
+  <g id="black-keys">
+    <g class="key-group" data-note="C#3" data-octave="3" data-keytype="black" id="key-Cs3">
+      <rect class="key black-key" x="57.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M61.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="58.5" y="35" width="27" height="149" rx="2"/>
+      <title>C#3</title>
+    </g>
+    <g class="key-group" data-note="D#3" data-octave="3" data-keytype="black" id="key-Ds3">
+      <rect class="key black-key" x="105.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M109.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="106.5" y="35" width="27" height="149" rx="2"/>
+      <title>D#3</title>
+    </g>
+    <g class="key-group" data-note="F#3" data-octave="3" data-keytype="black" id="key-Fs3">
+      <rect class="key black-key" x="201.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M205.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="202.5" y="35" width="27" height="149" rx="2"/>
+      <title>F#3</title>
+    </g>
+    <g class="key-group" data-note="G#3" data-octave="3" data-keytype="black" id="key-Gs3">
+      <rect class="key black-key" x="249.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M253.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="250.5" y="35" width="27" height="149" rx="2"/>
+      <title>G#3</title>
+    </g>
+    <g class="key-group" data-note="A#3" data-octave="3" data-keytype="black" id="key-As3">
+      <rect class="key black-key" x="297.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M301.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="298.5" y="35" width="27" height="149" rx="2"/>
+      <title>A#3</title>
+    </g>
+    <g class="key-group" data-note="C#4" data-octave="4" data-keytype="black" id="key-Cs4">
+      <rect class="key black-key" x="393.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M397.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="394.5" y="35" width="27" height="149" rx="2"/>
+      <title>C#4</title>
+    </g>
+    <g class="key-group" data-note="D#4" data-octave="4" data-keytype="black" id="key-Ds4">
+      <rect class="key black-key" x="441.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M445.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="442.5" y="35" width="27" height="149" rx="2"/>
+      <title>D#4</title>
+    </g>
+    <g class="key-group" data-note="F#4" data-octave="4" data-keytype="black" id="key-Fs4">
+      <rect class="key black-key" x="537.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M541.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="538.5" y="35" width="27" height="149" rx="2"/>
+      <title>F#4</title>
+    </g>
+    <g class="key-group" data-note="G#4" data-octave="4" data-keytype="black" id="key-Gs4">
+      <rect class="key black-key" x="585.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M589.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="586.5" y="35" width="27" height="149" rx="2"/>
+      <title>G#4</title>
+    </g>
+    <g class="key-group" data-note="A#4" data-octave="4" data-keytype="black" id="key-As4">
+      <rect class="key black-key" x="633.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M637.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="634.5" y="35" width="27" height="149" rx="2"/>
+      <title>A#4</title>
+    </g>
+    <g class="key-group" data-note="C#5" data-octave="5" data-keytype="black" id="key-Cs5">
+      <rect class="key black-key" x="729.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M733.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="730.5" y="35" width="27" height="149" rx="2"/>
+      <title>C#5</title>
+    </g>
+    <g class="key-group" data-note="D#5" data-octave="5" data-keytype="black" id="key-Ds5">
+      <rect class="key black-key" x="777.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M781.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="778.5" y="35" width="27" height="149" rx="2"/>
+      <title>D#5</title>
+    </g>
+    <g class="key-group" data-note="F#5" data-octave="5" data-keytype="black" id="key-Fs5">
+      <rect class="key black-key" x="873.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M877.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="874.5" y="35" width="27" height="149" rx="2"/>
+      <title>F#5</title>
+    </g>
+    <g class="key-group" data-note="G#5" data-octave="5" data-keytype="black" id="key-Gs5">
+      <rect class="key black-key" x="921.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M925.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="922.5" y="35" width="27" height="149" rx="2"/>
+      <title>G#5</title>
+    </g>
+    <g class="key-group" data-note="A#5" data-octave="5" data-keytype="black" id="key-As5">
+      <rect class="key black-key" x="969.5" y="34" width="29" height="151" rx="2.5"/>
+      <path d="M973.5 39 V168" class="black-highlight"/>
+      <rect class="glow-overlay" x="970.5" y="35" width="27" height="149" rx="2"/>
+      <title>A#5</title>
+    </g>
+  </g>
+  </svg></div>
+  <div class="controls">
+    <button id="play" type="button">▶ Play middle octave</button>
+    <button id="stop" type="button">■ Stop</button>
+    <span id="status" aria-live="polite">Ready · C4–B4</span>
+  </div>
+<script>
+(() => {
+  const notes = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4'];
+  const intervalMs = 420;
+  let timer = null;
+  let index = 0;
+  const status = document.getElementById('status');
+  const keys = [...document.querySelectorAll('.key-group')];
+  const clear = () => keys.forEach(k => k.classList.remove('pressed'));
+  function stop() {
+    if (timer !== null) clearInterval(timer);
+    timer = null;
+    clear();
+    status.textContent = 'Stopped · C4–B4';
+  }
+  function step() {
+    clear();
+    if (index >= notes.length) {
+      clearInterval(timer); timer = null;
+      status.textContent = 'Complete · 12 notes played';
+      return;
+    }
+    const note = notes[index++];
+    const key = document.getElementById('key-' + note.replace('#', 's'));
+    if (key) key.classList.add('pressed');
+    status.textContent = 'Pressing ' + note + ' · ' + index + '/12';
+  }
+  document.getElementById('play').addEventListener('click', () => {
+    if (timer !== null) clearInterval(timer);
+    clear(); index = 0; step();
+    timer = setInterval(step, intervalMs);
+  });
+  document.getElementById('stop').addEventListener('click', stop);
+  // Start one pass automatically, so the middle octave is demonstrated immediately.
+  window.addEventListener('DOMContentLoaded', () => {
+    index = 0; step(); timer = setInterval(step, intervalMs);
+  });
+})();
+</script>
+</body>
+</html>

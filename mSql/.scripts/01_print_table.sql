@@ -1,0 +1,4 @@
+
+SELECT * FROM &1;
+
+UNDEFINE 1

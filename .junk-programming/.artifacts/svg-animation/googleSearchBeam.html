@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    
+    <script src="script.js"></script>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" width="800" height="180">
+  <defs>
+    <linearGradient id="rainbow">
+      <stop offset="0%" stop-color="#4285ff"/>
+      <stop offset="25%" stop-color="#a855f7"/>
+      <stop offset="50%" stop-color="#ff4db8"/>
+      <stop offset="75%" stop-color="#ffcc4d"/>
+      <stop offset="100%" stop-color="#38e8d5"/>
+      <animateTransform attributeName="gradientTransform"
+        type="rotate" from="0 .5 .5" to="360 .5 .5"
+        dur="8s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4285ff" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#4285ff" stop-opacity=".15"/>
+      <stop offset="75%" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <path id="outline"
+      d="M 100,42 H 700 A 48,48 0 0 1 748,90
+         A 48,48 0 0 1 700,138 H 100
+         A 48,48 0 0 1 52,90
+         A 48,48 0 0 1 100,42 Z"/>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="180" rx="20" fill="#080d19"/>
+
+  <!-- Soft outer halo -->
+  <use href="#outline" fill="#111a2b"
+       stroke="url(#rainbow)" stroke-width="5"
+       opacity=".55" filter="url(#glow)"/>
+
+  <!-- Base border -->
+  <use href="#outline" fill="none"
+       stroke="#35415b" stroke-width="1.5"/>
+
+  <!-- Traveling light beam -->
+  <g filter="url(#glow)">
+    <use href="#outline" fill="none"
+         stroke="url(#rainbow)" stroke-width="2.5"
+         stroke-linecap="round" opacity=".9"/>
+
+    <path d="M -80,0 H 80"
+          fill="none" stroke="url(#beam)"
+          stroke-width="5" stroke-linecap="round">
+      <animateMotion dur="3s" repeatCount="indefinite"
+        rotate="auto">
+        <mpath href="#outline"/>
+      </animateMotion>
+    </path>
+  </g>
+
+  <!-- Search icon -->
+  <g fill="none" stroke="#cbd5e1" stroke-width="3"
+     stroke-linecap="round">
+    <circle cx="91" cy="84" r="10"/>
+    <path d="M 98,91 L 107,100"/>
+  </g>
+
+  <!-- Placeholder -->
+  <text x="125" y="91" fill="#aab5ca"
+        font-family="Arial, sans-serif" font-size="18">
+    Search anything...
+  </text>
+
+  <!-- Search field divider -->
+  <path d="M 112,72 V 108" stroke="#38445c"
+        stroke-width="1.5"/>
+</svg>
+
+</body>
+</html>
